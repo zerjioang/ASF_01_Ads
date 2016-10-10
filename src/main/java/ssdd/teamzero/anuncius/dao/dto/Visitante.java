@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.ssdd.teamzero.anuncius.dao.dto;
+package ssdd.teamzero.anuncius.dao.dto;
 
 /**
- *
  * @author .local
  */
-public abstract class Usuario {
-    
+public class Visitante extends Usuario {
+
 }

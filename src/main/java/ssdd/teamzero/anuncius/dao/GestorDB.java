@@ -1,6 +1,13 @@
-package dao.ssdd.teamzero.anuncius.dao;
+package ssdd.teamzero.anuncius.dao;
+
+import ssdd.teamzero.anuncius.dao.dto.Anuncio;
+import ssdd.teamzero.anuncius.dao.dto.Categoria;
+import ssdd.teamzero.anuncius.dao.dto.Usuario;
+
+import java.util.ArrayList;
 
 public class GestorDB {
+
     public static void main(String args[]) {
         System.out.println("Hello world!");
     }
@@ -15,9 +22,9 @@ public class GestorDB {
         return anuncios;
     }
 
-    public ArrayList<Categorias> obtenerCategorias() {
-        ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-        return anuncios;
+    public ArrayList<Categoria> obtenerCategorias() {
+        ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+        return categorias;
     }
 
     public ArrayList<Anuncio> obtenerTodosLosAnuncios() {
