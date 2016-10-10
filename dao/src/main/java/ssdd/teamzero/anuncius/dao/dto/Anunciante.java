@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ssdd.teamzero.anuncius.model;
+package dao.ssdd.teamzero.anuncius.dao.dto;
 
 /**
  *
  * @author .local
  */
-public class Anuncio {
+public class Anunciante extends Usuario {
     
 }
