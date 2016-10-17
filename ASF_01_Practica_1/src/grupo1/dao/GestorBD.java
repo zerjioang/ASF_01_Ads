@@ -9,51 +9,51 @@ public class GestorBD {
         System.out.println("Hello world!");
     }
 
-    public ArrayList<Anuncio> obtenerAnunciosPorCategoria(Categoria c) {
-        ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-        return anuncios;
+    public ArrayList<Advertisement> getAdsByCategory(Category c) {
+        ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        return ads;
     }
 
-    public ArrayList<Anuncio> obtenerAnunciosPorUsuario(Usuario u) {
-        ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-        return anuncios;
+    public ArrayList<Advertisement> getAdsByUser(User u) {
+        ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        return ads;
     }
 
-    public ArrayList<Categoria> obtenerCategorias() {
-        ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-        return categorias;
+    public ArrayList<Category> getCategories() {
+        ArrayList<Category> categories = new ArrayList<Category>();
+        return categories;
     }
 
-    public ArrayList<Anuncio> obtenerTodosLosAnuncios() {
-        ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-        return anuncios;
+    public ArrayList<Advertisement> getAllAds() {
+        ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        return ads;
     }
 
-    public void borrarAnuncio(Anuncio a) {
-
-    }
-
-    public void borrarCategoria(Categoria c) {
+    public void deleteAd(Advertisement a) {
 
     }
 
-    public void borrarUsuario(Usuario u) {
+    public void deleteCategory(Category c) {
 
     }
 
-    public void insertarUsuario(Usuario u) {
+    public void deleteUser(User u) {
 
     }
 
-    public void insertarCategoria(Categoria c) {
+    public void insertUser(User u) {
 
     }
 
-    public void insertarAnuncio(Anuncio a) {
+    public void insertCategory(Category c) {
 
     }
 
-    public void cambiarCategoria(Anuncio a, Categoria c) {
+    public void insertAd(Advertisement a) {
+
+    }
+
+    public void changeCategory(Advertisement a, Category c) {
 
     }
 }
