@@ -42,7 +42,7 @@ public class GestorBD {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(select);
         
-        if (rs.next()){
+        while (rs.next()){
         	Advertisement ad = new Advertisement(
         			rs.getInt("id"),
         			rs.getString("name"), 
@@ -63,7 +63,7 @@ public class GestorBD {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(select);
         
-        if (rs.next()){
+        while (rs.next()){
         	Advertisement ad = new Advertisement(
         			rs.getInt("id"),
         			rs.getString("name"), 
@@ -77,6 +77,22 @@ public class GestorBD {
         
         return ads;
     }
+    
+    public Category getCategory(int id) throws SQLException{
+    	Category c = null;
+    	String select = "select * from CATEGORIA where id='" + id +"'";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(select);
+        if (rs.next()){
+        	c = new Category();
+        	c.setId(rs.getInt("id"));
+        	c.setName(rs.getString("name"));
+        	c.setDescription(rs.getString("description"));
+        }
+        rs.close();
+        stmt.close();  
+        return c;
+    }
 
     public ArrayList<Category> getCategories() throws SQLException{
     	ArrayList<Category> categories = new ArrayList<Category>();
@@ -84,7 +100,7 @@ public class GestorBD {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(select);
         
-        if (rs.next()){
+        while (rs.next()){
         	Category c = new Category(
         			rs.getInt("id"),
         			rs.getString("name"), 
@@ -98,13 +114,13 @@ public class GestorBD {
         return categories;
     }
 
-    public ArrayList<Advertisement> getAllAds() throws SQLException{
+    public ArrayList<Advertisement> getAds() throws SQLException{
     	ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
         String select = "select * from ANUNCIO";
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(select);
         
-        if (rs.next()){
+        while (rs.next()){
         	Advertisement a = new Advertisement(
         			rs.getInt("id"),
         			rs.getString("name"), 
@@ -160,11 +176,10 @@ public class GestorBD {
 
     public int insertUser(User u) throws SQLException{
     	String insert = "insert into USUARIO " +
-                "(id, email, password, name) " +
-                "VALUES (" + u.getId() +
-                ",'" + u.getEmail() +
+                "(email, password, name) " +
+                "VALUES ('" + u.getEmail() +
                 "','" + u.getPassword() +
-                ",'"  + u.getName() + "')";                        
+                "','"  + u.getName() + "')";                        
 		System.out.println(insert);
     	Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
@@ -187,7 +202,7 @@ public class GestorBD {
     	String insert = "insert into CATEGORIA " +
                 "(name, description) " +
                 "VALUES ('" + c.getName() +
-                ",'"  + c.getDescription() + "')";                        
+                "','"  + c.getDescription() + "')";                        
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
 		stmt.close();
