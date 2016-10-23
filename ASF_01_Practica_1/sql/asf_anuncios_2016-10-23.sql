@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.15)
 # Base de datos: asf_anuncios
-# Tiempo de Generación: 2016-10-17 16:14:44 +0000
+# Tiempo de Generación: 2016-10-23 10:49:31 +0000
 # ************************************************************
 
 
@@ -31,7 +31,8 @@ CREATE TABLE `Anuncio` (
   `description` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `category` FOREIGN KEY (`id`) REFERENCES `Categoria` (`id`) ON DELETE CASCADE
+  CONSTRAINT `category` FOREIGN KEY (`id`) REFERENCES `Categoria` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `creator` FOREIGN KEY (`id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -60,8 +61,8 @@ CREATE TABLE `Usuario` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `anuncios` FOREIGN KEY (`id`) REFERENCES `Anuncio` (`id`) ON DELETE CASCADE
+  `signup_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

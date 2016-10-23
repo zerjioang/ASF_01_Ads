@@ -1,43 +1,45 @@
 package grupo1.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="User")
-@XmlType(propOrder = {"ads", "name", "password", "signupDate"})
+@XmlType(propOrder = {"id", "name", "email", "password", "signupDate"})
 public class User {
-	private ArrayList<Advertisement> ads;
+	private int id;
 	private String name;
+	private String email;
 	private String password;
 	private Date signupDate;
 	
-	public User(ArrayList<Advertisement> ads, String name, String password, Date signupDate) {
+	public User(){}
+	public User(int id, String name, String email, String password, Date signupDate) {
 		super();
-		this.ads = ads;
+		this.id = id;
 		this.name = name;
+		this.email = email;
 		this.password = password;
 		this.signupDate = signupDate;
 	}
-	public ArrayList<Advertisement> getAds() {
-		return ads;
+	public int getId() {
+		return id;
 	}
-	// XmLElementWrapper generates a wrapper element around XML representation
-	@XmlElementWrapper(name = "adList")
-	// XmlElement sets the name of the entities
-	@XmlElement(name = "Advertisement")
-	public void setAds(ArrayList<Advertisement> ads) {
-		this.ads = ads;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -53,6 +55,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [ads=" + ads + ", name=" + name + ", password=" + password + ", signupDate=" + signupDate + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", signupDate="
+				+ signupDate + "]";
 	}
+	
 }
