@@ -1,5 +1,3 @@
-import org.apache.axis2.client.ServiceClient;
-
 import grupo1.dao.AdvertisementEndpointStub;
 
 public class MyTests {
