@@ -4,11 +4,17 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
+import grupo1.view.events.EditGUIEvents;
 
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
-public class AdminWindow extends JFrame {
+public class AdminWindow extends AnunciusJFrame {
+	
+	private JTextField textField;
 
     /**
      * Create the frame.
@@ -65,11 +71,45 @@ public class AdminWindow extends JFrame {
         JScrollPane scrollPane_1 = new JScrollPane();
         panel.add(scrollPane_1, BorderLayout.CENTER);
 
-        JTable table = new JTable();
-        scrollPane_1.setViewportView(table);
+        JTable tableAnuncios = new JTable();
+        tableAnuncios.setShowVerticalLines(false);
+        tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableAnuncios.setAutoCreateRowSorter(true);
+        tableAnuncios.setModel(new DefaultTableModel(
+        	new Object[][] {
+        		{null, null, null, null, null},
+        		{null, null, null, null, null},
+        	},
+        	new String[] {
+        		"ID", "Title", "Description", "Username", "Price"
+        	}
+        ));
+        JPopupMenu popUpMenu = new JPopupMenu();
+        JMenuItem editItem = new JMenuItem("Editar");
+        editItem.addActionListener(EditGUIEvents.EDIT_TABLE_ELEMENT::event);
+        popUpMenu.add(editItem);	
+        
+        tableAnuncios.setComponentPopupMenu(popUpMenu);
+        scrollPane_1.setViewportView(tableAnuncios);
+        
+        JPanel panelNorthSearch = new JPanel();
+        panelNorthSearch.setBorder(new EmptyBorder(4, 4, 4, 4));
+        panel.add(panelNorthSearch, BorderLayout.NORTH);
+        panelNorthSearch.setLayout(new BorderLayout(0, 0));
+        
+        JLabel lblSearchQuery = new JLabel("Search query ");
+        panelNorthSearch.add(lblSearchQuery, BorderLayout.WEST);
+        
+        JPanel panel_2 = new JPanel();
+        panelNorthSearch.add(panel_2, BorderLayout.CENTER);
+        panel_2.setLayout(new BorderLayout(0, 0));
+        
+        textField = new JTextField();
+        panel_2.add(textField);
+        textField.setColumns(10);
 
         JPanel panel_1 = new JPanel();
-        tabbedPane.addTab("Advancec settings", null, panel_1, null);
+        tabbedPane.addTab("Advanced settings", null, panel_1, null);
         panel_1.setLayout(new BorderLayout(0, 0));
 
         JScrollPane scrollPane = new JScrollPane();
@@ -101,14 +141,4 @@ public class AdminWindow extends JFrame {
             }
         });
     }
-
-    private void setSystemTheme() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
-            System.err.println(e.getLocalizedMessage());
-        }
-    }
-
 }
