@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import grupo1.dto.*;
 
+
 public class GestorBD {
 	
 	private Connection con;
@@ -15,7 +16,7 @@ public class GestorBD {
     
     private final String DRIVER = "com.mysql.jdbc.Driver";
     private final String PROTOCOL = "jdbc:mysql";    
-
+    
     public GestorBD() {
     	// Default connection
     }
