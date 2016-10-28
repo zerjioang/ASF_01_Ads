@@ -11,19 +11,19 @@ import grupo1.view.events.EditGUIEvents;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AdminWindow extends AnunciusJFrame {
 	
+	private static final int ID_COLUMN_POSITION = 0;
 	private JTextField textField;
+	private JTable tableAnuncios;
 
     /**
      * Create the frame.
      */
     private AdminWindow() {
-
-        //set system theme
-        setSystemTheme();
-
         setTitle("Anuncius Admin");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -36,21 +36,21 @@ public class AdminWindow extends AnunciusJFrame {
         menuBar.add(mnFile);
 
         JMenuItem mntmExit = new JMenuItem("Exit");
-        mntmExit.addActionListener(AdminGUIEvents.MENU_EXIT::event);
+        mntmExit.addActionListener(AdminGUIEvents.MENU_EXIT.event(this));
         mnFile.add(mntmExit);
 
         JMenu mnSettings = new JMenu("Settings");
         menuBar.add(mnSettings);
 
         JMenuItem mntmConfigurarTracker = new JMenuItem("Anuncius settings");
-        mntmConfigurarTracker.addActionListener(AdminGUIEvents.MENU_CONFIGURE_TRACKER::event);
+        mntmConfigurarTracker.addActionListener(AdminGUIEvents.MENU_CONFIGURE.event(this));
         mnSettings.add(mntmConfigurarTracker);
 
         JMenu mnHelp = new JMenu("Help");
         menuBar.add(mnHelp);
 
         JMenuItem mntmAbout = new JMenuItem("About");
-        mntmAbout.addActionListener(AdminGUIEvents.MENU_ABOUT::event);
+        mntmAbout.addActionListener(AdminGUIEvents.MENU_ABOUT.event(this));
         mnHelp.add(mntmAbout);
         JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,14 +71,14 @@ public class AdminWindow extends AnunciusJFrame {
         JScrollPane scrollPane_1 = new JScrollPane();
         panel.add(scrollPane_1, BorderLayout.CENTER);
 
-        JTable tableAnuncios = new JTable();
+        tableAnuncios = new JTable();
         tableAnuncios.setShowVerticalLines(false);
         tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableAnuncios.setAutoCreateRowSorter(true);
         tableAnuncios.setModel(new DefaultTableModel(
         	new Object[][] {
-        		{null, null, null, null, null},
-        		{null, null, null, null, null},
+        		{0, "Title", "Description", "Username", 5.5},
+        		{1, "Title", "Description", "Username", 10.0},
         	},
         	new String[] {
         		"ID", "Title", "Description", "Username", "Price"
@@ -86,7 +86,7 @@ public class AdminWindow extends AnunciusJFrame {
         ));
         JPopupMenu popUpMenu = new JPopupMenu();
         JMenuItem editItem = new JMenuItem("Editar");
-        editItem.addActionListener(EditGUIEvents.EDIT_TABLE_ELEMENT::event);
+        editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
         popUpMenu.add(editItem);	
         
         tableAnuncios.setComponentPopupMenu(popUpMenu);
@@ -105,6 +105,7 @@ public class AdminWindow extends AnunciusJFrame {
         panel_2.setLayout(new BorderLayout(0, 0));
         
         textField = new JTextField();
+        textField.addActionListener(AdminGUIEvents.QUERY_ENTER.event(this));
         panel_2.add(textField);
         textField.setColumns(10);
 
@@ -128,7 +129,7 @@ public class AdminWindow extends AnunciusJFrame {
         setLocationRelativeTo(null);
     }
 
-    /**
+	/**
      * Launch the application.
      */
     public static void main(String[] args) {
@@ -141,4 +142,32 @@ public class AdminWindow extends AnunciusJFrame {
             }
         });
     }
+    
+    //eventos de la interfaz
+
+	public void configureAnuncius() {		
+	}
+
+	public void openMenuAbout() {		
+	}
+
+	public void openMenuExit() {		
+	}
+
+	public void queryEnterEvent() {		
+	}
+
+	public void editAdvertisement() {
+		int id = getSelectedTableElementId();
+		EditWindow editWindow = new EditWindow(id);
+		editWindow.setVisible(true);
+	}
+	
+	//metodos auxiliares
+	
+	private int getSelectedTableElementId() {
+		int row = tableAnuncios.getSelectedRow();
+		System.out.println(row);
+		return  (int) tableAnuncios.getModel().getValueAt(row, ID_COLUMN_POSITION);
+	}
 }

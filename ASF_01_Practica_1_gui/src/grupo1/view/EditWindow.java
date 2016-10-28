@@ -13,16 +13,23 @@ import javax.swing.GroupLayout.Alignment;
 public class EditWindow extends AnunciusJFrame {
 	
 	private JTextField textField;
+	private int id;
 
     /**
      * Create the frame.
      */
     public EditWindow() {
+    	setAutoRequestFocus(false);
+        init();
+    }
 
-        //set system theme
-        setSystemTheme();
-
-        setTitle("Anuncius Admin | Edit");
+    public EditWindow(int id) {
+    	this.id = id;
+    	init();
+	}
+    
+    private void init(){
+    	setTitle("Anuncius Admin | Edit");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         setMinimumSize(new Dimension(400, 400));
@@ -58,7 +65,7 @@ public class EditWindow extends AnunciusJFrame {
         setVisible(true);
     }
 
-    /**
+	/**
      * Launch the application.
      */
     public static void main(String[] args) {

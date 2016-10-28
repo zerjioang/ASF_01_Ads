@@ -26,6 +26,8 @@ public abstract class AnunciusJFrame extends JFrame {
 		setContentPane(contentPane);
 		//set app icon
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AnunciusJFrame.class.getResource("/grupo1/res/ads.png")));
+		//set system theme
+        setSystemTheme();
 	}
 	
 	protected void setSystemTheme() {

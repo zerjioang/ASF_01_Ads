@@ -1,29 +1,68 @@
 package grupo1.view.events;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import grupo1.view.AdminWindow;
 
 public enum AdminGUIEvents {
-    MENU_CONFIGURE_TRACKER {
+	
+    MENU_CONFIGURE {
         @Override
-        public void event(ActionEvent event) {
-            System.out.println(event.toString() + "Configure tracker event detected");
+        public ActionListener event(AdminWindow window) {
+            return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Configure tracker event detected");
+		            window.configureAnuncius();
+				}
+			};
         }
     }, MENU_ABOUT {
         @Override
-        public void event(ActionEvent event) {
-            System.out.println("menu about event detected");
+        public ActionListener event(AdminWindow window) {
+            return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("menu about event detected");
+		            window.openMenuAbout();
+				}
+			};
         }
     }, MENU_EXIT {
         @Override
-        public void event(ActionEvent event) {
-            System.out.println("Menu exit event detected");
+        public ActionListener event(AdminWindow window) {
+            return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Menu exit event detected");
+		            window.openMenuExit();
+				}
+			};
         }
-    }, MENU_FORCE_STOP {
-        @Override
-        public void event(ActionEvent event) {
-            System.out.println("Menu force stop event detected");
-        }
-    };
+    },QUERY_ENTER {
+		@Override
+		public ActionListener event(AdminWindow window) {
+			return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("query entered");
+					window.queryEnterEvent();
+				}
+			};
+		}
+	}, EDIT_ADVERTISEMENT {
+		@Override
+		public ActionListener event(AdminWindow window) {
+			return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("ad selected for edition");
+					window.editAdvertisement();
+				}
+			};
+		}
+	};
 
-    public abstract void event(ActionEvent event);
+    public abstract ActionListener event(AdminWindow window);
 }
