@@ -13,7 +13,6 @@ public class Test {
 	
 	public void testUsers(){
         try {
-			gbd.conectar();
 			User u = new User();
 			u.setEmail("aitor.brazaola@opendeusto.es");
 			u.setName("Aitor");
@@ -31,17 +30,13 @@ public class Test {
 			u = gbd.getUser(userId);
 			System.out.println("User created:" + u.toString());
 			
-            gbd.desconectar();
-        } catch (ClassNotFoundException e) {
-        	e.printStackTrace();
-		} catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
     }
 	
 	public void testCategories(){
         try {
-			gbd.conectar();
 			
 			Category c = new Category();
 			c.setName("Technology");
@@ -61,10 +56,7 @@ public class Test {
 			System.out.println("Now, give me a list of all categories created");
 			System.out.println(gbd.getCategories());
 			
-            gbd.desconectar();
-        } catch (ClassNotFoundException e) {
-        	e.printStackTrace();
-		} catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
     }

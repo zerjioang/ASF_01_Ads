@@ -44,7 +44,7 @@
         //creating the operations
         org.apache.axis2.description.AxisOperation __operation;
 
-        _operations = new org.apache.axis2.description.AxisOperation[20];
+        _operations = new org.apache.axis2.description.AxisOperation[18];
         
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
@@ -145,7 +145,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "conectar"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
 	    _service.addOperation(__operation);
 	    
 
@@ -157,7 +157,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "desconectar"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getUsers"));
 	    _service.addOperation(__operation);
 	    
 
@@ -169,7 +169,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertAd"));
 	    _service.addOperation(__operation);
 	    
 
@@ -181,7 +181,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getUsers"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory"));
 	    _service.addOperation(__operation);
 	    
 
@@ -193,7 +193,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertAd"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getCategories"));
 	    _service.addOperation(__operation);
 	    
 
@@ -205,7 +205,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd"));
 	    _service.addOperation(__operation);
 	    
 
@@ -217,7 +217,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getCategories"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser"));
 	    _service.addOperation(__operation);
 	    
 
@@ -229,7 +229,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getAds"));
 	    _service.addOperation(__operation);
 	    
 
@@ -241,7 +241,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertUser"));
 	    _service.addOperation(__operation);
 	    
 
@@ -253,7 +253,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "getAds"));
+            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory"));
 	    _service.addOperation(__operation);
 	    
 
@@ -262,114 +262,150 @@
             _operations[17]=__operation;
             
         
-                   __operation = new org.apache.axis2.description.OutInAxisOperation();
-                
-
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "insertUser"));
-	    _service.addOperation(__operation);
-	    
-
-	    
-	    
-            _operations[18]=__operation;
-            
-        
-                   __operation = new org.apache.axis2.description.OutInAxisOperation();
-                
-
-            __operation.setName(new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory"));
-	    _service.addOperation(__operation);
-	    
-
-	    
-	    
-            _operations[19]=__operation;
-            
-        
         }
 
     //populates the faults
     private void populateFaults(){
          
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteCategory"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategory"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateUser"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateAdvertisement"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "updateCategory"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUser"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByCategory"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAd"),"grupo1.dao.AdvertisementEndpointSQLException");
            
-              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "conectar"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
-              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "conectar"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
-              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "conectar"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
-           
-              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "conectar"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
-              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "conectar"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
-              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "conectar"),"grupo1.dao.AdvertisementEndpointSQLException");
-           
-              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "desconectar"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
-              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "desconectar"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
-              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "desconectar"),"grupo1.dao.AdvertisementEndpointSQLException");
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteUser"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUsers"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUsers"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getUsers"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUsers"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUsers"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getUsers"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertAd"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertCategory"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategories"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategories"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getCategories"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategories"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategories"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getCategories"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "deleteAd"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAdsByUser"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAds"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAds"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "getAds"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAds"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAds"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "getAds"),"grupo1.dao.AdvertisementEndpointSQLException");
            
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "insertUser"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
+           
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertUser"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "insertUser"),"grupo1.dao.AdvertisementEndpointSQLException");
+           
+              faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "changeCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "changeCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException");
+              faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointClassNotFoundException"), "changeCategory"),"grupo1.dao.AdvertisementEndpointClassNotFoundException");
            
               faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "changeCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
               faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(new javax.xml.namespace.QName("http://dao.grupo1","AdvertisementEndpointSQLException"), "changeCategory"),"grupo1.dao.AdvertisementEndpointSQLExceptionException");
@@ -445,8 +481,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#deleteCategory
-                     * @param deleteCategory49
+                     * @param deleteCategory43
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -454,12 +491,13 @@
 
                             public  void deleteCategory(
 
-                            grupo1.dao.DeleteCategory deleteCategory49)
+                            grupo1.dao.DeleteCategory deleteCategory43)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -482,7 +520,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteCategory49,
+                                                    deleteCategory43,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "deleteCategory"));
                                                 
@@ -518,6 +556,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -561,12 +603,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startdeleteCategory
-                    * @param deleteCategory49
+                    * @param deleteCategory43
                 
                 */
                 public  void startdeleteCategory(
 
-                 grupo1.dao.DeleteCategory deleteCategory49,
+                 grupo1.dao.DeleteCategory deleteCategory43,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -591,7 +633,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteCategory49,
+                                                    deleteCategory43,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "deleteCategory"));
                                                 
@@ -624,8 +666,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getCategory
-                     * @param getCategory51
+                     * @param getCategory45
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -633,12 +676,13 @@
 
                             public  grupo1.dao.GetCategoryResponse getCategory(
 
-                            grupo1.dao.GetCategory getCategory51)
+                            grupo1.dao.GetCategory getCategory45)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -661,7 +705,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getCategory51,
+                                                    getCategory45,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getCategory"));
                                                 
@@ -708,6 +752,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -750,12 +798,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetCategory
-                    * @param getCategory51
+                    * @param getCategory45
                 
                 */
                 public  void startgetCategory(
 
-                 grupo1.dao.GetCategory getCategory51,
+                 grupo1.dao.GetCategory getCategory45,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -780,7 +828,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getCategory51,
+                                                    getCategory45,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getCategory"));
                                                 
@@ -829,6 +877,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetCategory((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetCategory((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -900,8 +953,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#updateUser
-                     * @param updateUser53
+                     * @param updateUser47
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -909,12 +963,13 @@
 
                             public  void updateUser(
 
-                            grupo1.dao.UpdateUser updateUser53)
+                            grupo1.dao.UpdateUser updateUser47)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -937,7 +992,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateUser53,
+                                                    updateUser47,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateUser"));
                                                 
@@ -973,6 +1028,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -1016,12 +1075,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startupdateUser
-                    * @param updateUser53
+                    * @param updateUser47
                 
                 */
                 public  void startupdateUser(
 
-                 grupo1.dao.UpdateUser updateUser53,
+                 grupo1.dao.UpdateUser updateUser47,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -1046,7 +1105,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateUser53,
+                                                    updateUser47,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateUser"));
                                                 
@@ -1079,8 +1138,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#updateAdvertisement
-                     * @param updateAdvertisement55
+                     * @param updateAdvertisement49
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -1088,12 +1148,13 @@
 
                             public  void updateAdvertisement(
 
-                            grupo1.dao.UpdateAdvertisement updateAdvertisement55)
+                            grupo1.dao.UpdateAdvertisement updateAdvertisement49)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -1116,7 +1177,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateAdvertisement55,
+                                                    updateAdvertisement49,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateAdvertisement")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateAdvertisement"));
                                                 
@@ -1152,6 +1213,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -1195,12 +1260,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startupdateAdvertisement
-                    * @param updateAdvertisement55
+                    * @param updateAdvertisement49
                 
                 */
                 public  void startupdateAdvertisement(
 
-                 grupo1.dao.UpdateAdvertisement updateAdvertisement55,
+                 grupo1.dao.UpdateAdvertisement updateAdvertisement49,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -1225,7 +1290,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateAdvertisement55,
+                                                    updateAdvertisement49,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateAdvertisement")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateAdvertisement"));
                                                 
@@ -1258,8 +1323,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#updateCategory
-                     * @param updateCategory57
+                     * @param updateCategory51
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -1267,12 +1333,13 @@
 
                             public  void updateCategory(
 
-                            grupo1.dao.UpdateCategory updateCategory57)
+                            grupo1.dao.UpdateCategory updateCategory51)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -1295,7 +1362,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateCategory57,
+                                                    updateCategory51,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateCategory"));
                                                 
@@ -1331,6 +1398,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -1374,12 +1445,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startupdateCategory
-                    * @param updateCategory57
+                    * @param updateCategory51
                 
                 */
                 public  void startupdateCategory(
 
-                 grupo1.dao.UpdateCategory updateCategory57,
+                 grupo1.dao.UpdateCategory updateCategory51,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -1404,7 +1475,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    updateCategory57,
+                                                    updateCategory51,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "updateCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "updateCategory"));
                                                 
@@ -1437,8 +1508,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getUser
-                     * @param getUser59
+                     * @param getUser53
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -1446,12 +1518,13 @@
 
                             public  grupo1.dao.GetUserResponse getUser(
 
-                            grupo1.dao.GetUser getUser59)
+                            grupo1.dao.GetUser getUser53)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -1474,7 +1547,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getUser59,
+                                                    getUser53,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getUser"));
                                                 
@@ -1521,6 +1594,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -1563,12 +1640,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetUser
-                    * @param getUser59
+                    * @param getUser53
                 
                 */
                 public  void startgetUser(
 
-                 grupo1.dao.GetUser getUser59,
+                 grupo1.dao.GetUser getUser53,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -1593,7 +1670,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getUser59,
+                                                    getUser53,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getUser"));
                                                 
@@ -1642,6 +1719,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetUser((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetUser((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -1713,8 +1795,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getAdsByCategory
-                     * @param getAdsByCategory61
+                     * @param getAdsByCategory55
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -1722,12 +1805,13 @@
 
                             public  grupo1.dao.GetAdsByCategoryResponse getAdsByCategory(
 
-                            grupo1.dao.GetAdsByCategory getAdsByCategory61)
+                            grupo1.dao.GetAdsByCategory getAdsByCategory55)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -1750,7 +1834,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAdsByCategory61,
+                                                    getAdsByCategory55,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByCategory"));
                                                 
@@ -1797,6 +1881,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -1839,12 +1927,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetAdsByCategory
-                    * @param getAdsByCategory61
+                    * @param getAdsByCategory55
                 
                 */
                 public  void startgetAdsByCategory(
 
-                 grupo1.dao.GetAdsByCategory getAdsByCategory61,
+                 grupo1.dao.GetAdsByCategory getAdsByCategory55,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -1869,7 +1957,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAdsByCategory61,
+                                                    getAdsByCategory55,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByCategory"));
                                                 
@@ -1918,6 +2006,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetAdsByCategory((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetAdsByCategory((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -1989,8 +2082,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getAd
-                     * @param getAd63
+                     * @param getAd57
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -1998,12 +2092,13 @@
 
                             public  grupo1.dao.GetAdResponse getAd(
 
-                            grupo1.dao.GetAd getAd63)
+                            grupo1.dao.GetAd getAd57)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
@@ -2026,7 +2121,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAd63,
+                                                    getAd57,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAd"));
                                                 
@@ -2073,6 +2168,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -2115,12 +2214,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetAd
-                    * @param getAd63
+                    * @param getAd57
                 
                 */
                 public  void startgetAd(
 
-                 grupo1.dao.GetAd getAd63,
+                 grupo1.dao.GetAd getAd57,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -2145,7 +2244,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAd63,
+                                                    getAd57,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAd"));
                                                 
@@ -2194,6 +2293,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetAd((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetAd((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -2264,8 +2368,8 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see grupo1.dao.AdvertisementEndpoint#conectar
-                     * @param conectar65
+                     * @see grupo1.dao.AdvertisementEndpoint#deleteUser
+                     * @param deleteUser59
                     
                      * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -2273,9 +2377,9 @@
 
                     
 
-                            public  void conectar(
+                            public  void deleteUser(
 
-                            grupo1.dao.Conectar conectar65)
+                            grupo1.dao.DeleteUser deleteUser59)
                         
 
                     throws java.rmi.RemoteException
@@ -2286,7 +2390,7 @@
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
                org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[8].getName());
-              _operationClient.getOptions().setAction("urn:conectar");
+              _operationClient.getOptions().setAction("urn:deleteUser");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -2304,9 +2408,9 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    conectar65,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "conectar")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "conectar"));
+                                                    deleteUser59,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser")),
+                                                    new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
                                                 
         //adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -2326,15 +2430,15 @@
 
             org.apache.axiom.om.OMElement faultElt = f.getDetail();
             if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"conectar"))){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"))){
                     //make the fault by reflection
                     try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"conectar"));
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"));
                         java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
                         java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
                         java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
                         //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"conectar"));
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"));
                         java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
                         java.lang.Object messageObject = fromOM(faultElt,messageClass);
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -2386,20 +2490,20 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see grupo1.dao.AdvertisementEndpoint#startconectar
-                    * @param conectar65
+                * @see grupo1.dao.AdvertisementEndpoint#startdeleteUser
+                    * @param deleteUser59
                 
                 */
-                public  void startconectar(
+                public  void startdeleteUser(
 
-                 grupo1.dao.Conectar conectar65,
+                 grupo1.dao.DeleteUser deleteUser59,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[8].getName());
-             _operationClient.getOptions().setAction("urn:conectar");
+             _operationClient.getOptions().setAction("urn:deleteUser");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
@@ -2417,9 +2521,9 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    conectar65,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "conectar")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "conectar"));
+                                                    deleteUser59,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser")),
+                                                    new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
                                                 
         // adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -2449,367 +2553,10 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see grupo1.dao.AdvertisementEndpoint#desconectar
-                     * @param desconectar67
-                    
-                     * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
-                     */
-
-                    
-
-                            public  void desconectar(
-
-                            grupo1.dao.Desconectar desconectar67)
-                        
-
-                    throws java.rmi.RemoteException
-                    
-                    
-                        ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
-              org.apache.axis2.context.MessageContext _messageContext = null;
-              try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[9].getName());
-              _operationClient.getOptions().setAction("urn:desconectar");
-              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-              // create a message context
-              _messageContext = new org.apache.axis2.context.MessageContext();
-
-              
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env = null;
-                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    desconectar67,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "desconectar")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "desconectar"));
-                                                
-        //adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // set the message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message contxt to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        //execute the operation client
-        _operationClient.execute(true);
-
-         
-                return;
-            
-         }catch(org.apache.axis2.AxisFault f){
-
-            org.apache.axiom.om.OMElement faultElt = f.getDetail();
-            if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"desconectar"))){
-                    //make the fault by reflection
-                    try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"desconectar"));
-                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-                        //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"desconectar"));
-                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                        java.lang.Object messageObject = fromOM(faultElt,messageClass);
-                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                   new java.lang.Class[]{messageClass});
-                        m.invoke(ex,new java.lang.Object[]{messageObject});
-                        
-                        if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
-                          throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
-                        }
-                        
-
-                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
-                    }catch(java.lang.ClassCastException e){
-                       // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.ClassNotFoundException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }catch (java.lang.NoSuchMethodException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.reflect.InvocationTargetException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }  catch (java.lang.IllegalAccessException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }   catch (java.lang.InstantiationException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }
-                }else{
-                    throw f;
-                }
-            }else{
-                throw f;
-            }
-            } finally {
-                if (_messageContext.getTransportOut() != null) {
-                      _messageContext.getTransportOut().getSender().cleanup(_messageContext);
-                }
-            }
-        }
-            
-                /**
-                * Auto generated method signature for Asynchronous Invocations
-                * 
-                * @see grupo1.dao.AdvertisementEndpoint#startdesconectar
-                    * @param desconectar67
-                
-                */
-                public  void startdesconectar(
-
-                 grupo1.dao.Desconectar desconectar67,
-
-                  final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
-
-                throws java.rmi.RemoteException{
-
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[9].getName());
-             _operationClient.getOptions().setAction("urn:desconectar");
-             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env=null;
-              final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-                    
-                                    //Style is Doc.
-                                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    desconectar67,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "desconectar")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "desconectar"));
-                                                
-        // adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-
-                    
-                            // Nothing to pass as the callback!!!
-                        
-
-          org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[9].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
-           _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[9].setMessageReceiver(
-                    _callbackReceiver);
-        }
-
-           //execute the operation client
-           _operationClient.execute(false);
-
-                    }
-                
-                    /**
-                     * Auto generated method signature
-                     * 
-                     * @see grupo1.dao.AdvertisementEndpoint#deleteUser
-                     * @param deleteUser69
-                    
-                     * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
-                     */
-
-                    
-
-                            public  void deleteUser(
-
-                            grupo1.dao.DeleteUser deleteUser69)
-                        
-
-                    throws java.rmi.RemoteException
-                    
-                    
-                        ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
-              org.apache.axis2.context.MessageContext _messageContext = null;
-              try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[10].getName());
-              _operationClient.getOptions().setAction("urn:deleteUser");
-              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-              // create a message context
-              _messageContext = new org.apache.axis2.context.MessageContext();
-
-              
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env = null;
-                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteUser69,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
-                                                
-        //adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // set the message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message contxt to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        //execute the operation client
-        _operationClient.execute(true);
-
-         
-                return;
-            
-         }catch(org.apache.axis2.AxisFault f){
-
-            org.apache.axiom.om.OMElement faultElt = f.getDetail();
-            if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"))){
-                    //make the fault by reflection
-                    try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"));
-                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-                        //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"deleteUser"));
-                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                        java.lang.Object messageObject = fromOM(faultElt,messageClass);
-                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                   new java.lang.Class[]{messageClass});
-                        m.invoke(ex,new java.lang.Object[]{messageObject});
-                        
-                        if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
-                          throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
-                        }
-                        
-
-                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
-                    }catch(java.lang.ClassCastException e){
-                       // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.ClassNotFoundException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }catch (java.lang.NoSuchMethodException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.reflect.InvocationTargetException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }  catch (java.lang.IllegalAccessException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }   catch (java.lang.InstantiationException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }
-                }else{
-                    throw f;
-                }
-            }else{
-                throw f;
-            }
-            } finally {
-                if (_messageContext.getTransportOut() != null) {
-                      _messageContext.getTransportOut().getSender().cleanup(_messageContext);
-                }
-            }
-        }
-            
-                /**
-                * Auto generated method signature for Asynchronous Invocations
-                * 
-                * @see grupo1.dao.AdvertisementEndpoint#startdeleteUser
-                    * @param deleteUser69
-                
-                */
-                public  void startdeleteUser(
-
-                 grupo1.dao.DeleteUser deleteUser69,
-
-                  final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
-
-                throws java.rmi.RemoteException{
-
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[10].getName());
-             _operationClient.getOptions().setAction("urn:deleteUser");
-             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-              
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-
-
-              // create SOAP envelope with that payload
-              org.apache.axiom.soap.SOAPEnvelope env=null;
-              final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-                    
-                                    //Style is Doc.
-                                    
-                                                    
-                                                    env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteUser69,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser")),
-                                                    new javax.xml.namespace.QName("http://dao.grupo1", "deleteUser"));
-                                                
-        // adding SOAP soap_headers
-         _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-
-                    
-                            // Nothing to pass as the callback!!!
-                        
-
-          org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[10].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
-           _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[10].setMessageReceiver(
-                    _callbackReceiver);
-        }
-
-           //execute the operation client
-           _operationClient.execute(false);
-
-                    }
-                
-                    /**
-                     * Auto generated method signature
-                     * 
                      * @see grupo1.dao.AdvertisementEndpoint#getUsers
-                     * @param getUsers71
+                     * @param getUsers61
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -2817,16 +2564,17 @@
 
                             public  grupo1.dao.GetUsersResponse getUsers(
 
-                            grupo1.dao.GetUsers getUsers71)
+                            grupo1.dao.GetUsers getUsers61)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[11].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[9].getName());
               _operationClient.getOptions().setAction("urn:getUsers");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -2845,7 +2593,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getUsers71,
+                                                    getUsers61,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getUsers")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getUsers"));
                                                 
@@ -2892,6 +2640,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -2934,18 +2686,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetUsers
-                    * @param getUsers71
+                    * @param getUsers61
                 
                 */
                 public  void startgetUsers(
 
-                 grupo1.dao.GetUsers getUsers71,
+                 grupo1.dao.GetUsers getUsers61,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[11].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[9].getName());
              _operationClient.getOptions().setAction("urn:getUsers");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -2964,7 +2716,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getUsers71,
+                                                    getUsers61,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getUsers")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getUsers"));
                                                 
@@ -3013,6 +2765,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetUsers((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetUsers((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -3069,9 +2826,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[11].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[9].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[11].setMessageReceiver(
+          _operations[9].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -3084,8 +2841,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#insertAd
-                     * @param insertAd73
+                     * @param insertAd63
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -3093,16 +2851,17 @@
 
                             public  grupo1.dao.InsertAdResponse insertAd(
 
-                            grupo1.dao.InsertAd insertAd73)
+                            grupo1.dao.InsertAd insertAd63)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[12].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[10].getName());
               _operationClient.getOptions().setAction("urn:insertAd");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3121,7 +2880,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertAd73,
+                                                    insertAd63,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertAd"));
                                                 
@@ -3168,6 +2927,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -3210,18 +2973,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startinsertAd
-                    * @param insertAd73
+                    * @param insertAd63
                 
                 */
                 public  void startinsertAd(
 
-                 grupo1.dao.InsertAd insertAd73,
+                 grupo1.dao.InsertAd insertAd63,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[12].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[10].getName());
              _operationClient.getOptions().setAction("urn:insertAd");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3240,7 +3003,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertAd73,
+                                                    insertAd63,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertAd"));
                                                 
@@ -3289,6 +3052,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorinsertAd((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorinsertAd((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -3345,9 +3113,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[12].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[10].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[12].setMessageReceiver(
+          _operations[10].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -3360,8 +3128,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#insertCategory
-                     * @param insertCategory75
+                     * @param insertCategory65
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -3369,16 +3138,17 @@
 
                             public  grupo1.dao.InsertCategoryResponse insertCategory(
 
-                            grupo1.dao.InsertCategory insertCategory75)
+                            grupo1.dao.InsertCategory insertCategory65)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[13].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[11].getName());
               _operationClient.getOptions().setAction("urn:insertCategory");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3397,7 +3167,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertCategory75,
+                                                    insertCategory65,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory"));
                                                 
@@ -3444,6 +3214,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -3486,18 +3260,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startinsertCategory
-                    * @param insertCategory75
+                    * @param insertCategory65
                 
                 */
                 public  void startinsertCategory(
 
-                 grupo1.dao.InsertCategory insertCategory75,
+                 grupo1.dao.InsertCategory insertCategory65,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[13].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[11].getName());
              _operationClient.getOptions().setAction("urn:insertCategory");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3516,7 +3290,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertCategory75,
+                                                    insertCategory65,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertCategory"));
                                                 
@@ -3565,6 +3339,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorinsertCategory((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorinsertCategory((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -3621,9 +3400,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[13].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[11].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[13].setMessageReceiver(
+          _operations[11].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -3636,8 +3415,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getCategories
-                     * @param getCategories77
+                     * @param getCategories67
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -3645,16 +3425,17 @@
 
                             public  grupo1.dao.GetCategoriesResponse getCategories(
 
-                            grupo1.dao.GetCategories getCategories77)
+                            grupo1.dao.GetCategories getCategories67)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[14].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[12].getName());
               _operationClient.getOptions().setAction("urn:getCategories");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3673,7 +3454,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getCategories77,
+                                                    getCategories67,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getCategories")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getCategories"));
                                                 
@@ -3720,6 +3501,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -3762,18 +3547,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetCategories
-                    * @param getCategories77
+                    * @param getCategories67
                 
                 */
                 public  void startgetCategories(
 
-                 grupo1.dao.GetCategories getCategories77,
+                 grupo1.dao.GetCategories getCategories67,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[14].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[12].getName());
              _operationClient.getOptions().setAction("urn:getCategories");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3792,7 +3577,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getCategories77,
+                                                    getCategories67,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getCategories")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getCategories"));
                                                 
@@ -3841,6 +3626,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetCategories((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetCategories((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -3897,9 +3687,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[14].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[12].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[14].setMessageReceiver(
+          _operations[12].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -3912,8 +3702,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#deleteAd
-                     * @param deleteAd79
+                     * @param deleteAd69
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -3921,16 +3712,17 @@
 
                             public  void deleteAd(
 
-                            grupo1.dao.DeleteAd deleteAd79)
+                            grupo1.dao.DeleteAd deleteAd69)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[15].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[13].getName());
               _operationClient.getOptions().setAction("urn:deleteAd");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -3949,7 +3741,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteAd79,
+                                                    deleteAd69,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd"));
                                                 
@@ -3985,6 +3777,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -4028,18 +3824,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startdeleteAd
-                    * @param deleteAd79
+                    * @param deleteAd69
                 
                 */
                 public  void startdeleteAd(
 
-                 grupo1.dao.DeleteAd deleteAd79,
+                 grupo1.dao.DeleteAd deleteAd69,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[15].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[13].getName());
              _operationClient.getOptions().setAction("urn:deleteAd");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4058,7 +3854,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    deleteAd79,
+                                                    deleteAd69,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "deleteAd"));
                                                 
@@ -4076,9 +3872,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[15].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[13].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[15].setMessageReceiver(
+          _operations[13].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -4091,8 +3887,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getAdsByUser
-                     * @param getAdsByUser81
+                     * @param getAdsByUser71
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -4100,16 +3897,17 @@
 
                             public  grupo1.dao.GetAdsByUserResponse getAdsByUser(
 
-                            grupo1.dao.GetAdsByUser getAdsByUser81)
+                            grupo1.dao.GetAdsByUser getAdsByUser71)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[16].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[14].getName());
               _operationClient.getOptions().setAction("urn:getAdsByUser");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4128,7 +3926,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAdsByUser81,
+                                                    getAdsByUser71,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser"));
                                                 
@@ -4175,6 +3973,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -4217,18 +4019,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetAdsByUser
-                    * @param getAdsByUser81
+                    * @param getAdsByUser71
                 
                 */
                 public  void startgetAdsByUser(
 
-                 grupo1.dao.GetAdsByUser getAdsByUser81,
+                 grupo1.dao.GetAdsByUser getAdsByUser71,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[16].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[14].getName());
              _operationClient.getOptions().setAction("urn:getAdsByUser");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4247,7 +4049,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAdsByUser81,
+                                                    getAdsByUser71,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAdsByUser"));
                                                 
@@ -4296,6 +4098,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetAdsByUser((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetAdsByUser((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -4352,9 +4159,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[16].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[14].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[16].setMessageReceiver(
+          _operations[14].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -4367,8 +4174,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#getAds
-                     * @param getAds83
+                     * @param getAds73
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -4376,16 +4184,17 @@
 
                             public  grupo1.dao.GetAdsResponse getAds(
 
-                            grupo1.dao.GetAds getAds83)
+                            grupo1.dao.GetAds getAds73)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[17].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[15].getName());
               _operationClient.getOptions().setAction("urn:getAds");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4404,7 +4213,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAds83,
+                                                    getAds73,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAds")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAds"));
                                                 
@@ -4451,6 +4260,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -4493,18 +4306,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startgetAds
-                    * @param getAds83
+                    * @param getAds73
                 
                 */
                 public  void startgetAds(
 
-                 grupo1.dao.GetAds getAds83,
+                 grupo1.dao.GetAds getAds73,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[17].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[15].getName());
              _operationClient.getOptions().setAction("urn:getAds");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4523,7 +4336,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAds83,
+                                                    getAds73,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "getAds")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "getAds"));
                                                 
@@ -4572,6 +4385,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorgetAds((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorgetAds((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -4628,9 +4446,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[17].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[15].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[17].setMessageReceiver(
+          _operations[15].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -4643,8 +4461,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#insertUser
-                     * @param insertUser85
+                     * @param insertUser75
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -4652,16 +4471,17 @@
 
                             public  grupo1.dao.InsertUserResponse insertUser(
 
-                            grupo1.dao.InsertUser insertUser85)
+                            grupo1.dao.InsertUser insertUser75)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[18].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[16].getName());
               _operationClient.getOptions().setAction("urn:insertUser");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4680,7 +4500,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertUser85,
+                                                    insertUser75,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertUser"));
                                                 
@@ -4727,6 +4547,10 @@
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
                         
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
+                        
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
                         }
@@ -4769,18 +4593,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startinsertUser
-                    * @param insertUser85
+                    * @param insertUser75
                 
                 */
                 public  void startinsertUser(
 
-                 grupo1.dao.InsertUser insertUser85,
+                 grupo1.dao.InsertUser insertUser75,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[18].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[16].getName());
              _operationClient.getOptions().setAction("urn:insertUser");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4799,7 +4623,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insertUser85,
+                                                    insertUser75,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "insertUser")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "insertUser"));
                                                 
@@ -4848,6 +4672,11 @@
 															new java.lang.Class[]{messageClass});
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
+													if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+														callback.receiveErrorinsertUser((grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex);
+											            return;
+										            }
+										            
 													if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
 														callback.receiveErrorinsertUser((grupo1.dao.AdvertisementEndpointSQLExceptionException)ex);
 											            return;
@@ -4904,9 +4733,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[18].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[16].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[18].setMessageReceiver(
+          _operations[16].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -4919,8 +4748,9 @@
                      * Auto generated method signature
                      * 
                      * @see grupo1.dao.AdvertisementEndpoint#changeCategory
-                     * @param changeCategory87
+                     * @param changeCategory77
                     
+                     * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
                      * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
                      */
 
@@ -4928,16 +4758,17 @@
 
                             public  void changeCategory(
 
-                            grupo1.dao.ChangeCategory changeCategory87)
+                            grupo1.dao.ChangeCategory changeCategory77)
                         
 
                     throws java.rmi.RemoteException
                     
                     
+                        ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
                         ,grupo1.dao.AdvertisementEndpointSQLExceptionException{
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
-               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[19].getName());
+               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[17].getName());
               _operationClient.getOptions().setAction("urn:changeCategory");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -4956,7 +4787,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    changeCategory87,
+                                                    changeCategory77,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory"));
                                                 
@@ -4992,6 +4823,10 @@
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
                                    new java.lang.Class[]{messageClass});
                         m.invoke(ex,new java.lang.Object[]{messageObject});
+                        
+                        if (ex instanceof grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException){
+                          throw (grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException)ex;
+                        }
                         
                         if (ex instanceof grupo1.dao.AdvertisementEndpointSQLExceptionException){
                           throw (grupo1.dao.AdvertisementEndpointSQLExceptionException)ex;
@@ -5035,18 +4870,18 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see grupo1.dao.AdvertisementEndpoint#startchangeCategory
-                    * @param changeCategory87
+                    * @param changeCategory77
                 
                 */
                 public  void startchangeCategory(
 
-                 grupo1.dao.ChangeCategory changeCategory87,
+                 grupo1.dao.ChangeCategory changeCategory77,
 
                   final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
-              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[19].getName());
+              org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[17].getName());
              _operationClient.getOptions().setAction("urn:changeCategory");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -5065,7 +4900,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    changeCategory87,
+                                                    changeCategory77,
                                                     optimizeContent(new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory")),
                                                     new javax.xml.namespace.QName("http://dao.grupo1", "changeCategory"));
                                                 
@@ -5083,9 +4918,9 @@
                         
 
           org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-        if ( _operations[19].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
+        if ( _operations[17].getMessageReceiver()==null &&  _operationClient.getOptions().isUseSeparateListener()) {
            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-          _operations[19].setMessageReceiver(
+          _operations[17].setMessageReceiver(
                     _callbackReceiver);
         }
 
@@ -5116,6 +4951,20 @@
             
                         try{
                              return param.getOMElement(grupo1.dao.DeleteCategory.MY_QNAME,
+                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+                        } catch(org.apache.axis2.databinding.ADBException e){
+                            throw org.apache.axis2.AxisFault.makeFault(e);
+                        }
+                    
+
+            }
+        
+            private  org.apache.axiom.om.OMElement  toOM(grupo1.dao.AdvertisementEndpointClassNotFoundException param, boolean optimizeContent)
+            throws org.apache.axis2.AxisFault {
+
+            
+                        try{
+                             return param.getOMElement(grupo1.dao.AdvertisementEndpointClassNotFoundException.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5284,48 +5133,6 @@
             
                         try{
                              return param.getOMElement(grupo1.dao.GetAdResponse.MY_QNAME,
-                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-                        } catch(org.apache.axis2.databinding.ADBException e){
-                            throw org.apache.axis2.AxisFault.makeFault(e);
-                        }
-                    
-
-            }
-        
-            private  org.apache.axiom.om.OMElement  toOM(grupo1.dao.Conectar param, boolean optimizeContent)
-            throws org.apache.axis2.AxisFault {
-
-            
-                        try{
-                             return param.getOMElement(grupo1.dao.Conectar.MY_QNAME,
-                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-                        } catch(org.apache.axis2.databinding.ADBException e){
-                            throw org.apache.axis2.AxisFault.makeFault(e);
-                        }
-                    
-
-            }
-        
-            private  org.apache.axiom.om.OMElement  toOM(grupo1.dao.AdvertisementEndpointClassNotFoundException param, boolean optimizeContent)
-            throws org.apache.axis2.AxisFault {
-
-            
-                        try{
-                             return param.getOMElement(grupo1.dao.AdvertisementEndpointClassNotFoundException.MY_QNAME,
-                                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-                        } catch(org.apache.axis2.databinding.ADBException e){
-                            throw org.apache.axis2.AxisFault.makeFault(e);
-                        }
-                    
-
-            }
-        
-            private  org.apache.axiom.om.OMElement  toOM(grupo1.dao.Desconectar param, boolean optimizeContent)
-            throws org.apache.axis2.AxisFault {
-
-            
-                        try{
-                             return param.getOMElement(grupo1.dao.Desconectar.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5741,48 +5548,6 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, grupo1.dao.Conectar param, boolean optimizeContent, javax.xml.namespace.QName elementQName)
-                                        throws org.apache.axis2.AxisFault{
-
-                                             
-                                                    try{
-
-                                                            org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(grupo1.dao.Conectar.MY_QNAME,factory));
-                                                            return emptyEnvelope;
-                                                        } catch(org.apache.axis2.databinding.ADBException e){
-                                                            throw org.apache.axis2.AxisFault.makeFault(e);
-                                                        }
-                                                
-
-                                        }
-                                
-                             
-                             /* methods to provide back word compatibility */
-
-                             
-                                    
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, grupo1.dao.Desconectar param, boolean optimizeContent, javax.xml.namespace.QName elementQName)
-                                        throws org.apache.axis2.AxisFault{
-
-                                             
-                                                    try{
-
-                                                            org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(grupo1.dao.Desconectar.MY_QNAME,factory));
-                                                            return emptyEnvelope;
-                                                        } catch(org.apache.axis2.databinding.ADBException e){
-                                                            throw org.apache.axis2.AxisFault.makeFault(e);
-                                                        }
-                                                
-
-                                        }
-                                
-                             
-                             /* methods to provide back word compatibility */
-
-                             
-                                    
                                         private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, grupo1.dao.DeleteUser param, boolean optimizeContent, javax.xml.namespace.QName elementQName)
                                         throws org.apache.axis2.AxisFault{
 
@@ -6029,13 +5794,6 @@
 
                 }
             
-                if (grupo1.dao.Conectar.class.equals(type)){
-                
-                        return grupo1.dao.Conectar.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-                    
-
-                }
-            
                 if (grupo1.dao.DeleteAd.class.equals(type)){
                 
                         return grupo1.dao.DeleteAd.Factory.parse(param.getXMLStreamReaderWithoutCaching());
@@ -6053,13 +5811,6 @@
                 if (grupo1.dao.DeleteUser.class.equals(type)){
                 
                         return grupo1.dao.DeleteUser.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-                    
-
-                }
-            
-                if (grupo1.dao.Desconectar.class.equals(type)){
-                
-                        return grupo1.dao.Desconectar.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

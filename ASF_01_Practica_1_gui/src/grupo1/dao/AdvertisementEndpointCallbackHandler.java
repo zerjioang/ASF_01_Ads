@@ -169,36 +169,6 @@
             }
                 
            /**
-            * auto generated Axis2 call back method for conectar method
-            * override this method for handling normal response from conectar operation
-            */
-           public void receiveResultconectar(
-                    ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from conectar operation
-           */
-            public void receiveErrorconectar(java.lang.Exception e) {
-            }
-                
-           /**
-            * auto generated Axis2 call back method for desconectar method
-            * override this method for handling normal response from desconectar operation
-            */
-           public void receiveResultdesconectar(
-                    ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from desconectar operation
-           */
-            public void receiveErrordesconectar(java.lang.Exception e) {
-            }
-                
-           /**
             * auto generated Axis2 call back method for deleteUser method
             * override this method for handling normal response from deleteUser operation
             */

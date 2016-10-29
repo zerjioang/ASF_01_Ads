@@ -10,7 +10,7 @@ package grupo1.dao;
 
 public class AdvertisementEndpointSQLExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1477575771396L;
+    private static final long serialVersionUID = 1477739489520L;
     
     private grupo1.dao.AdvertisementEndpointSQLException faultMessage;
 

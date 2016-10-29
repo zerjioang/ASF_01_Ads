@@ -3,9 +3,11 @@ package grupo1.dao;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.jws.WebService;
+
 import grupo1.dto.*;
 
-
+@WebService
 public class GestorBD {
 	
 	private Connection con;
@@ -28,19 +30,20 @@ public class GestorBD {
     }
 
     // Connection management
-    public void conectar() throws ClassNotFoundException, SQLException{
+    private void conectar() throws ClassNotFoundException, SQLException{
         Class.forName(DRIVER);        
         String url = PROTOCOL + ":" + dataSource;
         con = DriverManager.getConnection(url, userName, password);               
     }
     
-    public void desconectar() throws SQLException{
+    private void desconectar() throws SQLException{
         con.close();
     }
     // End connection management
 
     // Category
-    public int insertCategory(Category c) throws SQLException{
+    public int insertCategory(Category c) throws SQLException, ClassNotFoundException{
+    	conectar();
 		String insert = "insert into CATEGORIA " +
 	            "(name, description) " +
 	            "VALUES ('" + c.getName() +
@@ -48,7 +51,6 @@ public class GestorBD {
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
 		stmt.close();
-		
 		// Get the created row id
 		String max = "select MAX(id) as id from CATEGORIA";
 		Statement stmt1 = con.createStatement();
@@ -59,10 +61,12 @@ public class GestorBD {
 		}
 		stmt1.close();
 		c.setId(id);
+		desconectar();
 		return id;
 	}
 
-    public Category getCategory(int id) throws SQLException{
+    public Category getCategory(int id) throws SQLException, ClassNotFoundException{
+    	conectar();
     	Category c = null;
     	String select = "select * from CATEGORIA where id='" + id +"'";
         Statement stmt = con.createStatement();
@@ -74,27 +78,33 @@ public class GestorBD {
         	c.setDescription(rs.getString("description"));
         }
         rs.close();
-        stmt.close();  
+        stmt.close();
+        desconectar();
         return c;
     }
     
-    public void updateCategory(Category c) throws SQLException{
+    public void updateCategory(Category c) throws SQLException, ClassNotFoundException{
+    	conectar();
     	String update = "update CATEGORIA set name='" + c.getName() + 
 				"', description='" + c.getDescription() +
 				"' where id=" + c.getId();
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
 		stmt.close();
+		desconectar();
     }
     
-    public void deleteCategory(Category c) throws SQLException{
+    public void deleteCategory(Category c) throws SQLException, ClassNotFoundException{
+    	conectar();
 		String delete = "delete from CATEGORIA where id=" + c.getId();
 	    Statement stmt = con.createStatement();
 	    stmt.executeUpdate(delete);
 	    stmt.close();
+	    desconectar();
 	}
 
-	public ArrayList<Category> getCategories() throws SQLException{
+	public ArrayList<Category> getCategories() throws SQLException, ClassNotFoundException{
+		conectar();
 		ArrayList<Category> categories = new ArrayList<Category>();
 	    String select = "select * from CATEGORIA";
 	    Statement stmt = con.createStatement();
@@ -111,11 +121,13 @@ public class GestorBD {
 	    rs.close();
 	    stmt.close();
 	    
+	    desconectar();
 	    return categories;
 	}
 	
 	// Advertisement
-	public int insertAd(Advertisement a) throws SQLException{
+	public int insertAd(Advertisement a) throws SQLException, ClassNotFoundException{
+		conectar();
 		String insert = "insert into ANUNCIO " +
 	            "(name, description, creator, category, price) " +
 	            "VALUES ('" + a.getName() +
@@ -137,10 +149,12 @@ public class GestorBD {
 		}
 		stmt1.close();
 		a.setId(id);
+		desconectar();
 		return id;
 	}
 
-	public Advertisement getAd(int id) throws SQLException{
+	public Advertisement getAd(int id) throws SQLException, ClassNotFoundException{
+		conectar();
     	Advertisement a = null;
     	String select = "select * from ANUNCIO where id='" + id +"'";
         Statement stmt = con.createStatement();
@@ -156,11 +170,13 @@ public class GestorBD {
         }
         
         rs.close();
-        stmt.close();  
+        stmt.close();
+        desconectar();
         return a;
     }
 	
-	public void updateAdvertisement(Advertisement a) throws SQLException{
+	public void updateAdvertisement(Advertisement a) throws SQLException, ClassNotFoundException{
+		conectar();
     	String update = "update ANUNCIO set name='" + a.getName() + 
 				"', description='" + a.getDescription() +
 				"', price=" + a.getPrice() +
@@ -170,16 +186,20 @@ public class GestorBD {
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
 		stmt.close();
+		desconectar();
     }
 	
-    public void deleteAd(Advertisement a) throws SQLException{
+    public void deleteAd(Advertisement a) throws SQLException, ClassNotFoundException{
+    	conectar();
     	String delete = "delete from ANUNCIO where id=" + a.getId();
         Statement stmt = con.createStatement();
         stmt.executeUpdate(delete);
         stmt.close();
+        desconectar();
     }
 
-    public ArrayList<Advertisement> getAds() throws SQLException{
+    public ArrayList<Advertisement> getAds() throws SQLException, ClassNotFoundException{
+    	conectar();
 		ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
 	    String select = "select * from ANUNCIO";
 	    Statement stmt = con.createStatement();
@@ -196,12 +216,13 @@ public class GestorBD {
 	    }
 	    rs.close();
 	    stmt.close();
-	    
+	    desconectar();
 	    return ads;
 	}
 
     // User
-	public int insertUser(User u) throws SQLException{
+	public int insertUser(User u) throws SQLException, ClassNotFoundException{
+		conectar();
 		String insert = "insert into USUARIO " +
 	            "(email, password, name) " +
 	            "VALUES ('" + u.getEmail() +
@@ -222,10 +243,12 @@ public class GestorBD {
 		}
 		stmt1.close();
 		u.setId(id);
+		desconectar();
 		return id;
 	}
 	
-	public User getUser(int id) throws SQLException{
+	public User getUser(int id) throws SQLException, ClassNotFoundException{
+		conectar();
 		User user = null;
 		String select = "select * from USUARIO where id='" + id +"'";
 	    Statement stmt = con.createStatement();
@@ -240,10 +263,12 @@ public class GestorBD {
 	    }
 	    rs.close();
 	    stmt.close();  
+	    desconectar();
 	    return user;
 	}
 	
-	public void updateUser(User u) throws SQLException{
+	public void updateUser(User u) throws SQLException, ClassNotFoundException{
+		conectar();
     	String update = "update USUARIO set name='" + u.getName() + 
 				"', email='" + u.getEmail() +
 				"', password='" + u.getPassword() +
@@ -251,16 +276,20 @@ public class GestorBD {
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
 		stmt.close();
+		desconectar();
     }
 	
-    public void deleteUser(User u) throws SQLException{
+    public void deleteUser(User u) throws SQLException, ClassNotFoundException{
+    	conectar();
     	String delete = "delete from USUARIO where id=" + u.getId();
         Statement stmt = con.createStatement();
         stmt.executeUpdate(delete);
         stmt.close();
+        desconectar();
     }
     
-    public ArrayList<User> getUsers() throws SQLException{
+    public ArrayList<User> getUsers() throws SQLException, ClassNotFoundException{
+    	conectar();
 		ArrayList<User> users = new ArrayList<User>();
 	    String select = "select * from USUARIO";
 	    Statement stmt = con.createStatement();
@@ -278,20 +307,23 @@ public class GestorBD {
 	    }
 	    rs.close();
 	    stmt.close();
-	    
+	    desconectar();
 	    return users;
 	}
     
     // Mixins
-    public void changeCategory(Advertisement a, Category c) throws SQLException{
+    public void changeCategory(Advertisement a, Category c) throws SQLException, ClassNotFoundException{
+    	conectar();
     	String update = "update ANUNCIO set category=" + c.getId() + 
 				"' where id=" + a.getId();
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
 		stmt.close();
+		desconectar();
     }
     
-    public ArrayList<Advertisement> getAdsByCategory(Category c) throws SQLException{
+    public ArrayList<Advertisement> getAdsByCategory(Category c) throws SQLException, ClassNotFoundException{
+    	conectar();
         ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
         String select = "select * from ANUNCIO where category='" + c.getId() +"'";
         Statement stmt = con.createStatement();
@@ -308,11 +340,12 @@ public class GestorBD {
         }
         rs.close();
         stmt.close();
-        
+        desconectar();
         return ads;
     }
 
-    public ArrayList<Advertisement> getAdsByUser(User u) throws SQLException{
+    public ArrayList<Advertisement> getAdsByUser(User u) throws SQLException, ClassNotFoundException{
+    	conectar();
     	ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
         String select = "select * from ANUNCIO where author='" + u.getId() +"'";
         Statement stmt = con.createStatement();
@@ -329,7 +362,7 @@ public class GestorBD {
         }
         rs.close();
         stmt.close();
-        
+        desconectar();
         return ads;
     }
 }
