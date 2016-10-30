@@ -231,12 +231,7 @@ public class AdminWindow extends AnunciusJFrame {
 			public void run() {
 				try {
 					controller = new AdminController();
-					try {
-						tableAnuncios.setModel(controller.getAllAdsInTable());
-					} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-							| AdvertisementEndpointSQLExceptionException e) {
-						e.printStackTrace();
-					}
+					updateAdsTable();
 				} catch (AxisFault e) {
 					e.printStackTrace();
 				}
@@ -261,7 +256,7 @@ public class AdminWindow extends AnunciusJFrame {
 
 	public void editAdvertisement() {
 		int id = getSelectedTableElementId(tableAnuncios);
-		AdsEditWindow editWindow = new AdsEditWindow(id);
+		AdsEditWindow editWindow = new AdsEditWindow(id, this);
 		editWindow.setVisible(true);
 	}
 	
@@ -287,5 +282,14 @@ public class AdminWindow extends AnunciusJFrame {
 		int row = table.getSelectedRow();
 		System.out.println(row);
 		return  (int) table.getModel().getValueAt(row, ID_COLUMN_POSITION);
+	}
+
+	public void updateAdsTable() {
+		try {
+			tableAnuncios.setModel(controller.getAllAdsInTable());
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			e.printStackTrace();
+		}
 	}
 }

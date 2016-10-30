@@ -32,13 +32,17 @@ public class AdsEditWindow extends AnunciusJFrame {
 	private JTextField textFieldAdsCreator;
 	private JTextField textFieldAdsPrice;
 	private AdvertisementPOJO advertisement;
-	private AdsEditController controller; 
+	private AdsEditController controller;
+	private AdminWindow adminWindow;
 
     /**
      * Create the frame.
+     * @param adminWindow 
+     * @param id2 
      */
-    public AdsEditWindow() {
-    	
+    public AdsEditWindow(int id2, AdminWindow adminWindow) {
+    	this.id = id2;
+    	this.adminWindow = adminWindow;
         init();
     }
 
@@ -47,7 +51,11 @@ public class AdsEditWindow extends AnunciusJFrame {
     	init();
 	}
     
-    private void init(){
+    public AdsEditWindow() {
+		// TODO Auto-generated constructor stub
+	}
+
+	private void init(){
     	
     	setResizable(false);
     	setType(Type.POPUP);
@@ -211,6 +219,8 @@ public class AdsEditWindow extends AnunciusJFrame {
 			advertisement.setDescription(textFieldAdsDescription.getText());
 			advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
 			controller.updateAd(advertisement);
+			
+			adminWindow.updateAdsTable();
 			this.dispose();
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
