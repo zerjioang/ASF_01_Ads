@@ -73,6 +73,28 @@ public enum AdminGUIEvents {
 				}
 			};
 		}
+	}, EDIT_CATEGORY {
+		@Override
+		public ActionListener event(AdminWindow window) {
+			return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("category selected for edition");
+					window.editCategory();
+				}
+			};
+		}
+	}, EDIT_USER {
+		@Override
+		public ActionListener event(AdminWindow window) {
+			return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("user selected for edition");
+					window.editUser();
+				}
+			};
+		}
 	};
 
     public abstract ActionListener event(AdminWindow window);

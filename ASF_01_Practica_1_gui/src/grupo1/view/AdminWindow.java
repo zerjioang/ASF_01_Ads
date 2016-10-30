@@ -19,6 +19,8 @@ import java.awt.event.ComponentListener;
 import java.rmi.RemoteException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AdminWindow extends AnunciusJFrame {
 	
@@ -26,6 +28,8 @@ public class AdminWindow extends AnunciusJFrame {
 	private JTextField textField;
 	private JTable tableAnuncios;
 	private AdminController controller;
+	private JTable tableCategoryList;
+	private JTable tableUserList;
 	
 	/**
      * Launch the application.
@@ -101,12 +105,6 @@ public class AdminWindow extends AnunciusJFrame {
         tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableAnuncios.setAutoCreateRowSorter(true);
         
-        JPopupMenu popUpMenu = new JPopupMenu();
-        JMenuItem editItem = new JMenuItem("Editar");
-        editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
-        popUpMenu.add(editItem);	
-        
-        tableAnuncios.setComponentPopupMenu(popUpMenu);
         scrollPane_1.setViewportView(tableAnuncios);
         
         JPanel panelNorthSearch = new JPanel();
@@ -125,12 +123,100 @@ public class AdminWindow extends AnunciusJFrame {
         textField.addActionListener(AdminGUIEvents.QUERY_ENTER.event(this));
         panel_2.add(textField);
         textField.setColumns(10);
+        
+        JPanel panel_1 = new JPanel();
+        tabbedPane.addTab("Administration", null, panel_1, null);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        
+        JScrollPane scrollPane_2 = new JScrollPane();
+        
+        JLabel lblCategoryList = new JLabel("Category list");
+        
+        JLabel lblUserList = new JLabel("User list");
+        GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+        gl_panel_1.setHorizontalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+        				.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(gl_panel_1.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(lblCategoryList)))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel_1.createSequentialGroup()
+        					.addComponent(lblUserList, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+        					.addContainerGap(381, Short.MAX_VALUE))
+        				.addComponent(scrollPane)))
+        );
+        gl_panel_1.setVerticalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblCategoryList)
+        				.addComponent(lblUserList))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+        				.addComponent(scrollPane, Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
+        				.addComponent(scrollPane_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
+        );
+        
+        tableUserList = new JTable();
+        tableUserList.setModel(new DefaultTableModel(
+        	new Object[][] {
+        		{0, "name", "name@domain", "1234", "30/10/2016"},
+        		{1, "name2", "name@domain", "12345", "29/10/2016"},
+        	},
+        	new String[] {
+        		"ID", "Name", "Email", "Password", "Registration date"
+        	}
+        ));
+        scrollPane.setViewportView(tableUserList);
+        
+        tableCategoryList = new JTable();
+        tableCategoryList.setModel(new DefaultTableModel(
+        	new Object[][] {
+        		{0, "a", "demo"},
+        		{1, "b", "demo"},
+        		{2, "c", "demo"},
+        	},
+        	new String[] {
+        		"ID", "Name", "Description"
+        	}
+        ));
+        scrollPane_2.setViewportView(tableCategoryList);
+        panel_1.setLayout(gl_panel_1);
 
         JPanel panelBottom = new JPanel();
         contentPane.add(panelBottom, BorderLayout.SOUTH);
 
         JLabel lblVersion = new JLabel("Version 1.0-alpha");
         panelBottom.add(lblVersion);
+        
+        //add popup menus
+        
+        JPopupMenu popUpMenu = new JPopupMenu();
+        JMenuItem editItem = new JMenuItem("Editar");
+        editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
+        popUpMenu.add(editItem);	
+        
+        tableAnuncios.setComponentPopupMenu(popUpMenu);
+        
+        JPopupMenu popUpMenu1 = new JPopupMenu();
+        JMenuItem editItem1 = new JMenuItem("Editar");
+        editItem1.addActionListener(AdminGUIEvents.EDIT_CATEGORY.event(this));
+        popUpMenu1.add(editItem1);
+        
+        tableCategoryList.setComponentPopupMenu(popUpMenu1);	
+        
+        JPopupMenu popUpMenu2 = new JPopupMenu();
+        JMenuItem editItem2 = new JMenuItem("Editar");
+        editItem2.addActionListener(AdminGUIEvents.EDIT_USER.event(this));
+        popUpMenu2.add(editItem2);
+        
+        tableUserList.setComponentPopupMenu(popUpMenu2);
         
         //set location to center of the screen
         setLocationRelativeTo(null);
@@ -174,7 +260,7 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 
 	public void editAdvertisement() {
-		int id = getSelectedTableElementId();
+		int id = getSelectedTableElementId(tableAnuncios);
 		AdsEditWindow editWindow = new AdsEditWindow(id);
 		editWindow.setVisible(true);
 	}
@@ -182,12 +268,24 @@ public class AdminWindow extends AnunciusJFrame {
 	public void openMenuBackup() {
 		
 	}
+
+	public void editCategory() {
+		int id = getSelectedTableElementId(tableCategoryList);
+		CategoriesEditWindow editWindow = new CategoriesEditWindow(id);
+		editWindow.setVisible(true);
+	}
+
+	public void editUser() {
+		int id = getSelectedTableElementId(tableUserList);
+		UsersEditWindow editWindow = new UsersEditWindow(id);
+		editWindow.setVisible(true);
+	}
 	
 	//metodos auxiliares
-	
-	private int getSelectedTableElementId() {
-		int row = tableAnuncios.getSelectedRow();
+
+	private int getSelectedTableElementId(JTable table) {
+		int row = table.getSelectedRow();
 		System.out.println(row);
-		return  (int) tableAnuncios.getModel().getValueAt(row, ID_COLUMN_POSITION);
+		return  (int) table.getModel().getValueAt(row, ID_COLUMN_POSITION);
 	}
 }

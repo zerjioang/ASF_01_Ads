@@ -43,7 +43,7 @@ public class CategoriesEditWindow extends AnunciusJFrame {
     	setAutoRequestFocus(false);
     	
     	setTitle("Anuncius Admin | Edit Categories");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 205);
         setMinimumSize(new Dimension(450, 205));
         
@@ -51,7 +51,7 @@ public class CategoriesEditWindow extends AnunciusJFrame {
         panelBannerWarning.setBackground(Color.RED);
         getContentPane().add(panelBannerWarning, BorderLayout.NORTH);
         
-        JLabel lblWarningYouAre = new JLabel("Warning: you are a category");
+        JLabel lblWarningYouAre = new JLabel("Warning: you are editing a Category");
         lblWarningYouAre.setBackground(Color.RED);
         lblWarningYouAre.setForeground(Color.WHITE);
         panelBannerWarning.add(lblWarningYouAre);

@@ -45,7 +45,7 @@ public class UsersEditWindow extends AnunciusJFrame {
     	setAutoRequestFocus(false);
     	
     	setTitle("Anuncius Admin | Edit User");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 280);
         setMinimumSize(new Dimension(450, 280));
         
@@ -53,7 +53,7 @@ public class UsersEditWindow extends AnunciusJFrame {
         panelBannerWarning.setBackground(Color.RED);
         getContentPane().add(panelBannerWarning, BorderLayout.NORTH);
         
-        JLabel lblWarningYouAre = new JLabel("Warning: you are editing a user information");
+        JLabel lblWarningYouAre = new JLabel("Warning: you are editing a User profile");
         lblWarningYouAre.setBackground(Color.RED);
         lblWarningYouAre.setForeground(Color.WHITE);
         panelBannerWarning.add(lblWarningYouAre);

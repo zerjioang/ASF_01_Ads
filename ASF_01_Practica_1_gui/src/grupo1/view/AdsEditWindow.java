@@ -45,7 +45,7 @@ public class AdsEditWindow extends AnunciusJFrame {
     	setAutoRequestFocus(false);
     	
     	setTitle("Anuncius Admin | Edit Advertisement");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 280);
         setMinimumSize(new Dimension(450, 280));
         
