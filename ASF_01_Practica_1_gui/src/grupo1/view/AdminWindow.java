@@ -4,6 +4,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.axis2.AxisFault;
+
+import grupo1.controller.AdminController;
+import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
+import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.EditGUIEvents;
@@ -11,6 +16,7 @@ import grupo1.view.events.EditGUIEvents;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -19,11 +25,18 @@ public class AdminWindow extends AnunciusJFrame {
 	private static final int ID_COLUMN_POSITION = 0;
 	private JTextField textField;
 	private JTable tableAnuncios;
+	private AdminController controller;
 
     /**
      * Create the frame.
      */
     private AdminWindow() {
+    	try {
+			controller = new AdminController();
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         setTitle("Anuncius Admin");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -75,15 +88,12 @@ public class AdminWindow extends AnunciusJFrame {
         tableAnuncios.setShowVerticalLines(false);
         tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableAnuncios.setAutoCreateRowSorter(true);
-        tableAnuncios.setModel(new DefaultTableModel(
-        	new Object[][] {
-        		{0, "Title", "Description", "Username", 5.5},
-        		{1, "Title", "Description", "Username", 10.0},
-        	},
-        	new String[] {
-        		"ID", "Title", "Description", "Username", "Price"
-        	}
-        ));
+        try {
+			tableAnuncios.setModel(controller.getAllAdsInTable());
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			e.printStackTrace();
+		}
         JPopupMenu popUpMenu = new JPopupMenu();
         JMenuItem editItem = new JMenuItem("Editar");
         editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
