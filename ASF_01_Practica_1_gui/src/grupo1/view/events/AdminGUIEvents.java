@@ -40,6 +40,17 @@ public enum AdminGUIEvents {
 				}
 			};
         }
+    }, MENU_BACKUP {
+        @Override
+        public ActionListener event(AdminWindow window) {
+            return new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Menu backup event detected");
+		            window.openMenuBackup();
+				}
+			};
+        }
     },QUERY_ENTER {
 		@Override
 		public ActionListener event(AdminWindow window) {

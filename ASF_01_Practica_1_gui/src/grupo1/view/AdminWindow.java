@@ -11,7 +11,7 @@ import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
-import grupo1.view.events.EditGUIEvents;
+import grupo1.view.events.AdsEditGUIEvents;
 
 import java.awt.*;
 import java.awt.event.ComponentEvent;
@@ -26,17 +26,25 @@ public class AdminWindow extends AnunciusJFrame {
 	private JTextField textField;
 	private JTable tableAnuncios;
 	private AdminController controller;
+	
+	/**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+            	AdminWindow frame = new AdminWindow();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     /**
      * Create the frame.
      */
     private AdminWindow() {
-    	try {
-			controller = new AdminController();
-		} catch (AxisFault e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         setTitle("Anuncius Admin");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -48,6 +56,10 @@ public class AdminWindow extends AnunciusJFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
+        JMenuItem mntmBackupData = new JMenuItem("Backup data");
+        mntmBackupData.addActionListener(AdminGUIEvents.MENU_BACKUP.event(this));
+        mnFile.add(mntmBackupData);
+        
         JMenuItem mntmExit = new JMenuItem("Exit");
         mntmExit.addActionListener(AdminGUIEvents.MENU_EXIT.event(this));
         mnFile.add(mntmExit);
@@ -88,12 +100,7 @@ public class AdminWindow extends AnunciusJFrame {
         tableAnuncios.setShowVerticalLines(false);
         tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableAnuncios.setAutoCreateRowSorter(true);
-        try {
-			tableAnuncios.setModel(controller.getAllAdsInTable());
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			e.printStackTrace();
-		}
+        
         JPopupMenu popUpMenu = new JPopupMenu();
         JMenuItem editItem = new JMenuItem("Editar");
         editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
@@ -119,16 +126,6 @@ public class AdminWindow extends AnunciusJFrame {
         panel_2.add(textField);
         textField.setColumns(10);
 
-        JPanel panel_1 = new JPanel();
-        tabbedPane.addTab("Advanced settings", null, panel_1, null);
-        panel_1.setLayout(new BorderLayout(0, 0));
-
-        JScrollPane scrollPane = new JScrollPane();
-        panel_1.add(scrollPane, BorderLayout.CENTER);
-
-        JTable table_1 = new JTable();
-        scrollPane.setViewportView(table_1);
-
         JPanel panelBottom = new JPanel();
         contentPane.add(panelBottom, BorderLayout.SOUTH);
 
@@ -137,21 +134,29 @@ public class AdminWindow extends AnunciusJFrame {
         
         //set location to center of the screen
         setLocationRelativeTo(null);
+        
+        //load window data
+        initController();
     }
-
-	/**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-            	AdminWindow frame = new AdminWindow();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+    
+    private void initController(){
+		System.out.println("Loading window data...");
+		new Thread(new Runnable() {
+			public void run() {
+				try {
+					controller = new AdminController();
+					try {
+						tableAnuncios.setModel(controller.getAllAdsInTable());
+					} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+							| AdvertisementEndpointSQLExceptionException e) {
+						e.printStackTrace();
+					}
+				} catch (AxisFault e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
     
     //eventos de la interfaz
 
@@ -161,7 +166,8 @@ public class AdminWindow extends AnunciusJFrame {
 	public void openMenuAbout() {		
 	}
 
-	public void openMenuExit() {		
+	public void openMenuExit() {	
+		this.dispose();
 	}
 
 	public void queryEnterEvent() {		
@@ -169,8 +175,12 @@ public class AdminWindow extends AnunciusJFrame {
 
 	public void editAdvertisement() {
 		int id = getSelectedTableElementId();
-		EditWindow editWindow = new EditWindow(id);
+		AdsEditWindow editWindow = new AdsEditWindow(id);
 		editWindow.setVisible(true);
+	}
+	
+	public void openMenuBackup() {
+		
 	}
 	
 	//metodos auxiliares
