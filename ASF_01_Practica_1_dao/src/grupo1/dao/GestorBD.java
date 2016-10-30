@@ -20,7 +20,6 @@ public class GestorBD {
     private final String PROTOCOL = "jdbc:mysql";    
     
     public GestorBD() {
-    	// Default connection
     }
     
     public GestorBD(String dataSource, String userName, String password){
@@ -129,18 +128,19 @@ public class GestorBD {
 	public int insertAd(Advertisement a) throws SQLException, ClassNotFoundException{
 		conectar();
 		String insert = "insert into ANUNCIO " +
-	            "(name, description, creator, category, price) " +
+	            "(name, description, creator_id, category_id, price) " +
 	            "VALUES ('" + a.getName() +
-	            ",'"  + a.getDescription() +
-	            ",'"  + a.getAuthor().getId() +
-	            ",'"  + a.getCategory().getId() +
-	            ",'"  + a.getPrice() + "')";                        
+	            "','"  + a.getDescription() +
+	            "',"  + a.getAuthor().getId() +
+	            ","  + a.getCategory().getId() +
+	            ","  + a.getPrice() + ")";                        
+		System.out.println(insert);
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
 		stmt.close();
 		
 		// Get the created row id
-		String max = "select MAX(id) as id from CATEGORIA";
+		String max = "select MAX(id) as id from ANUNCIO";
 		Statement stmt1 = con.createStatement();
 		ResultSet rs = stmt1.executeQuery(max);
 		int id = 0;
@@ -165,8 +165,8 @@ public class GestorBD {
         	a.setName(rs.getString("name"));
         	a.setDescription(rs.getString("description"));
         	a.setPrice(rs.getFloat("price"));
-        	a.setAuthor(this.getUser(rs.getInt("creator")));
-        	a.setCategory(this.getCategory(rs.getInt("category")));
+        	a.setAuthor(this.getUser(rs.getInt("creator_id")));
+        	a.setCategory(this.getCategory(rs.getInt("category_id")));
         }
         
         rs.close();
@@ -180,9 +180,9 @@ public class GestorBD {
     	String update = "update ANUNCIO set name='" + a.getName() + 
 				"', description='" + a.getDescription() +
 				"', price=" + a.getPrice() +
-				"', category=" + a.getCategory().getId() +
-				"', creator=" + a.getAuthor().getId() +
-				"' where id=" + a.getId();
+				", category_id=" + a.getCategory().getId() +
+				", creator_id=" + a.getAuthor().getId() +
+				" where id=" + a.getId();
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
 		stmt.close();
@@ -212,6 +212,8 @@ public class GestorBD {
 	    			rs.getString("description"),
 	    			rs.getFloat("price")
 	    			);
+	    	a.setAuthor(getUser(rs.getInt("creator_id")));
+	    	a.setCategory(getCategory(rs.getInt("category_id")));
 	    	ads.add(a);
 	    }
 	    rs.close();

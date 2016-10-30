@@ -27,7 +27,8 @@ public class AdminController {
 		Object[][] adsInTable = null;
 		if (ads != null) {
 			// There are objects in database
-			adsInTable = new Object[ads.length][4];
+			adsInTable = new Object[ads.length][5];
+			
 			for (int i = 0; i < ads.length; i++) {
 				adsInTable[i][0] = ads[i].getId();
 				adsInTable[i][1] = ads[i].getName();

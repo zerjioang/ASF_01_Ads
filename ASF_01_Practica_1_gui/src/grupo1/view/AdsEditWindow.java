@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.axis2.AxisFault;
+
+import grupo1.controller.AdsEditController;
+import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
+import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.pojo.AdvertisementPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.AdsEditGUIEvents;
@@ -13,6 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Window.Type;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class AdsEditWindow extends AnunciusJFrame {
@@ -24,6 +31,8 @@ public class AdsEditWindow extends AnunciusJFrame {
 	private JTextField textFieldAdsDescription;
 	private JTextField textFieldAdsCreator;
 	private JTextField textFieldAdsPrice;
+	private AdvertisementPOJO advertisement;
+	private AdsEditController controller; 
 
     /**
      * Create the frame.
@@ -73,6 +82,7 @@ public class AdsEditWindow extends AnunciusJFrame {
         
         textFieldAdsID = new JTextField();
         textFieldAdsID.setColumns(10);
+        textFieldAdsID.setEditable(false);
         
         textFieldAdsTitle = new JTextField();
         textFieldAdsTitle.setColumns(10);
@@ -82,6 +92,7 @@ public class AdsEditWindow extends AnunciusJFrame {
         
         textFieldAdsCreator = new JTextField();
         textFieldAdsCreator.setColumns(10);
+        textFieldAdsCreator.setEditable(false);
         
         textFieldAdsPrice = new JTextField();
         textFieldAdsPrice.setColumns(10);
@@ -152,6 +163,24 @@ public class AdsEditWindow extends AnunciusJFrame {
         setLocationRelativeTo(null);
         
         contentPane.setBorder(null);
+        try {
+			controller = new AdsEditController();
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			advertisement = controller.getAd(id);
+			textFieldAdsID.setText(String.valueOf(advertisement.getId()));
+			textFieldAdsTitle.setText(advertisement.getName());
+			textFieldAdsDescription.setText(advertisement.getDescription());
+			textFieldAdsCreator.setText(advertisement.getAuthor().getName());
+			textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         //set visible
         setVisible(true);
@@ -177,5 +206,16 @@ public class AdsEditWindow extends AnunciusJFrame {
 
 	public void saveChangesButtonEvent() {
 		
+		try {
+			advertisement.setName(textFieldAdsTitle.getText());
+			advertisement.setDescription(textFieldAdsDescription.getText());
+			advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
+			controller.updateAd(advertisement);
+			this.dispose();
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

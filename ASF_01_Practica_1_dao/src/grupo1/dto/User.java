@@ -2,11 +2,6 @@ package grupo1.dto;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name="User")
-@XmlType(propOrder = {"id", "name", "email", "password", "signupDate"})
 public class User {
 	private int id;
 	private String name;

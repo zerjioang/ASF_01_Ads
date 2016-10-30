@@ -2,6 +2,8 @@ package grupo1.pojo;
 
 import javax.xml.bind.annotation.*;
 
+import grupo1.dto.xsd.Category;
+
 @XmlRootElement(name="Category")
 @XmlType(name = "Category", propOrder = {"id", "name", "description"})
 public class CategoryPOJO {
@@ -10,6 +12,12 @@ public class CategoryPOJO {
 	private String description;
 	
 	public CategoryPOJO(){}
+	public CategoryPOJO(Category c) {
+		super();
+		this.id = c.getId();
+		this.name = c.getName();
+		this.description = c.getDescription();
+	}
 	public CategoryPOJO(int id, String name, String description) {
 		super();
 		this.id = id;

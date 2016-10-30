@@ -3,6 +3,8 @@ package grupo1.pojo;
 import java.util.Date;
 import javax.xml.bind.annotation.*;
 
+import grupo1.dto.xsd.User;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="User")
 @XmlType(name = "User", propOrder = {"id", "name", "email", "password", "signupDate"})
@@ -14,6 +16,15 @@ public class UserPOJO {
 	private Date signupDate;
 	
 	public UserPOJO(){}
+	
+	public UserPOJO(User u) {
+		super();
+		this.id = u.getId();
+		this.name = u.getName();
+		this.email = u.getEmail();
+		this.password = u.getPassword();
+		this.signupDate = u.getSignupDate();
+	}
 	public UserPOJO(int id, String name, String email, String password, Date signupDate) {
 		super();
 		this.id = id;

@@ -33,7 +33,7 @@ public class MyTests {
 				
 				catPojos.add(cat);
 			}
-			
+			/*
 			// Now let's use JAXB to store the categories
 			JAXBContext categoriesContext = JAXBContext.newInstance(Categories.class);
 			Marshaller categoriesMarshaller = categoriesContext.createMarshaller();
@@ -50,9 +50,9 @@ public class MyTests {
 				
 			}
 			// End writing files
-			
+			*/
 			GetUser userReq = new GetUser();
-			userReq.setId(4);
+			userReq.setId(43);
 			GetUserResponse userRes = stub.getUser(userReq);
 			User u = (User)userRes.get_return();
 			System.out.println("User from db: " + u.getName());

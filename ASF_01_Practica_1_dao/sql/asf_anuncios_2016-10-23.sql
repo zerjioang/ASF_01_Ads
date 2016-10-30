@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.15)
 # Base de datos: asf_anuncios
-# Tiempo de Generación: 2016-10-23 10:49:31 +0000
+# Tiempo de Generación: 2016-10-30 12:33:08 +0000
 # ************************************************************
 
 
@@ -30,9 +30,13 @@ CREATE TABLE `Anuncio` (
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
+  `category_id` int(11) unsigned DEFAULT NULL,
+  `creator_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `category` FOREIGN KEY (`id`) REFERENCES `Categoria` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `creator` FOREIGN KEY (`id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE
+  KEY `category` (`category_id`),
+  KEY `creator` (`creator_id`),
+  CONSTRAINT `category` FOREIGN KEY (`category_id`) REFERENCES `Categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `creator` FOREIGN KEY (`creator_id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

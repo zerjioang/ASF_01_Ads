@@ -10,7 +10,7 @@ package grupo1.dao;
 
 public class AdvertisementEndpointClassNotFoundExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1477739489506L;
+    private static final long serialVersionUID = 1477847954758L;
     
     private grupo1.dao.AdvertisementEndpointClassNotFoundException faultMessage;
 

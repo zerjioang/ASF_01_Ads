@@ -1,10 +1,5 @@
 package grupo1.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name="Category")
-@XmlType(propOrder = {"id", "name", "description"})
 public class Category {
 	private int id;
 	private String name;

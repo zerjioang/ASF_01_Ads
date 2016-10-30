@@ -1,6 +1,7 @@
 package grupo1.dao.test;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import grupo1.dao.GestorBD;
 import grupo1.dto.*;
@@ -60,12 +61,40 @@ public class Test {
 			e.printStackTrace();
 		}
     }
+	
+	public void testAdvertisements() {
+		try {
+			ArrayList<Category> categories = gbd.getCategories();
+			ArrayList<User> users = gbd.getUsers();
+			
+			Advertisement ad = new Advertisement();
+			ad.setName("SEAT Ibiza SC");
+			ad.setDescription("Muy bienc uidado, edicion 25 aniversario, llantas de 17 pulgadas");
+			ad.setCategory(categories.get(0));
+			ad.setAuthor(users.get(0));
+			ad.setPrice((float) 6900);
+			
+			int adId = gbd.insertAd(ad);
+			gbd.deleteAd(ad);
+			adId = gbd.insertAd(ad);
+			
+			ad.setName("SEAT Alhambra");
+			ad.setDescription("Coche familiar");
+			ad.setId(adId);
+			gbd.updateAdvertisement(ad);
+			
+			System.out.println(gbd.getAds());
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
     
     public static void main(String[] args) {
         Test test = new Test();
         
         test.testUsers();
         test.testCategories();
+        test.testAdvertisements();
         
         System.out.println("Done!");
     }

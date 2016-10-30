@@ -2,6 +2,8 @@ package grupo1.pojo;
 
 import javax.xml.bind.annotation.*;
 
+import grupo1.dto.xsd.Advertisement;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="Advertisement")
 @XmlType(name = "Advertisement",propOrder = {"id", "name", "description", "price", "category", "author"})
@@ -14,6 +16,15 @@ public class AdvertisementPOJO {
 	private UserPOJO author;
 	
 	public AdvertisementPOJO() {}
+	public AdvertisementPOJO(Advertisement a) {
+		super();
+		this.id = a.getId();
+		this.name = a.getName();
+		this.description = a.getDescription();
+		this.price = a.getPrice();
+		this.author = new UserPOJO(a.getAuthor());
+		this.category = new CategoryPOJO(a.getCategory());
+	}
 	public AdvertisementPOJO(int id, String name, String description, Float price) {
 		super();
 		this.id = id;
