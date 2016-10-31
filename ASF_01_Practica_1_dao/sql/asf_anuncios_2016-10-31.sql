@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.15)
 # Base de datos: asf_anuncios
-# Tiempo de Generación: 2016-10-30 12:33:08 +0000
+# Tiempo de Generación: 2016-10-31 10:05:22 +0000
 # ************************************************************
 
 
@@ -39,6 +39,18 @@ CREATE TABLE `Anuncio` (
   CONSTRAINT `creator` FOREIGN KEY (`creator_id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `Anuncio` WRITE;
+/*!40000 ALTER TABLE `Anuncio` DISABLE KEYS */;
+
+INSERT INTO `Anuncio` (`id`, `name`, `description`, `price`, `category_id`, `creator_id`)
+VALUES
+	(1,'SEAT Ibiza SC','Con todos los filtros recién cambiados y distribución recién hecha.',6900,31,43),
+	(29,'VW Passat','Coche familiar con muchas comodidades, recién pintado.',10000,31,45),
+	(31,'AMD Radeon R9 390','Poco uso, la vendo por que cambio a una más potente.',125,31,47),
+	(33,'TV Samsung 4K','50\" muy bien cuidada',200,31,47);
+
+/*!40000 ALTER TABLE `Anuncio` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Volcado de tabla Categoria
@@ -53,6 +65,16 @@ CREATE TABLE `Categoria` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `Categoria` WRITE;
+/*!40000 ALTER TABLE `Categoria` DISABLE KEYS */;
+
+INSERT INTO `Categoria` (`id`, `name`, `description`)
+VALUES
+	(31,'Technology','Dispositivos electrónicos y gadgets'),
+	(70,'Automóviles','Vehiculos comerciales y particulares');
+
+/*!40000 ALTER TABLE `Categoria` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Volcado de tabla Usuario
@@ -69,6 +91,17 @@ CREATE TABLE `Usuario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `Usuario` WRITE;
+/*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
+
+INSERT INTO `Usuario` (`id`, `email`, `password`, `name`, `signup_date`)
+VALUES
+	(43,'aitor.brazaola@opendeusto.es','df75lss72','Aitor','2016-10-30 13:34:02'),
+	(45,'ibon.arretxe@gmail.com','fdfdsdf2','Ibon','2016-10-30 16:50:19'),
+	(47,'javi.pelaez@outlook.com','654nvcuy2','Javi','2016-10-30 16:52:41');
+
+/*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
