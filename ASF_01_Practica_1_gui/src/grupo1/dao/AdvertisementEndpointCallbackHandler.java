@@ -169,6 +169,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getAdsByQueryOnName method
+            * override this method for handling normal response from getAdsByQueryOnName operation
+            */
+           public void receiveResultgetAdsByQueryOnName(
+                    grupo1.dao.GetAdsByQueryOnNameResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getAdsByQueryOnName operation
+           */
+            public void receiveErrorgetAdsByQueryOnName(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for deleteUser method
             * override this method for handling normal response from deleteUser operation
             */

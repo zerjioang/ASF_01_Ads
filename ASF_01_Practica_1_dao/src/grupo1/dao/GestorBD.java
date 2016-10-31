@@ -360,6 +360,32 @@ public class GestorBD {
         			rs.getString("description"), 
         			rs.getFloat("price")
         			);
+        	ad.setAuthor(this.getUser(rs.getInt("creator_id")));
+        	ad.setCategory(this.getCategory(rs.getInt("category_id")));
+        	ads.add(ad);
+        }
+        rs.close();
+        stmt.close();
+        desconectar();
+        return ads;
+    }
+    
+    public ArrayList<Advertisement> getAdsByQueryOnName(String query)  throws SQLException, ClassNotFoundException{
+    	conectar();
+    	ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        String select = "select * from ANUNCIO where name LIKE '%" + query +"%'";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(select);
+        
+        while (rs.next()){
+        	Advertisement ad = new Advertisement(
+        			rs.getInt("id"),
+        			rs.getString("name"), 
+        			rs.getString("description"), 
+        			rs.getFloat("price")
+        			);
+        	ad.setAuthor(this.getUser(rs.getInt("creator_id")));
+        	ad.setCategory(this.getCategory(rs.getInt("category_id")));
         	ads.add(ad);
         }
         rs.close();

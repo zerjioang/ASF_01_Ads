@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.axis2.AxisFault;
+
+import grupo1.controller.CategoriesEditController;
+import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
+import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.pojo.CategoryPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.AdsEditGUIEvents;
@@ -14,6 +20,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Window.Type;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class CategoriesEditWindow extends AnunciusJFrame {
@@ -23,6 +30,9 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 	private JTextField textFieldAdsID;
 	private JTextField textFieldAdsTitle;
 	private JTextField textFieldAdsDescription;
+	private AdminWindow adminWindow;
+	private CategoriesEditController controller;
+	private CategoryPOJO category;
 
     /**
      * Create the frame.
@@ -33,6 +43,12 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 
     public CategoriesEditWindow(int id) {
     	this.id = id;
+    	init();
+	}
+    
+    public CategoriesEditWindow(int id, AdminWindow adminWindow) {
+    	this.id = id;
+    	this.adminWindow = adminWindow;
     	init();
 	}
     
@@ -67,6 +83,7 @@ public class CategoriesEditWindow extends AnunciusJFrame {
         
         textFieldAdsID = new JTextField();
         textFieldAdsID.setColumns(10);
+        textFieldAdsID.setEditable(false);
         
         textFieldAdsTitle = new JTextField();
         textFieldAdsTitle.setColumns(10);
@@ -129,6 +146,22 @@ public class CategoriesEditWindow extends AnunciusJFrame {
         
         contentPane.setBorder(null);
         
+        try {
+			controller = new CategoriesEditController();
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			category = controller.getCategory(id);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        textFieldAdsID.setText(String.valueOf(category.getId()));
+        textFieldAdsTitle.setText(category.getName());
+        textFieldAdsDescription.setText(category.getDescription());
         //set visible
         setVisible(true);
     }
@@ -152,6 +185,17 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
+		category.setName(textFieldAdsTitle.getText());
+		category.setDescription(textFieldAdsDescription.getText());
 		
+		try {
+			controller.updateCategory(category);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		adminWindow.updateTables();
+		this.dispose();
 	}
 }

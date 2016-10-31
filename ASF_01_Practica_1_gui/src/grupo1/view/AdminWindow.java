@@ -164,28 +164,10 @@ public class AdminWindow extends AnunciusJFrame {
         );
         
         tableUserList = new JTable();
-        tableUserList.setModel(new DefaultTableModel(
-        	new Object[][] {
-        		{0, "name", "name@domain", "1234", "30/10/2016"},
-        		{1, "name2", "name@domain", "12345", "29/10/2016"},
-        	},
-        	new String[] {
-        		"ID", "Name", "Email", "Password", "Registration date"
-        	}
-        ));
+        
         scrollPane.setViewportView(tableUserList);
         
         tableCategoryList = new JTable();
-        tableCategoryList.setModel(new DefaultTableModel(
-        	new Object[][] {
-        		{0, "a", "demo"},
-        		{1, "b", "demo"},
-        		{2, "c", "demo"},
-        	},
-        	new String[] {
-        		"ID", "Name", "Description"
-        	}
-        ));
         scrollPane_2.setViewportView(tableCategoryList);
         panel_1.setLayout(gl_panel_1);
 
@@ -231,7 +213,7 @@ public class AdminWindow extends AnunciusJFrame {
 			public void run() {
 				try {
 					controller = new AdminController();
-					updateAdsTable();
+					updateTables();
 				} catch (AxisFault e) {
 					e.printStackTrace();
 				}
@@ -251,7 +233,15 @@ public class AdminWindow extends AnunciusJFrame {
 		this.dispose();
 	}
 
-	public void queryEnterEvent() {		
+	public void queryEnterEvent() {
+		try {
+			tableAnuncios.setModel(controller.searchAds(textField.getText()));
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void editAdvertisement() {
@@ -266,13 +256,13 @@ public class AdminWindow extends AnunciusJFrame {
 
 	public void editCategory() {
 		int id = getSelectedTableElementId(tableCategoryList);
-		CategoriesEditWindow editWindow = new CategoriesEditWindow(id);
+		CategoriesEditWindow editWindow = new CategoriesEditWindow(id, this);
 		editWindow.setVisible(true);
 	}
 
 	public void editUser() {
 		int id = getSelectedTableElementId(tableUserList);
-		UsersEditWindow editWindow = new UsersEditWindow(id);
+		UsersEditWindow editWindow = new UsersEditWindow(id, this);
 		editWindow.setVisible(true);
 	}
 	
@@ -284,9 +274,11 @@ public class AdminWindow extends AnunciusJFrame {
 		return  (int) table.getModel().getValueAt(row, ID_COLUMN_POSITION);
 	}
 
-	public void updateAdsTable() {
+	public void updateTables() {
 		try {
 			tableAnuncios.setModel(controller.getAllAdsInTable());
+			tableCategoryList.setModel(controller.getAllCategoriesInTable());
+			tableUserList.setModel(controller.getAllUsersInTable());
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
 			e.printStackTrace();

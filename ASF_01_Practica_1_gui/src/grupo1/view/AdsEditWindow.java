@@ -220,7 +220,7 @@ public class AdsEditWindow extends AnunciusJFrame {
 			advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
 			controller.updateAd(advertisement);
 			
-			adminWindow.updateAdsTable();
+			adminWindow.updateTables();
 			this.dispose();
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {

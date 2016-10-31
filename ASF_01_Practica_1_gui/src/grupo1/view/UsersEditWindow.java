@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.axis2.AxisFault;
+
+import grupo1.controller.UsersEditController;
+import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
+import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.pojo.UserPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.AdsEditGUIEvents;
@@ -14,6 +20,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Window.Type;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class UsersEditWindow extends AnunciusJFrame {
@@ -25,6 +32,9 @@ public class UsersEditWindow extends AnunciusJFrame {
 	private JTextField textFieldAdsDescription;
 	private JTextField textFieldAdsCreator;
 	private JTextField textFieldAdsPrice;
+	private AdminWindow adminWindow;
+	private UsersEditController controller;
+	private UserPOJO user;
 
     /**
      * Create the frame.
@@ -36,6 +46,12 @@ public class UsersEditWindow extends AnunciusJFrame {
 
     public UsersEditWindow(int id) {
     	this.id = id;
+    	init();
+	}
+    
+    public UsersEditWindow(int id, AdminWindow adminWindow) {
+    	this.id = id;
+    	this.adminWindow = adminWindow;
     	init();
 	}
     
@@ -72,6 +88,7 @@ public class UsersEditWindow extends AnunciusJFrame {
         JLabel lblPrice = new JLabel("Registration date");
         
         textFieldAdsID = new JTextField();
+        textFieldAdsID.setEditable(false);
         textFieldAdsID.setColumns(10);
         
         textFieldAdsTitle = new JTextField();
@@ -85,6 +102,7 @@ public class UsersEditWindow extends AnunciusJFrame {
         
         textFieldAdsPrice = new JTextField();
         textFieldAdsPrice.setColumns(10);
+        textFieldAdsPrice.setEditable(false);
         
         JButton btnSaveChanges = new JButton("Save changes");
         btnSaveChanges.addActionListener(UserEditGUIEvents.BUTTON_SAVE_CHANGES.event(this));
@@ -153,6 +171,25 @@ public class UsersEditWindow extends AnunciusJFrame {
         
         contentPane.setBorder(null);
         
+        try {
+			controller = new UsersEditController();
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			user = controller.getUser(id);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        textFieldAdsID.setText(String.valueOf(user.getId()));
+        textFieldAdsDescription.setText(user.getEmail());
+        textFieldAdsTitle.setText(user.getName());
+        textFieldAdsPrice.setText(user.getSignupDate().toString());
+        textFieldAdsCreator.setText(user.getPassword());
+        
         //set visible
         setVisible(true);
     }
@@ -176,6 +213,19 @@ public class UsersEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
+		user.setName(textFieldAdsTitle.getText());
+		user.setEmail(textFieldAdsDescription.getText());
+		user.setPassword(textFieldAdsCreator.getText());
 		
+		try {
+			controller.updateUser(user);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		adminWindow.updateTables();
+		this.dispose();
 	}
 }

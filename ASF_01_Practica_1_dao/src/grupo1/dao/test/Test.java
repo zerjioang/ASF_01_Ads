@@ -84,6 +84,13 @@ public class Test {
 			gbd.updateAdvertisement(ad);
 			
 			System.out.println(gbd.getAds());
+			
+			System.out.println("Lets search Inca");
+			ArrayList<Advertisement> adsQueried = gbd.getAdsByQueryOnName("Inca");
+			for (Advertisement advertisement : adsQueried) {
+				System.out.println(advertisement.toString());
+			}
+			System.out.println("End");
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
