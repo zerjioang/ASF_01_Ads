@@ -6,14 +6,14 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "Categories")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Categories {
-	@XmlElement(name = "category")
-    protected List<CategoryPOJO> category = null;
+	@XmlElement(name = "categories")
+    protected List<CategoryPOJO> categories = null;
 
-	public List<CategoryPOJO> getCategory() {
-		return category;
+	public List<CategoryPOJO> getCategories() {
+		return categories;
 	}
 
-	public void setCategory(List<CategoryPOJO> category) {
-		this.category = category;
+	public void setCategories(List<CategoryPOJO> categories) {
+		this.categories = categories;
 	}
 }

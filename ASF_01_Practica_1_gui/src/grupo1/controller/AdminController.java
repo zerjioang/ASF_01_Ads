@@ -1,8 +1,12 @@
 package grupo1.controller;
 
+import java.io.*;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
+import javax.xml.bind.*;
+
 import org.apache.axis2.AxisFault;
 import grupo1.dao.*;
 import grupo1.dto.xsd.*;
@@ -132,5 +136,92 @@ public class AdminController {
 		return new DefaultTableModel(usersInTable, new String[] {
 				"ID", "Name", "Email", "Password", "Registration date"
         	});
+	}
+	
+	public void backupData() throws JAXBException, IOException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		JAXBContext categoriesContext = JAXBContext.newInstance(Categories.class);
+		JAXBContext usersContext = JAXBContext.newInstance(Users.class);
+		JAXBContext advertisementsContext = JAXBContext.newInstance(Advertisements.class);
+		
+		Marshaller categoriesMarshaller = categoriesContext.createMarshaller();
+		Marshaller usersMarshaller = usersContext.createMarshaller();
+		Marshaller advertisementsMarshaller = advertisementsContext.createMarshaller();
+		
+		categoriesMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		usersMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		advertisementsMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		
+		Writer w = null;
+		
+		GetCategories categoriesReq = new GetCategories();
+		GetCategoriesResponse categoriesRes = stub.getCategories(categoriesReq);
+		Category[] categories = (Category[])categoriesRes.get_return();
+		
+		GetUsers usersReq = new GetUsers();
+		GetUsersResponse usersRes = stub.getUsers(usersReq);
+		User[] users = (User[])usersRes.get_return();
+		
+		GetAds adsReq = new GetAds();
+		GetAdsResponse adsRes = stub.getAds(adsReq);
+		Advertisement[] ads = (Advertisement[])adsRes.get_return();
+		
+		// Categories
+		ArrayList<CategoryPOJO> categoryPOJOS = new ArrayList<CategoryPOJO>();
+		for (Category category : categories) {
+			CategoryPOJO catPojo = new CategoryPOJO(category);
+			categoryPOJOS.add(catPojo);
+		}
+		Categories categoriesCollection = new Categories();
+		categoriesCollection.setCategories(categoryPOJOS);
+		
+		// Users
+		ArrayList<UserPOJO> userPOJOS = new ArrayList<UserPOJO>();
+		for (User user : users) {
+			UserPOJO userPOJO = new UserPOJO(user);
+			userPOJOS.add(userPOJO);
+		}
+		Users usersCollection = new Users();
+		usersCollection.setUsers(userPOJOS);
+		
+		// Ads
+		ArrayList<AdvertisementPOJO> advertisementPOJOS = new ArrayList<AdvertisementPOJO>();
+		for (Advertisement ad : ads) {
+			AdvertisementPOJO adPojo = new AdvertisementPOJO(ad);
+			advertisementPOJOS.add(adPojo);
+		}
+		Advertisements advertisementCollection = new Advertisements();
+		advertisementCollection.setAdvertisements(advertisementPOJOS);
+		
+		// Write to disk
+		try {
+			// Categories
+			w = new FileWriter(CATEGORY_XML);
+			categoriesMarshaller.marshal(categoriesCollection, w);
+			
+			// Users
+			w = new FileWriter(USER_XML);
+			usersMarshaller.marshal(usersCollection, w);
+
+			// Advertisements
+			w = new FileWriter(ADVERTISEMENT_XML);
+			advertisementsMarshaller.marshal(advertisementCollection, w);
+		} finally {
+			try {
+				w.close();
+			} catch (Exception e) {
+			}
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		AdminController controller;
+		try {
+			controller = new AdminController();
+			controller.backupData();
+		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException | AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

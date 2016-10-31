@@ -7,20 +7,17 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Advertisements", propOrder = {
-    "advertisement"
-})
 @XmlRootElement(name = "Advertisements")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Advertisements {
-	@XmlElement(name = "Advertisement", required = true)
-    protected List<AdvertisementPOJO> advertisement;
+	@XmlElement(name = "Advertisement")
+    protected List<AdvertisementPOJO> advertisements;
 
-	public List<AdvertisementPOJO> getAdvertisement() {
-		return advertisement;
+	public List<AdvertisementPOJO> getAdvertisements() {
+		return advertisements;
 	}
 
-	public void setAdvertisement(List<AdvertisementPOJO> advertisement) {
-		this.advertisement = advertisement;
+	public void setAdvertisements(List<AdvertisementPOJO> advertisements) {
+		this.advertisements = advertisements;
 	}
 }

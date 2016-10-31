@@ -3,6 +3,7 @@ package grupo1.view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.bind.JAXBException;
 
 import org.apache.axis2.AxisFault;
 
@@ -16,6 +17,7 @@ import grupo1.view.events.AdsEditGUIEvents;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -251,7 +253,14 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 	
 	public void openMenuBackup() {
-		
+		try {
+			controller.backupData();
+		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JOptionPane.showMessageDialog(this, "Backup created successfully. Check 'files' folder to view the data.");
 	}
 
 	public void editCategory() {

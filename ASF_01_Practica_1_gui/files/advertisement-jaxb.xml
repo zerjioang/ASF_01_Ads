@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Advertisements>
+    <Advertisement>
+        <id>1</id>
+        <name>SEAT Ibiza SC</name>
+        <description>Muy bienc uidado, edicion 25 aniversario, llantas de 17 pulgadas</description>
+        <price>6900.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Electronic devices and gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>123456</password>
+            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>29</id>
+        <name>SEAT Inca</name>
+        <description>Coche familiar</description>
+        <price>6800.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Electronic devices and gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>123456</password>
+            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>31</id>
+        <name>SEAT Alhambra</name>
+        <description>Coche familiar</description>
+        <price>6900.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Electronic devices and gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>123456</password>
+            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>33</id>
+        <name>SEAT Alhambra</name>
+        <description>Coche familiar</description>
+        <price>6900.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Electronic devices and gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>123456</password>
+            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+        </author>
+    </Advertisement>
+</Advertisements>
