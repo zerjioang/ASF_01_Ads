@@ -40,19 +40,48 @@ public class UsersEditWindow extends AnunciusJFrame {
      * Create the frame.
      */
     public UsersEditWindow() {
-    	
         init();
+        populate();
     }
 
-    public UsersEditWindow(int id) {
+    private void populate() {
+    	new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					controller = new UsersEditController();
+				} catch (AxisFault e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        try {
+					user = controller.getUser(id);
+				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+						| AdvertisementEndpointSQLExceptionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        textFieldAdsID.setText(String.valueOf(user.getId()));
+		        textFieldAdsDescription.setText(user.getEmail());
+		        textFieldAdsTitle.setText(user.getName());
+		        textFieldAdsPrice.setText(user.getSignupDate().toString());
+		        textFieldAdsCreator.setText(user.getPassword());
+			}
+		}).start();
+    }
+
+	public UsersEditWindow(int id) {
     	this.id = id;
     	init();
+    	populate();
 	}
     
     public UsersEditWindow(int id, AdminWindow adminWindow) {
     	this.id = id;
     	this.adminWindow = adminWindow;
     	init();
+    	populate();
 	}
     
     private void init(){
@@ -109,7 +138,24 @@ public class UsersEditWindow extends AnunciusJFrame {
         
         JButton btnCancel = new JButton("Cancel");
         btnCancel.addActionListener(UserEditGUIEvents.BUTTON_CANCEL.event(this));
-        GroupLayout gl_panelWindowContent = new GroupLayout(panelWindowContent);
+        configureLayout(
+        		panelWindowContent,
+        		lblAdvertisementId,
+        		lblTitle, lblDescription, lblCreatedBy, lblPrice,
+				btnSaveChanges, btnCancel);
+        
+      //set location to center of the screen
+        setLocationRelativeTo(null);
+        
+        contentPane.setBorder(null);
+        
+        //set visible
+        setVisible(true);
+    }
+
+	private void configureLayout(JPanel panelWindowContent, JLabel lblAdvertisementId, JLabel lblTitle,
+			JLabel lblDescription, JLabel lblCreatedBy, JLabel lblPrice, JButton btnSaveChanges, JButton btnCancel) {
+		GroupLayout gl_panelWindowContent = new GroupLayout(panelWindowContent);
         gl_panelWindowContent.setHorizontalGroup(
         	gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panelWindowContent.createSequentialGroup()
@@ -165,34 +211,7 @@ public class UsersEditWindow extends AnunciusJFrame {
         			.addContainerGap(133, Short.MAX_VALUE))
         );
         panelWindowContent.setLayout(gl_panelWindowContent);
-        
-      //set location to center of the screen
-        setLocationRelativeTo(null);
-        
-        contentPane.setBorder(null);
-        
-        try {
-			controller = new UsersEditController();
-		} catch (AxisFault e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			user = controller.getUser(id);
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        textFieldAdsID.setText(String.valueOf(user.getId()));
-        textFieldAdsDescription.setText(user.getEmail());
-        textFieldAdsTitle.setText(user.getName());
-        textFieldAdsPrice.setText(user.getSignupDate().toString());
-        textFieldAdsCreator.setText(user.getPassword());
-        
-        //set visible
-        setVisible(true);
-    }
+	}
 
 	/**
      * Launch the application.

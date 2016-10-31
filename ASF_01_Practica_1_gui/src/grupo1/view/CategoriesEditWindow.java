@@ -146,25 +146,36 @@ public class CategoriesEditWindow extends AnunciusJFrame {
         
         contentPane.setBorder(null);
         
-        try {
-			controller = new CategoriesEditController();
-		} catch (AxisFault e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			category = controller.getCategory(id);
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        textFieldAdsID.setText(String.valueOf(category.getId()));
-        textFieldAdsTitle.setText(category.getName());
-        textFieldAdsDescription.setText(category.getDescription());
         //set visible
         setVisible(true);
+        
+        populate();
     }
+
+	private void populate() {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+		        try {
+					controller = new CategoriesEditController();
+				} catch (AxisFault e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        try {
+					category = controller.getCategory(id);
+				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+						| AdvertisementEndpointSQLExceptionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        textFieldAdsID.setText(String.valueOf(category.getId()));
+		        textFieldAdsTitle.setText(category.getName());
+		        textFieldAdsDescription.setText(category.getDescription());
+			}
+		}).start();
+	}
 
 	/**
      * Launch the application.

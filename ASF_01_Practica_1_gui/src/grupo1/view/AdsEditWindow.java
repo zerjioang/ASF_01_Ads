@@ -52,7 +52,7 @@ public class AdsEditWindow extends AnunciusJFrame {
 	}
     
     public AdsEditWindow() {
-		// TODO Auto-generated constructor stub
+    	init();
 	}
 
 	private void init(){
@@ -171,28 +171,39 @@ public class AdsEditWindow extends AnunciusJFrame {
         setLocationRelativeTo(null);
         
         contentPane.setBorder(null);
-        try {
-			controller = new AdsEditController();
-		} catch (AxisFault e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			advertisement = controller.getAd(id);
-			textFieldAdsID.setText(String.valueOf(advertisement.getId()));
-			textFieldAdsTitle.setText(advertisement.getName());
-			textFieldAdsDescription.setText(advertisement.getDescription());
-			textFieldAdsCreator.setText(advertisement.getAuthor().getName());
-			textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
         //set visible
         setVisible(true);
+        
+        populate();
     }
+
+	private void populate() {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					controller = new AdsEditController();
+				} catch (AxisFault e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        try {
+					advertisement = controller.getAd(id);
+					textFieldAdsID.setText(String.valueOf(advertisement.getId()));
+					textFieldAdsTitle.setText(advertisement.getName());
+					textFieldAdsDescription.setText(advertisement.getDescription());
+					textFieldAdsCreator.setText(advertisement.getAuthor().getName());
+					textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));
+				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+						| AdvertisementEndpointSQLExceptionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
 
 	/**
      * Launch the application.

@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 import org.apache.axis2.AxisFault;
 
 import grupo1.controller.AdminController;
+import grupo1.controller.AdsEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.view.base.AnunciusJFrame;
@@ -17,6 +18,7 @@ import grupo1.view.events.AdsEditGUIEvents;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.File;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.awt.event.ActionListener;
@@ -28,7 +30,7 @@ public class AdminWindow extends AnunciusJFrame {
 	
 	private static final int ID_COLUMN_POSITION = 0;
 	private JTextField textField;
-	private JTable tableAnuncios;
+	private JTable tableAdsList;
 	private AdminController controller;
 	private JTable tableCategoryList;
 	private JTable tableUserList;
@@ -73,9 +75,13 @@ public class AdminWindow extends AnunciusJFrame {
         JMenu mnSettings = new JMenu("Settings");
         menuBar.add(mnSettings);
 
-        JMenuItem mntmConfigurarTracker = new JMenuItem("Anuncius settings");
-        mntmConfigurarTracker.addActionListener(AdminGUIEvents.MENU_CONFIGURE.event(this));
-        mnSettings.add(mntmConfigurarTracker);
+        JMenuItem mntSettings = new JMenuItem("Anuncius settings");
+        mntSettings.addActionListener(AdminGUIEvents.MENU_CONFIGURE.event(this));
+        mnSettings.add(mntSettings);
+        
+        JMenuItem mntmRestoreFromBackup = new JMenuItem("Restore from backup");
+        mntmRestoreFromBackup.addActionListener(AdminGUIEvents.MENU_RESTORE.event(this));
+        mnSettings.add(mntmRestoreFromBackup);
 
         JMenu mnHelp = new JMenu("Help");
         menuBar.add(mnHelp);
@@ -102,12 +108,12 @@ public class AdminWindow extends AnunciusJFrame {
         JScrollPane scrollPane_1 = new JScrollPane();
         panel.add(scrollPane_1, BorderLayout.CENTER);
 
-        tableAnuncios = new JTable();
-        tableAnuncios.setShowVerticalLines(false);
-        tableAnuncios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tableAnuncios.setAutoCreateRowSorter(true);
+        tableAdsList = new JTable();
+        tableAdsList.setShowVerticalLines(false);
+        tableAdsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableAdsList.setAutoCreateRowSorter(true);
         
-        scrollPane_1.setViewportView(tableAnuncios);
+        scrollPane_1.setViewportView(tableAdsList);
         
         JPanel panelNorthSearch = new JPanel();
         panelNorthSearch.setBorder(new EmptyBorder(4, 4, 4, 4));
@@ -136,6 +142,7 @@ public class AdminWindow extends AnunciusJFrame {
         JLabel lblCategoryList = new JLabel("Category list");
         
         JLabel lblUserList = new JLabel("User list");
+        
         GroupLayout gl_panel_1 = new GroupLayout(panel_1);
         gl_panel_1.setHorizontalGroup(
         	gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -181,24 +188,15 @@ public class AdminWindow extends AnunciusJFrame {
         
         //add popup menus
         
-        JPopupMenu popUpMenu = new JPopupMenu();
-        JMenuItem editItem = new JMenuItem("Editar");
-        editItem.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
-        popUpMenu.add(editItem);	
+        JPopupMenu popUpMenu = createPopUpMenuAds();
         
-        tableAnuncios.setComponentPopupMenu(popUpMenu);
+        tableAdsList.setComponentPopupMenu(popUpMenu);
         
-        JPopupMenu popUpMenu1 = new JPopupMenu();
-        JMenuItem editItem1 = new JMenuItem("Editar");
-        editItem1.addActionListener(AdminGUIEvents.EDIT_CATEGORY.event(this));
-        popUpMenu1.add(editItem1);
+        JPopupMenu popUpMenu1 = createPopUpCategories();
         
         tableCategoryList.setComponentPopupMenu(popUpMenu1);	
         
-        JPopupMenu popUpMenu2 = new JPopupMenu();
-        JMenuItem editItem2 = new JMenuItem("Editar");
-        editItem2.addActionListener(AdminGUIEvents.EDIT_USER.event(this));
-        popUpMenu2.add(editItem2);
+        JPopupMenu popUpMenu2 = createPopUpUsers();
         
         tableUserList.setComponentPopupMenu(popUpMenu2);
         
@@ -209,7 +207,61 @@ public class AdminWindow extends AnunciusJFrame {
         initController();
     }
     
-    private void initController(){
+    private JPopupMenu createPopUpMenuAds() {
+    	
+    	JPopupMenu popUpMenu = new JPopupMenu();
+        JMenuItem editItem = new JMenuItem("New");
+        editItem.addActionListener(AdminGUIEvents.NEW_ADVERTISEMENT.event(this));
+        popUpMenu.add(editItem);
+        
+        JMenuItem editItem1 = new JMenuItem("Edit");
+        editItem1.addActionListener(AdminGUIEvents.EDIT_ADVERTISEMENT.event(this));
+        popUpMenu.add(editItem1);	
+        
+        JMenuItem editItem2 = new JMenuItem("Delete");
+        editItem2.addActionListener(AdminGUIEvents.DELETE_ADVERTISEMENT.event(this));
+        popUpMenu.add(editItem2);	
+        
+        return popUpMenu;
+    }
+    
+	private JPopupMenu createPopUpCategories() {
+	    	
+    	JPopupMenu popUpMenu = new JPopupMenu();
+        JMenuItem editItem = new JMenuItem("New");
+        editItem.addActionListener(AdminGUIEvents.NEW_CATEGORY.event(this));
+        popUpMenu.add(editItem);
+        
+        JMenuItem editItem1 = new JMenuItem("Edit");
+        editItem1.addActionListener(AdminGUIEvents.EDIT_CATEGORY.event(this));
+        popUpMenu.add(editItem1);	
+        
+        JMenuItem editItem2 = new JMenuItem("Delete");
+        editItem2.addActionListener(AdminGUIEvents.DELETE_CATEGORY.event(this));
+        popUpMenu.add(editItem2);	
+        
+        return popUpMenu;
+    }
+
+	private JPopupMenu createPopUpUsers() {
+	
+		JPopupMenu popUpMenu = new JPopupMenu();
+	    JMenuItem editItem = new JMenuItem("New");
+	    editItem.addActionListener(AdminGUIEvents.NEW_USER.event(this));
+	    popUpMenu.add(editItem);
+	    
+	    JMenuItem editItem1 = new JMenuItem("Edit");
+	    editItem1.addActionListener(AdminGUIEvents.EDIT_USER.event(this));
+	    popUpMenu.add(editItem1);	
+	    
+	    JMenuItem editItem2 = new JMenuItem("Delete");
+	    editItem2.addActionListener(AdminGUIEvents.DELETE_USER.event(this));
+	    popUpMenu.add(editItem2);	
+	    
+	    return popUpMenu;
+	}
+
+	private void initController(){
 		System.out.println("Loading window data...");
 		new Thread(new Runnable() {
 			public void run() {
@@ -225,10 +277,12 @@ public class AdminWindow extends AnunciusJFrame {
     
     //eventos de la interfaz
 
-	public void configureAnuncius() {		
+	public void configureAnuncius() {
+		JOptionPane.showMessageDialog(this, "Configuration is not currently available in this version.");
 	}
 
-	public void openMenuAbout() {		
+	public void openMenuAbout() {
+		JOptionPane.showMessageDialog(this, "Anuncius administration GUI");
 	}
 
 	public void openMenuExit() {	
@@ -237,7 +291,7 @@ public class AdminWindow extends AnunciusJFrame {
 
 	public void queryEnterEvent() {
 		try {
-			tableAnuncios.setModel(controller.searchAds(textField.getText()));
+			tableAdsList.setModel(controller.searchAds(textField.getText()));
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
 			// TODO Auto-generated catch block
@@ -247,7 +301,7 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 
 	public void editAdvertisement() {
-		int id = getSelectedTableElementId(tableAnuncios);
+		int id = getSelectedTableElementId(tableAdsList);
 		AdsEditWindow editWindow = new AdsEditWindow(id, this);
 		editWindow.setVisible(true);
 	}
@@ -255,12 +309,13 @@ public class AdminWindow extends AnunciusJFrame {
 	public void openMenuBackup() {
 		try {
 			controller.backupData();
+			JOptionPane.showMessageDialog(this, "Backup created successfully. Check 'files' folder to view the data.");
 		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error occurred while saving data.");
 		}
-		JOptionPane.showMessageDialog(this, "Backup created successfully. Check 'files' folder to view the data.");
 	}
 
 	public void editCategory() {
@@ -285,12 +340,54 @@ public class AdminWindow extends AnunciusJFrame {
 
 	public void updateTables() {
 		try {
-			tableAnuncios.setModel(controller.getAllAdsInTable());
+			tableAdsList.setModel(controller.getAllAdsInTable());
 			tableCategoryList.setModel(controller.getAllCategoriesInTable());
 			tableUserList.setModel(controller.getAllUsersInTable());
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "An error occurred while loading system data");
+		}
+	}
+
+	public void newAdvertisement() {
+		AdsEditWindow editWindow = new AdsEditWindow();
+		editWindow.setVisible(true);
+	}
+
+	public void deleteAdvertisement() {
+		int id = getSelectedTableElementId(tableAdsList);
+		//TODO borrar el elemento del sistema
+	}
+
+	public void newUser() {
+		UsersEditWindow editWindow = new UsersEditWindow();
+		editWindow.setVisible(true);
+	}
+
+	public void deleteUser() {
+		int id = getSelectedTableElementId(tableUserList);
+		//TODO borrar el elemento del sistema
+	}
+
+	public void newCategory() {
+		CategoriesEditWindow editWindow = new CategoriesEditWindow();
+		editWindow.setVisible(true);
+	}
+
+	public void deleteCategory() {
+		int id = getSelectedTableElementId(tableCategoryList);
+		//TODO borrar el elemento del sistema
+	}
+
+	public void menuRestore() {
+		try {
+			controller.restoreData();
+		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "An error occurred while loading system data");
 		}
 	}
 }
