@@ -1,5 +1,5 @@
 # ASF_01_Ads
-Group 1 project for "Arquitecturas de software y frameworks" subject of Engineering
+Group 1 project for "Arquitecturas de software y frameworks" subject of Computer Engineering Master Degree at University of Deusto.
 
 * Sergio Anguita
 * Aitor Brazaola
