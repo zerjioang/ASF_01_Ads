@@ -43,10 +43,19 @@ public class GestorBD {
     // Category
     public int insertCategory(Category c) throws SQLException, ClassNotFoundException{
     	conectar();
-		String insert = "insert into CATEGORIA " +
-	            "(name, description) " +
-	            "VALUES ('" + c.getName() +
-	            "','"  + c.getDescription() + "')";                        
+    	String insert;
+		if (c.getId() > 0 ) {
+			insert = "insert into CATEGORIA " +
+		            "(id, name, description) " +
+		            "VALUES (" + c.getId() + ", '" + c.getName() +
+		            "','"  + c.getDescription() + "')";
+		} else {
+			insert = "insert into CATEGORIA " +
+		            "(name, description) " +
+		            "VALUES ('" + c.getName() +
+		            "','"  + c.getDescription() + "')";
+		}
+    	                        
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
 		stmt.close();
@@ -127,13 +136,26 @@ public class GestorBD {
 	// Advertisement
 	public int insertAd(Advertisement a) throws SQLException, ClassNotFoundException{
 		conectar();
-		String insert = "insert into ANUNCIO " +
-	            "(name, description, creator_id, category_id, price) " +
-	            "VALUES ('" + a.getName() +
-	            "','"  + a.getDescription() +
-	            "',"  + a.getAuthor().getId() +
-	            ","  + a.getCategory().getId() +
-	            ","  + a.getPrice() + ")";                        
+		String insert;
+		if (a.getId() >0 ) {
+			insert = "insert into ANUNCIO " +
+		            "(id, name, description, creator_id, category_id, price) " +
+		            "VALUES ("+ a.getId() + ",'" + a.getName() +
+		            "','"  + a.getDescription() +
+		            "',"  + a.getAuthor().getId() +
+		            ","  + a.getCategory().getId() +
+		            ","  + a.getPrice() + ")";      
+		} else {
+			insert = "insert into ANUNCIO " +
+		            "(name, description, creator_id, category_id, price) " +
+		            "VALUES ('" + a.getName() +
+		            "','"  + a.getDescription() +
+		            "',"  + a.getAuthor().getId() +
+		            ","  + a.getCategory().getId() +
+		            ","  + a.getPrice() + ")";      
+		}
+
+		                  
 		System.out.println(insert);
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
@@ -225,11 +247,22 @@ public class GestorBD {
     // User
 	public int insertUser(User u) throws SQLException, ClassNotFoundException{
 		conectar();
-		String insert = "insert into USUARIO " +
-	            "(email, password, name) " +
-	            "VALUES ('" + u.getEmail() +
-	            "','" + u.getPassword() +
-	            "','"  + u.getName() + "')";                        
+		String insert;
+		
+		if (u.getId() > 0 ) {
+			insert = "insert into USUARIO " +
+		            "(id, email, password, name) " +
+		            "VALUES ("+ u.getId() +", '" + u.getEmail() +
+		            "','" + u.getPassword() +
+		            "','"  + u.getName() + "')";
+		} else {
+			insert = "insert into USUARIO " +
+		            "(email, password, name) " +
+		            "VALUES ('" + u.getEmail() +
+		            "','" + u.getPassword() +
+		            "','"  + u.getName() + "')";
+		}
+		                        
 		System.out.println(insert);
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(insert);
@@ -392,5 +425,25 @@ public class GestorBD {
         stmt.close();
         desconectar();
         return ads;
+    }
+    
+    public void deleteSchema() throws ClassNotFoundException, SQLException {
+    	conectar();
+    	String delete = "delete from ANUNCIO";
+    	Statement stmt = con.createStatement();
+    	stmt.executeUpdate(delete);
+    	stmt.close();
+    	
+    	delete = "delete from USUARIO";
+        stmt = con.createStatement();
+        stmt.executeUpdate(delete);
+        stmt.close();
+        
+        delete = "delete from CATEGORIA";
+        stmt = con.createStatement();
+        stmt.executeUpdate(delete);
+        stmt.close();
+        
+        desconectar();
     }
 }

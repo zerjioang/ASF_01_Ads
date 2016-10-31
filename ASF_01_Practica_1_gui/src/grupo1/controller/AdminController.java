@@ -3,11 +3,13 @@ package grupo1.controller;
 import java.io.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.*;
 
 import org.apache.axis2.AxisFault;
+
 import grupo1.dao.*;
 import grupo1.dto.xsd.*;
 import grupo1.pojo.*;
@@ -214,11 +216,90 @@ public class AdminController {
 		}
 	}
 	
+	public void restoreData() throws JAXBException, IOException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		JAXBContext categoriesContext = JAXBContext.newInstance(Categories.class);
+		JAXBContext usersContext = JAXBContext.newInstance(Users.class);
+		JAXBContext advertisementsContext = JAXBContext.newInstance(Advertisements.class);
+		
+		Unmarshaller categoriesUnmarshaller = categoriesContext.createUnmarshaller();
+		Unmarshaller usersUnmarshaller = usersContext.createUnmarshaller();
+		Unmarshaller advertisementsUnmarshaller = advertisementsContext.createUnmarshaller();
+		
+		DeleteSchema deleteSchemaReq = new DeleteSchema();
+		stub.deleteSchema(deleteSchemaReq);
+		
+		Users users = (Users) usersUnmarshaller.unmarshal(new FileInputStream(USER_XML));
+		
+		for (UserPOJO u : users.getUsers()) {
+			User user = new User();
+			user.setId(u.getId());
+			user.setName(u.getName());
+			user.setEmail(u.getEmail());
+			user.setPassword(u.getPassword());
+			user.setSignupDate(u.getSignupDate());
+			
+			InsertUser insertUserReq = new InsertUser();
+			insertUserReq.setU(user);
+			stub.insertUser(insertUserReq);
+			
+			System.out.println("User " + user.getEmail() + " restored successfully.");
+		}
+		
+		Categories categories = (Categories) categoriesUnmarshaller.unmarshal(new FileInputStream(CATEGORY_XML));
+		
+		for (CategoryPOJO c : categories.getCategories()) {
+			Category category = new Category();
+			
+			category.setId(c.getId());
+			category.setName(c.getName());
+			category.setDescription(c.getDescription());
+			
+			InsertCategory insertCategoryReq = new InsertCategory();
+			insertCategoryReq.setC(category);
+			stub.insertCategory(insertCategoryReq);
+			
+			System.out.println("Category " + category.getName() + " restored successfully.");
+		}
+		
+		Advertisements ads = (Advertisements) advertisementsUnmarshaller.unmarshal(new FileInputStream(ADVERTISEMENT_XML));
+		
+		for (AdvertisementPOJO a : ads.getAdvertisements()) {
+			Advertisement ad = new Advertisement();
+			ad.setId(a.getId());
+			ad.setName(a.getName());
+			ad.setDescription(a.getDescription());
+			ad.setPrice(a.getPrice());
+			
+			User author = new User();
+			author.setId(a.getAuthor().getId());
+			author.setName(a.getAuthor().getName());
+			author.setPassword(a.getAuthor().getPassword());
+			author.setSignupDate(a.getAuthor().getSignupDate());
+			author.setEmail(a.getAuthor().getEmail());
+			
+			ad.setAuthor(author);
+			
+			Category category = new Category();
+			category.setId(a.getCategory().getId());
+			category.setName(a.getCategory().getName());
+			category.setDescription(a.getCategory().getDescription());
+			
+			ad.setCategory(category);
+			
+			InsertAd insertAdReq = new InsertAd();
+			insertAdReq.setA(ad);
+			stub.insertAd(insertAdReq);
+			
+			System.out.println("Ad " + ad.getName() + " restored successfully.");
+		}
+	}
+	
 	public static void main(String[] args) {
 		AdminController controller;
 		try {
 			controller = new AdminController();
-			controller.backupData();
+			//controller.backupData();
+			controller.restoreData();
 		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException | AdvertisementEndpointSQLExceptionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

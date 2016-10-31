@@ -3,72 +3,72 @@
     <Advertisement>
         <id>1</id>
         <name>SEAT Ibiza SC</name>
-        <description>Muy bienc uidado, edicion 25 aniversario, llantas de 17 pulgadas</description>
+        <description>Con todos los filtros recién cambiados y distribución recién hecha.</description>
         <price>6900.0</price>
         <category>
             <id>31</id>
             <name>Technology</name>
-            <description>Electronic devices and gadgets</description>
+            <description>Dispositivos electrónicos y gadgets</description>
         </category>
         <author>
             <id>43</id>
             <name>Aitor</name>
             <email>aitor.brazaola@opendeusto.es</email>
-            <password>123456</password>
+            <password>df75lss72</password>
             <signupDate>2016-10-30T01:00:00+02:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
         <id>29</id>
-        <name>SEAT Inca</name>
-        <description>Coche familiar</description>
-        <price>6800.0</price>
+        <name>VW Passat</name>
+        <description>Coche familiar con muchas comodidades, recién pintado.</description>
+        <price>10000.0</price>
         <category>
             <id>31</id>
             <name>Technology</name>
-            <description>Electronic devices and gadgets</description>
+            <description>Dispositivos electrónicos y gadgets</description>
         </category>
         <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>123456</password>
+            <id>45</id>
+            <name>Ibon</name>
+            <email>ibon.arretxe@gmail.com</email>
+            <password>fdfdsdf2</password>
             <signupDate>2016-10-30T01:00:00+02:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
         <id>31</id>
-        <name>SEAT Alhambra</name>
-        <description>Coche familiar</description>
-        <price>6900.0</price>
+        <name>AMD Radeon R9 390</name>
+        <description>Poco uso, la vendo por que cambio a una más potente.</description>
+        <price>125.0</price>
         <category>
             <id>31</id>
             <name>Technology</name>
-            <description>Electronic devices and gadgets</description>
+            <description>Dispositivos electrónicos y gadgets</description>
         </category>
         <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>123456</password>
+            <id>47</id>
+            <name>Javi</name>
+            <email>javi.pelaez@outlook.com</email>
+            <password>654nvcuy2</password>
             <signupDate>2016-10-30T01:00:00+02:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
         <id>33</id>
-        <name>SEAT Alhambra</name>
-        <description>Coche familiar</description>
-        <price>6900.0</price>
+        <name>TV Samsung 4K</name>
+        <description>50" muy bien cuidada</description>
+        <price>200.0</price>
         <category>
             <id>31</id>
             <name>Technology</name>
-            <description>Electronic devices and gadgets</description>
+            <description>Dispositivos electrónicos y gadgets</description>
         </category>
         <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>123456</password>
+            <id>47</id>
+            <name>Javi</name>
+            <email>javi.pelaez@outlook.com</email>
+            <password>654nvcuy2</password>
             <signupDate>2016-10-30T01:00:00+02:00</signupDate>
         </author>
     </Advertisement>

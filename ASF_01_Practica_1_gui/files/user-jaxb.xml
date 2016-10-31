@@ -4,140 +4,21 @@
         <id>43</id>
         <name>Aitor</name>
         <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
+        <password>df75lss72</password>
         <signupDate>2016-10-30T01:00:00+02:00</signupDate>
     </User>
     <User>
         <id>45</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
+        <name>Ibon</name>
+        <email>ibon.arretxe@gmail.com</email>
+        <password>fdfdsdf2</password>
         <signupDate>2016-10-30T01:00:00+02:00</signupDate>
     </User>
     <User>
         <id>47</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
+        <name>Javi</name>
+        <email>javi.pelaez@outlook.com</email>
+        <password>654nvcuy2</password>
         <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>49</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>51</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>53</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>55</id>
-        <name>Jose</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>57</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>59</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>61</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>63</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>65</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>67</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>69</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>71</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>73</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>75</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>77</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
-    </User>
-    <User>
-        <id>79</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-31T00:00:00+01:00</signupDate>
-    </User>
-    <User>
-        <id>81</id>
-        <name>Aitor</name>
-        <email>aitor.brazaola@opendeusto.es</email>
-        <password>123456</password>
-        <signupDate>2016-10-31T00:00:00+01:00</signupDate>
     </User>
 </Users>

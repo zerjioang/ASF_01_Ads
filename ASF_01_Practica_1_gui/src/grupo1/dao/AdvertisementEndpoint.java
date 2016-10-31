@@ -19,7 +19,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param deleteCategory7
+                    * @param deleteCategory8
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -28,7 +28,7 @@
          
                      public void deleteCategory(
 
-                        grupo1.dao.DeleteCategory deleteCategory7)
+                        grupo1.dao.DeleteCategory deleteCategory8)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -38,12 +38,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param deleteCategory7
+                * @param deleteCategory8
             
           */
         public void startdeleteCategory(
 
-            grupo1.dao.DeleteCategory deleteCategory7,
+            grupo1.dao.DeleteCategory deleteCategory8,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -54,7 +54,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getCategory9
+                    * @param getCategory10
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -63,7 +63,7 @@
          
                      public grupo1.dao.GetCategoryResponse getCategory(
 
-                        grupo1.dao.GetCategory getCategory9)
+                        grupo1.dao.GetCategory getCategory10)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -73,12 +73,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getCategory9
+                * @param getCategory10
             
           */
         public void startgetCategory(
 
-            grupo1.dao.GetCategory getCategory9,
+            grupo1.dao.GetCategory getCategory10,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -89,7 +89,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param updateUser11
+                    * @param updateUser12
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -98,7 +98,7 @@
          
                      public void updateUser(
 
-                        grupo1.dao.UpdateUser updateUser11)
+                        grupo1.dao.UpdateUser updateUser12)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -108,12 +108,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param updateUser11
+                * @param updateUser12
             
           */
         public void startupdateUser(
 
-            grupo1.dao.UpdateUser updateUser11,
+            grupo1.dao.UpdateUser updateUser12,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -124,7 +124,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param updateAdvertisement13
+                    * @param updateAdvertisement14
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -133,7 +133,7 @@
          
                      public void updateAdvertisement(
 
-                        grupo1.dao.UpdateAdvertisement updateAdvertisement13)
+                        grupo1.dao.UpdateAdvertisement updateAdvertisement14)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -143,12 +143,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param updateAdvertisement13
+                * @param updateAdvertisement14
             
           */
         public void startupdateAdvertisement(
 
-            grupo1.dao.UpdateAdvertisement updateAdvertisement13,
+            grupo1.dao.UpdateAdvertisement updateAdvertisement14,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -159,7 +159,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param updateCategory15
+                    * @param updateCategory16
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -168,7 +168,7 @@
          
                      public void updateCategory(
 
-                        grupo1.dao.UpdateCategory updateCategory15)
+                        grupo1.dao.UpdateCategory updateCategory16)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -178,12 +178,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param updateCategory15
+                * @param updateCategory16
             
           */
         public void startupdateCategory(
 
-            grupo1.dao.UpdateCategory updateCategory15,
+            grupo1.dao.UpdateCategory updateCategory16,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -194,7 +194,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getUser17
+                    * @param getUser18
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -203,7 +203,7 @@
          
                      public grupo1.dao.GetUserResponse getUser(
 
-                        grupo1.dao.GetUser getUser17)
+                        grupo1.dao.GetUser getUser18)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -213,12 +213,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getUser17
+                * @param getUser18
             
           */
         public void startgetUser(
 
-            grupo1.dao.GetUser getUser17,
+            grupo1.dao.GetUser getUser18,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -229,7 +229,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAdsByCategory19
+                    * @param getAdsByCategory20
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -238,7 +238,7 @@
          
                      public grupo1.dao.GetAdsByCategoryResponse getAdsByCategory(
 
-                        grupo1.dao.GetAdsByCategory getAdsByCategory19)
+                        grupo1.dao.GetAdsByCategory getAdsByCategory20)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -248,12 +248,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAdsByCategory19
+                * @param getAdsByCategory20
             
           */
         public void startgetAdsByCategory(
 
-            grupo1.dao.GetAdsByCategory getAdsByCategory19,
+            grupo1.dao.GetAdsByCategory getAdsByCategory20,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -264,7 +264,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAd21
+                    * @param getAd22
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -273,7 +273,7 @@
          
                      public grupo1.dao.GetAdResponse getAd(
 
-                        grupo1.dao.GetAd getAd21)
+                        grupo1.dao.GetAd getAd22)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -283,12 +283,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAd21
+                * @param getAd22
             
           */
         public void startgetAd(
 
-            grupo1.dao.GetAd getAd21,
+            grupo1.dao.GetAd getAd22,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -299,7 +299,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAdsByQueryOnName23
+                    * @param getAdsByQueryOnName24
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -308,7 +308,7 @@
          
                      public grupo1.dao.GetAdsByQueryOnNameResponse getAdsByQueryOnName(
 
-                        grupo1.dao.GetAdsByQueryOnName getAdsByQueryOnName23)
+                        grupo1.dao.GetAdsByQueryOnName getAdsByQueryOnName24)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -318,12 +318,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAdsByQueryOnName23
+                * @param getAdsByQueryOnName24
             
           */
         public void startgetAdsByQueryOnName(
 
-            grupo1.dao.GetAdsByQueryOnName getAdsByQueryOnName23,
+            grupo1.dao.GetAdsByQueryOnName getAdsByQueryOnName24,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -334,7 +334,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param deleteUser25
+                    * @param deleteUser26
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -343,7 +343,7 @@
          
                      public void deleteUser(
 
-                        grupo1.dao.DeleteUser deleteUser25)
+                        grupo1.dao.DeleteUser deleteUser26)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -353,12 +353,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param deleteUser25
+                * @param deleteUser26
             
           */
         public void startdeleteUser(
 
-            grupo1.dao.DeleteUser deleteUser25,
+            grupo1.dao.DeleteUser deleteUser26,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -369,7 +369,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getUsers27
+                    * @param getUsers28
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -378,7 +378,7 @@
          
                      public grupo1.dao.GetUsersResponse getUsers(
 
-                        grupo1.dao.GetUsers getUsers27)
+                        grupo1.dao.GetUsers getUsers28)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -388,12 +388,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getUsers27
+                * @param getUsers28
             
           */
         public void startgetUsers(
 
-            grupo1.dao.GetUsers getUsers27,
+            grupo1.dao.GetUsers getUsers28,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -404,7 +404,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param insertAd29
+                    * @param insertAd30
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -413,7 +413,7 @@
          
                      public grupo1.dao.InsertAdResponse insertAd(
 
-                        grupo1.dao.InsertAd insertAd29)
+                        grupo1.dao.InsertAd insertAd30)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -423,12 +423,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param insertAd29
+                * @param insertAd30
             
           */
         public void startinsertAd(
 
-            grupo1.dao.InsertAd insertAd29,
+            grupo1.dao.InsertAd insertAd30,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -439,7 +439,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param insertCategory31
+                    * @param insertCategory32
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -448,7 +448,7 @@
          
                      public grupo1.dao.InsertCategoryResponse insertCategory(
 
-                        grupo1.dao.InsertCategory insertCategory31)
+                        grupo1.dao.InsertCategory insertCategory32)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -458,12 +458,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param insertCategory31
+                * @param insertCategory32
             
           */
         public void startinsertCategory(
 
-            grupo1.dao.InsertCategory insertCategory31,
+            grupo1.dao.InsertCategory insertCategory32,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -474,7 +474,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getCategories33
+                    * @param getCategories34
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -483,7 +483,7 @@
          
                      public grupo1.dao.GetCategoriesResponse getCategories(
 
-                        grupo1.dao.GetCategories getCategories33)
+                        grupo1.dao.GetCategories getCategories34)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -493,12 +493,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getCategories33
+                * @param getCategories34
             
           */
         public void startgetCategories(
 
-            grupo1.dao.GetCategories getCategories33,
+            grupo1.dao.GetCategories getCategories34,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -509,7 +509,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param deleteAd35
+                    * @param deleteAd36
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -518,7 +518,7 @@
          
                      public void deleteAd(
 
-                        grupo1.dao.DeleteAd deleteAd35)
+                        grupo1.dao.DeleteAd deleteAd36)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -528,12 +528,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param deleteAd35
+                * @param deleteAd36
             
           */
         public void startdeleteAd(
 
-            grupo1.dao.DeleteAd deleteAd35,
+            grupo1.dao.DeleteAd deleteAd36,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -544,7 +544,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAdsByUser37
+                    * @param getAdsByUser38
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -553,7 +553,7 @@
          
                      public grupo1.dao.GetAdsByUserResponse getAdsByUser(
 
-                        grupo1.dao.GetAdsByUser getAdsByUser37)
+                        grupo1.dao.GetAdsByUser getAdsByUser38)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -563,12 +563,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAdsByUser37
+                * @param getAdsByUser38
             
           */
         public void startgetAdsByUser(
 
-            grupo1.dao.GetAdsByUser getAdsByUser37,
+            grupo1.dao.GetAdsByUser getAdsByUser38,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -579,7 +579,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAds39
+                    * @param getAds40
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -588,7 +588,7 @@
          
                      public grupo1.dao.GetAdsResponse getAds(
 
-                        grupo1.dao.GetAds getAds39)
+                        grupo1.dao.GetAds getAds40)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -598,12 +598,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAds39
+                * @param getAds40
             
           */
         public void startgetAds(
 
-            grupo1.dao.GetAds getAds39,
+            grupo1.dao.GetAds getAds40,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -614,7 +614,42 @@
         /**
           * Auto generated method signature
           * 
-                    * @param insertUser41
+                    * @param deleteSchema42
+                
+             * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
+             * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
+         */
+
+         
+                     public void deleteSchema(
+
+                        grupo1.dao.DeleteSchema deleteSchema42)
+                        throws java.rmi.RemoteException
+             
+          ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
+          ,grupo1.dao.AdvertisementEndpointSQLExceptionException;
+
+        
+         /**
+            * Auto generated method signature for Asynchronous Invocations
+            * 
+                * @param deleteSchema42
+            
+          */
+        public void startdeleteSchema(
+
+            grupo1.dao.DeleteSchema deleteSchema42,
+
+            final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
+
+            throws java.rmi.RemoteException;
+
+     
+
+        /**
+          * Auto generated method signature
+          * 
+                    * @param insertUser44
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -623,7 +658,7 @@
          
                      public grupo1.dao.InsertUserResponse insertUser(
 
-                        grupo1.dao.InsertUser insertUser41)
+                        grupo1.dao.InsertUser insertUser44)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -633,12 +668,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param insertUser41
+                * @param insertUser44
             
           */
         public void startinsertUser(
 
-            grupo1.dao.InsertUser insertUser41,
+            grupo1.dao.InsertUser insertUser44,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
@@ -649,7 +684,7 @@
         /**
           * Auto generated method signature
           * 
-                    * @param changeCategory43
+                    * @param changeCategory46
                 
              * @throws grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException : 
              * @throws grupo1.dao.AdvertisementEndpointSQLExceptionException : 
@@ -658,7 +693,7 @@
          
                      public void changeCategory(
 
-                        grupo1.dao.ChangeCategory changeCategory43)
+                        grupo1.dao.ChangeCategory changeCategory46)
                         throws java.rmi.RemoteException
              
           ,grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException
@@ -668,12 +703,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param changeCategory43
+                * @param changeCategory46
             
           */
         public void startchangeCategory(
 
-            grupo1.dao.ChangeCategory changeCategory43,
+            grupo1.dao.ChangeCategory changeCategory46,
 
             final grupo1.dao.AdvertisementEndpointCallbackHandler callback)
 
