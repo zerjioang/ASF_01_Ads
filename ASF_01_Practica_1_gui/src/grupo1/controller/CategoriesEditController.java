@@ -7,6 +7,7 @@ import org.apache.axis2.AxisFault;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.dao.AdvertisementEndpointStub;
+import grupo1.dao.DeleteCategory;
 import grupo1.dao.GetCategory;
 import grupo1.dao.GetCategoryResponse;
 import grupo1.dao.UpdateCategory;
@@ -44,5 +45,10 @@ public class CategoriesEditController {
 		UpdateCategory updateReq = new UpdateCategory();
 		updateReq.setC(cat);
 		stub.updateCategory(updateReq);
+	}
+	
+	public void deleteCategory(CategoryPOJO deletedVersion) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {		
+		DeleteCategory req = new DeleteCategory();
+		stub.deleteCategory(req);
 	}
 }

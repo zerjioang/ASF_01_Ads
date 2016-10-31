@@ -7,6 +7,7 @@ import org.apache.axis2.AxisFault;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.dao.AdvertisementEndpointStub;
+import grupo1.dao.DeleteAd;
 import grupo1.dao.GetAd;
 import grupo1.dao.GetAdResponse;
 import grupo1.dao.UpdateAdvertisement;
@@ -45,5 +46,16 @@ public class AdsEditController {
 		UpdateAdvertisement updateReq = new UpdateAdvertisement();
 		updateReq.setA(ad);
 		stub.updateAdvertisement(updateReq);
+	}
+
+	public void deleteAds(AdvertisementPOJO advertisementPOJO) {
+		try {
+			DeleteAd delete = new DeleteAd();
+			stub.deleteAd(delete);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

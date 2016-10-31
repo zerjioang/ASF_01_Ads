@@ -7,6 +7,7 @@ import org.apache.axis2.AxisFault;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
 import grupo1.dao.AdvertisementEndpointStub;
+import grupo1.dao.DeleteUser;
 import grupo1.dao.GetUser;
 import grupo1.dao.GetUserResponse;
 import grupo1.dao.UpdateUser;
@@ -44,5 +45,16 @@ public class UsersEditController {
 		UpdateUser updateReq = new UpdateUser();
 		updateReq.setU(u);
 		stub.updateUser(updateReq);
+	}
+
+	public void deleteUser(UserPOJO userPOJO) {
+		try {
+			DeleteUser delete = new DeleteUser();
+			stub.deleteUser(delete);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

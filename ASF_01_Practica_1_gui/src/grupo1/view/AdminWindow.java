@@ -9,8 +9,13 @@ import org.apache.axis2.AxisFault;
 
 import grupo1.controller.AdminController;
 import grupo1.controller.AdsEditController;
+import grupo1.controller.CategoriesEditController;
+import grupo1.controller.UsersEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.pojo.AdvertisementPOJO;
+import grupo1.pojo.CategoryPOJO;
+import grupo1.pojo.UserPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.AdsEditGUIEvents;
@@ -358,6 +363,14 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteAdvertisement() {
 		int id = getSelectedTableElementId(tableAdsList);
 		//TODO borrar el elemento del sistema
+		AdsEditController controller;
+		try {
+			controller = new AdsEditController();
+			controller.deleteAds(new AdvertisementPOJO());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void newUser() {
@@ -368,6 +381,14 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteUser() {
 		int id = getSelectedTableElementId(tableUserList);
 		//TODO borrar el elemento del sistema
+		UsersEditController controller;
+		try {
+			controller = new UsersEditController();
+			controller.deleteUser(new UserPOJO());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 	public void newCategory() {
@@ -378,16 +399,34 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteCategory() {
 		int id = getSelectedTableElementId(tableCategoryList);
 		//TODO borrar el elemento del sistema
+		CategoriesEditController controller;
+		try {
+			controller = new CategoriesEditController();
+			controller.deleteCategory(new CategoryPOJO());
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException | AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void menuRestore() {
-		try {
-			controller.restoreData();
-		} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, "An error occurred while loading system data");
-		}
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					controller.restoreData();
+				} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
+						| AdvertisementEndpointSQLExceptionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(getWindow(), "An error occurred while loading system data");
+				}
+			}
+		}).start();
+	}
+	
+	public AdminWindow getWindow(){
+		return this;
 	}
 }
