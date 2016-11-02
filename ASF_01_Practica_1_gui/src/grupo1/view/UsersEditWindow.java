@@ -9,6 +9,7 @@ import org.apache.axis2.AxisFault;
 import grupo1.controller.UsersEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.dto.xsd.User;
 import grupo1.pojo.UserPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
@@ -43,6 +44,12 @@ public class UsersEditWindow extends AnunciusJFrame {
         init();
         populate();
     }
+    
+    public UsersEditWindow(AdminWindow adminWindow){
+		this.adminWindow = adminWindow;
+		init();
+		populate();
+    }
 
     private void populate() {
     	new Thread(new Runnable() {
@@ -56,17 +63,21 @@ public class UsersEditWindow extends AnunciusJFrame {
 					e.printStackTrace();
 				}
 		        try {
-					user = controller.getUser(id);
+					if(id > 0){
+						user = controller.getUser(id);
+						if(user!=null){
+							txtEmail.setText(user.getEmail());
+							txtId.setText(String.valueOf(user.getId()));
+							txtName.setText(user.getName());
+							txtPassword.setText(user.getPassword());
+							txtDate.setText(user.getSignupDate().toGMTString());
+						}
+					}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        txtId.setText(String.valueOf(user.getId()));
-		        txtEmail.setText(user.getEmail());
-		        txtName.setText(user.getName());
-		        txtDate.setText(user.getSignupDate().toString());
-		        txtPassword.setText(user.getPassword());
 			}
 		}).start();
     }
@@ -232,18 +243,30 @@ public class UsersEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
-		user.setName(txtName.getText());
-		user.setEmail(txtEmail.getText());
-		user.setPassword(txtPassword.getText());
-		
-		try {
-			controller.updateUser(user);
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
-				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(id > 0){
+			user.setName(txtName.getText());
+			user.setEmail(txtEmail.getText());
+			user.setPassword(txtPassword.getText());
+			
+			try {
+				controller.updateUser(user);
+			} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+					| AdvertisementEndpointSQLExceptionException e) {
+				e.printStackTrace();
+			}
 		}
-		
+		else{
+			User user = new User();
+			user.setName(txtName.getText());
+			user.setEmail(txtEmail.getText());
+			user.setPassword(txtPassword.getText());
+			try {
+				controller.insertUser(user);
+			} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+					| AdvertisementEndpointSQLExceptionException e) {
+				JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "Error on "+e.getClass().getSimpleName(), JOptionPane.ERROR_MESSAGE);
+			}
+		}
 		adminWindow.updateTables();
 		this.dispose();
 	}

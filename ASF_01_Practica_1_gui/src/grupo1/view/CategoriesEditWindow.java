@@ -45,17 +45,20 @@ public class CategoriesEditWindow extends AnunciusJFrame {
     public CategoriesEditWindow(int id) {
     	this.id = id;
     	init();
+    	populate();
 	}
     
     public CategoriesEditWindow(int id, AdminWindow adminWindow) {
     	this.id = id;
     	this.adminWindow = adminWindow;
     	init();
+    	populate();
 	}
     
     public CategoriesEditWindow(AdminWindow adminWindow) {
 		this.adminWindow = adminWindow;
 		init();
+		populate();
 	}
 
 	private void init(){
@@ -154,8 +157,6 @@ public class CategoriesEditWindow extends AnunciusJFrame {
         
         //set visible
         setVisible(true);
-        
-        populate();
     }
 
 	private void populate() {
@@ -172,15 +173,17 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 		        try {
 		        	if (id > 0){
 		        		category = controller.getCategory(id);
+		        		if(category!=null){
+		        			textFieldAdsID.setText(String.valueOf(category.getId()));
+					        textFieldAdsTitle.setText(category.getName());
+					        textFieldAdsDescription.setText(category.getDescription());
+		        		}
 		        	}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        textFieldAdsID.setText(String.valueOf(category.getId()));
-		        textFieldAdsTitle.setText(category.getName());
-		        textFieldAdsDescription.setText(category.getDescription());
 			}
 		}).start();
 	}
@@ -209,17 +212,10 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 			updateCategory(category);
 		}
 		else{
-			//create new category
-			Category c = new Category();
-			c.setId(createRandomId());
-			addCategory(c);
+			addCategory();
 		}
 		adminWindow.updateTables();
 		this.dispose();
-	}
-
-	private int createRandomId() {
-		return (int) (Math.random() * 1000000000);
 	}
 
 	private void updateCategory(CategoryPOJO category) {
@@ -233,11 +229,12 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 		}
 	}
 	
-	private void addCategory(Category category) {
-		category.setName(textFieldAdsTitle.getText());
-		category.setDescription(textFieldAdsDescription.getText());
+	private void addCategory() {
+		Category c = new Category();
+		c.setName(textFieldAdsTitle.getText());
+		c.setDescription(textFieldAdsDescription.getText());
 		try {
-			controller.insertCategory(category);
+			controller.insertCategory(c);
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
 			JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "Error on "+e.getClass().getSimpleName(), JOptionPane.ERROR_MESSAGE);

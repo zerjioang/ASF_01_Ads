@@ -301,8 +301,7 @@ public class AdminWindow extends AnunciusJFrame {
 			tableAdsList.setModel(controller.searchAds(textField.getText()));
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error occurred while retrieving query data.");
 		}
 		
 	}
@@ -374,7 +373,7 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 
 	public void newUser() {
-		UsersEditWindow editWindow = new UsersEditWindow();
+		UsersEditWindow editWindow = new UsersEditWindow(this);
 		editWindow.setVisible(true);
 	}
 
