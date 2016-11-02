@@ -9,6 +9,9 @@ import org.apache.axis2.AxisFault;
 import grupo1.controller.AdsEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.dao.GetUser;
+import grupo1.dao.GetUserResponse;
+import grupo1.dto.xsd.Advertisement;
 import grupo1.pojo.AdvertisementPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
@@ -47,12 +50,17 @@ public class AdsEditWindow extends AnunciusJFrame {
         init();
     }
 
+    public AdsEditWindow() {
+    	init();
+	}
+    
     public AdsEditWindow(int id) {
     	this.id = id;
     	init();
 	}
     
-    public AdsEditWindow() {
+    public AdsEditWindow(AdminWindow adminWindow) {
+    	this.adminWindow = adminWindow;
     	init();
 	}
 
@@ -204,12 +212,14 @@ public class AdsEditWindow extends AnunciusJFrame {
 					e.printStackTrace();
 				}
 		        try {
-					advertisement = controller.getAd(id);
-					txtId.setText(String.valueOf(advertisement.getId()));
-					txtTitle.setText(advertisement.getName());
-					txtDescription.setText(advertisement.getDescription());
-					txtCreator.setText(advertisement.getAuthor().getName());
-					txtPrice.setText(String.valueOf(advertisement.getPrice()));
+		        	if (id > 0) {
+		        		advertisement = controller.getAd(id);
+						txtId.setText(String.valueOf(advertisement.getId()));
+						txtTitle.setText(advertisement.getName());
+						txtDescription.setText(advertisement.getDescription());
+						txtCreator.setText(advertisement.getAuthor().getName());
+						txtPrice.setText(String.valueOf(advertisement.getPrice()));		        		
+		        	}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
@@ -240,10 +250,20 @@ public class AdsEditWindow extends AnunciusJFrame {
 	public void saveChangesButtonEvent() {
 		
 		try {
-			advertisement.setName(txtTitle.getText());
-			advertisement.setDescription(txtDescription.getText());
-			advertisement.setPrice(Float.valueOf(txtPrice.getText()));
-			controller.updateAd(advertisement);
+			if (id > 0) {
+				advertisement.setName(txtTitle.getText());
+				advertisement.setDescription(txtDescription.getText());
+				advertisement.setPrice(Float.valueOf(txtPrice.getText()));
+				controller.updateAd(advertisement);			
+			} else {
+				Advertisement ad = new Advertisement();
+				ad.setName(txtTitle.getText());
+				ad.setDescription(txtDescription.getText());
+				ad.setPrice(Float.valueOf(txtPrice.getText()));			
+				int creatorId = Integer.valueOf(txtCreator.getText());
+				int categoryId = 31; // HARDCODED, me falta el textfield de donde sacarlo!!!!
+				controller.insertAd(ad, creatorId, categoryId);
+			}
 			
 			adminWindow.updateTables();
 			this.dispose();
