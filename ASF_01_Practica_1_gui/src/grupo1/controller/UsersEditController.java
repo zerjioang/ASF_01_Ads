@@ -10,7 +10,12 @@ import grupo1.dao.AdvertisementEndpointStub;
 import grupo1.dao.DeleteUser;
 import grupo1.dao.GetUser;
 import grupo1.dao.GetUserResponse;
+import grupo1.dao.InsertCategory;
+import grupo1.dao.InsertCategoryResponse;
+import grupo1.dao.InsertUser;
+import grupo1.dao.InsertUserResponse;
 import grupo1.dao.UpdateUser;
+import grupo1.dto.xsd.Category;
 import grupo1.dto.xsd.User;
 import grupo1.pojo.UserPOJO;
 
@@ -58,5 +63,12 @@ public class UsersEditController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void insertUser(User user) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		InsertUser insertReq = new InsertUser();
+		insertReq.setU(user);
+		InsertUserResponse resp = stub.insertUser(insertReq);
+		System.out.println("Inserted user " + Integer.valueOf(resp.get_return()));
 	}
 }

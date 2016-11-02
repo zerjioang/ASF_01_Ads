@@ -10,8 +10,15 @@ import grupo1.dao.AdvertisementEndpointStub;
 import grupo1.dao.DeleteCategory;
 import grupo1.dao.GetCategory;
 import grupo1.dao.GetCategoryResponse;
+import grupo1.dao.GetUser;
+import grupo1.dao.GetUserResponse;
+import grupo1.dao.InsertAd;
+import grupo1.dao.InsertAdResponse;
+import grupo1.dao.InsertCategory;
+import grupo1.dao.InsertCategoryResponse;
 import grupo1.dao.UpdateCategory;
 import grupo1.dto.xsd.Category;
+import grupo1.dto.xsd.User;
 import grupo1.pojo.CategoryPOJO;
 
 public class CategoriesEditController {
@@ -50,5 +57,12 @@ public class CategoriesEditController {
 	public void deleteCategory(CategoryPOJO deletedVersion) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {		
 		DeleteCategory req = new DeleteCategory();
 		stub.deleteCategory(req);
+	}
+
+	public void insertCategory(Category category) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		InsertCategory insertReq = new InsertCategory();
+		insertReq.setC(category);
+		InsertCategoryResponse resp = stub.insertCategory(insertReq);
+		System.out.println("Inserted category " + Integer.valueOf(resp.get_return()));
 	}
 }

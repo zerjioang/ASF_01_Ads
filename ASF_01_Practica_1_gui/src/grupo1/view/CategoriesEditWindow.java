@@ -9,6 +9,7 @@ import org.apache.axis2.AxisFault;
 import grupo1.controller.CategoriesEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.dto.xsd.Category;
 import grupo1.pojo.CategoryPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
@@ -196,17 +197,43 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
+		
+		if(id > 0){
+			updateCategory(category);
+		}
+		else{
+			//create new category
+			Category c = new Category();
+			c.setId(createRandomId());
+			addCategory(c);
+		}
+		adminWindow.updateTables();
+		this.dispose();
+	}
+
+	private int createRandomId() {
+		return (int) (Math.random() * 1000000000);
+	}
+
+	private void updateCategory(CategoryPOJO category) {
 		category.setName(textFieldAdsTitle.getText());
 		category.setDescription(textFieldAdsDescription.getText());
-		
 		try {
 			controller.updateCategory(category);
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "Error on "+e.getClass().getSimpleName(), JOptionPane.ERROR_MESSAGE);
 		}
-		adminWindow.updateTables();
-		this.dispose();
+	}
+	
+	private void addCategory(Category category) {
+		category.setName(textFieldAdsTitle.getText());
+		category.setDescription(textFieldAdsDescription.getText());
+		try {
+			controller.insertCategory(category);
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "Error on "+e.getClass().getSimpleName(), JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }

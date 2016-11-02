@@ -1,29 +1,30 @@
 package grupo1.view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.rmi.RemoteException;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.apache.axis2.AxisFault;
 
 import grupo1.controller.AdsEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
-import grupo1.dao.GetUser;
-import grupo1.dao.GetUserResponse;
 import grupo1.dto.xsd.Advertisement;
 import grupo1.pojo.AdvertisementPOJO;
 import grupo1.view.base.AnunciusJFrame;
-import grupo1.view.events.AdminGUIEvents;
 import grupo1.view.events.AdsEditGUIEvents;
-
-import java.awt.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.Window.Type;
-import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
-import java.awt.event.ActionEvent;
 
 public class AdsEditWindow extends AnunciusJFrame {
 	
@@ -248,28 +249,43 @@ public class AdsEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
-		
 		try {
 			if (id > 0) {
 				advertisement.setName(txtTitle.getText());
 				advertisement.setDescription(txtDescription.getText());
-				advertisement.setPrice(Float.valueOf(txtPrice.getText()));
-				controller.updateAd(advertisement);			
+				try {
+					advertisement.setPrice(Float.valueOf(txtPrice.getText()));
+					controller.updateAd(advertisement);		
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(this, "Please enter a valid price value", "Invalid value", JOptionPane.ERROR_MESSAGE);
+				}
 			} else {
 				Advertisement ad = new Advertisement();
 				ad.setName(txtTitle.getText());
 				ad.setDescription(txtDescription.getText());
-				ad.setPrice(Float.valueOf(txtPrice.getText()));			
-				int creatorId = Integer.valueOf(txtCreator.getText());
-				int categoryId = 31; // HARDCODED, me falta el textfield de donde sacarlo!!!!
-				controller.insertAd(ad, creatorId, categoryId);
+				try {
+					ad.setPrice(Float.valueOf(txtPrice.getText()));
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(this, "Please enter a valid price value", "Invalid value", JOptionPane.ERROR_MESSAGE);
+				}			
+				
+				int creatorId;
+				try {
+					creatorId = Integer.valueOf(txtCreator.getText());
+					try {
+						int categoryId = Integer.valueOf(txtCategory.getText());
+						controller.insertAd(ad, creatorId, categoryId);
+						adminWindow.updateTables();
+						this.dispose();
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(this, "Please enter a valid category ID", "Invalid value", JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(this, "Please enter a valid creator ID", "Invalid value", JOptionPane.ERROR_MESSAGE);
+				}
 			}
-			
-			adminWindow.updateTables();
-			this.dispose();
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

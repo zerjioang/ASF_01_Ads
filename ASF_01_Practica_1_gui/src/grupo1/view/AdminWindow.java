@@ -1,35 +1,37 @@
 package grupo1.view;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.io.IOException;
+import java.rmi.RemoteException;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.JAXBException;
 
 import org.apache.axis2.AxisFault;
 
 import grupo1.controller.AdminController;
-import grupo1.controller.AdsEditController;
-import grupo1.controller.CategoriesEditController;
-import grupo1.controller.UsersEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
-import grupo1.pojo.AdvertisementPOJO;
-import grupo1.pojo.CategoryPOJO;
-import grupo1.pojo.UserPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
-import grupo1.view.events.AdsEditGUIEvents;
-
-import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.io.File;
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AdminWindow extends AnunciusJFrame {
 	
@@ -363,7 +365,7 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteAdvertisement() {
 		int id = getSelectedTableElementId(tableAdsList);
 		try {
-			controller.deleteAd(id);
+			controller.deleteAdvertisement(id);
 			updateTables();
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {
@@ -379,8 +381,14 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteUser() {
 		int id = getSelectedTableElementId(tableUserList);
 		//TODO borrar el elemento del sistema
-		controller.deleteUser(id);
-		updateTables();
+		try {
+			controller.deleteUser(id);
+			updateTables();
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void newCategory() {
@@ -391,8 +399,14 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteCategory() {
 		int id = getSelectedTableElementId(tableCategoryList);
 		//TODO borrar el elemento del sistema
-		controller.deleteCategory(id);
-		updateTables();
+		try {
+			controller.deleteCategory(id);
+			updateTables();
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void menuRestore() {

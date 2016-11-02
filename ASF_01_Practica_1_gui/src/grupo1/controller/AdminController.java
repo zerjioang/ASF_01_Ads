@@ -294,17 +294,6 @@ public class AdminController {
 		}
 	}
 	
-	public void deleteAd(int id) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
-		GetAd adReq = new GetAd();
-		adReq.setId(id);
-		GetAdResponse adRes = stub.getAd(adReq);
-		Advertisement ad = (Advertisement)adRes.get_return();
-		
-		DeleteAd deleteReq = new DeleteAd();
-		deleteReq.setA(ad);
-		stub.deleteAd(deleteReq);
-	}
-	
 	public static void main(String[] args) {
 		AdminController controller;
 		try {
@@ -316,12 +305,37 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
-
-	public void deleteUser(int id) {
+	
+	public void deleteAdvertisement(int id) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		GetAd adReq = new GetAd();
+		adReq.setId(id);
+		GetAdResponse adRes = stub.getAd(adReq);
+		Advertisement ad = (Advertisement)adRes.get_return();
 		
+		DeleteAd deleteReq = new DeleteAd();
+		deleteReq.setA(ad);
+		stub.deleteAd(deleteReq);
 	}
 
-	public void deleteCategory(int id) {
+	public void deleteUser(int id) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		GetUser userReq = new GetUser();
+		userReq.setId(id);
+		GetUserResponse userResp = stub.getUser(userReq);
+		User user = (User)userResp.get_return();
 		
+		DeleteUser deleteReq = new DeleteUser();
+		deleteReq.setU(user);
+		stub.deleteUser(deleteReq);
+	}
+
+	public void deleteCategory(int id) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		GetCategory categoryRequest = new GetCategory();
+		categoryRequest.setId(id);
+		GetCategoryResponse categoryResp = (GetCategoryResponse) stub.getCategory(categoryRequest);
+		Category category = (Category)categoryResp.get_return();
+		
+		DeleteCategory deleteReq = new DeleteCategory();
+		deleteReq.setC(category);
+		stub.deleteCategory(deleteReq);
 	}
 }
