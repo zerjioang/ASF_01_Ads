@@ -381,14 +381,8 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteUser() {
 		int id = getSelectedTableElementId(tableUserList);
 		//TODO borrar el elemento del sistema
-		UsersEditController controller;
-		try {
-			controller = new UsersEditController();
-			controller.deleteUser(new UserPOJO());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		controller.deleteUser(id);
+		updateTables();
 	}
 
 	public void newCategory() {
@@ -399,14 +393,8 @@ public class AdminWindow extends AnunciusJFrame {
 	public void deleteCategory() {
 		int id = getSelectedTableElementId(tableCategoryList);
 		//TODO borrar el elemento del sistema
-		CategoriesEditController controller;
-		try {
-			controller = new CategoriesEditController();
-			controller.deleteCategory(new CategoryPOJO());
-		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException | AdvertisementEndpointSQLExceptionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		controller.deleteCategory(id);
+		updateTables();
 	}
 
 	public void menuRestore() {

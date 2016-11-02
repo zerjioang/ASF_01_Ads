@@ -26,14 +26,15 @@ public class AdsEditWindow extends AnunciusJFrame {
 	
 	private JTextField textField;
 	private int id;
-	private JTextField textFieldAdsID;
-	private JTextField textFieldAdsTitle;
-	private JTextField textFieldAdsDescription;
-	private JTextField textFieldAdsCreator;
-	private JTextField textFieldAdsPrice;
+	private JTextField txtId;
+	private JTextField txtTitle;
+	private JTextField txtDescription;
+	private JTextField txtCreator;
+	private JTextField txtPrice;
 	private AdvertisementPOJO advertisement;
 	private AdsEditController controller;
 	private AdminWindow adminWindow;
+	private JTextField txtCategory;
 
     /**
      * Create the frame.
@@ -63,7 +64,7 @@ public class AdsEditWindow extends AnunciusJFrame {
     	
     	setTitle("Anuncius Admin | Edit Advertisement");
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 280);
+        setBounds(100, 100, 450, 312);
         setMinimumSize(new Dimension(450, 280));
         
         JPanel panelBannerWarning = new JPanel();
@@ -88,35 +89,40 @@ public class AdsEditWindow extends AnunciusJFrame {
         
         JLabel lblPrice = new JLabel("Price");
         
-        textFieldAdsID = new JTextField();
-        textFieldAdsID.setColumns(10);
-        textFieldAdsID.setEditable(false);
+        txtId = new JTextField();
+        txtId.setColumns(10);
+        txtId.setEditable(false);
         
-        textFieldAdsTitle = new JTextField();
-        textFieldAdsTitle.setColumns(10);
+        txtTitle = new JTextField();
+        txtTitle.setColumns(10);
         
-        textFieldAdsDescription = new JTextField();
-        textFieldAdsDescription.setColumns(10);
+        txtDescription = new JTextField();
+        txtDescription.setColumns(10);
         
-        textFieldAdsCreator = new JTextField();
-        textFieldAdsCreator.setColumns(10);
-        textFieldAdsCreator.setEditable(false);
+        txtCreator = new JTextField();
+        txtCreator.setColumns(10);
+        txtCreator.setEditable(false);
         
-        textFieldAdsPrice = new JTextField();
-        textFieldAdsPrice.setColumns(10);
+        txtPrice = new JTextField();
+        txtPrice.setColumns(10);
         
         JButton btnSaveChanges = new JButton("Save changes");
         btnSaveChanges.addActionListener(AdsEditGUIEvents.BUTTON_SAVE_CHANGES.event(this));
         
         JButton btnCancel = new JButton("Cancel");
         btnCancel.addActionListener(AdsEditGUIEvents.BUTTON_CANCEL.event(this));
+        
+        txtCategory = new JTextField();
+        txtCategory.setColumns(10);
+        
+        JLabel labelCategory = new JLabel("Category");
         GroupLayout gl_panelWindowContent = new GroupLayout(panelWindowContent);
         gl_panelWindowContent.setHorizontalGroup(
         	gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panelWindowContent.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
-        				.addGroup(gl_panelWindowContent.createSequentialGroup()
+        				.addGroup(Alignment.TRAILING, gl_panelWindowContent.createSequentialGroup()
         					.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
         						.addComponent(lblAdvertisementId)
         						.addComponent(lblTitle)
@@ -125,15 +131,19 @@ public class AdsEditWindow extends AnunciusJFrame {
         						.addComponent(lblPrice))
         					.addGap(51)
         					.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
-        						.addComponent(textFieldAdsTitle, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsID, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsDescription, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsCreator, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsPrice, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
+        						.addComponent(txtTitle, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+        						.addComponent(txtId, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+        						.addComponent(txtDescription, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+        						.addComponent(txtCreator, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+        						.addComponent(txtPrice, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)))
         				.addGroup(Alignment.TRAILING, gl_panelWindowContent.createSequentialGroup()
         					.addComponent(btnCancel)
         					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(btnSaveChanges)))
+        					.addComponent(btnSaveChanges))
+        				.addGroup(Alignment.TRAILING, gl_panelWindowContent.createSequentialGroup()
+        					.addComponent(labelCategory, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(txtCategory, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap())
         );
         gl_panelWindowContent.setVerticalGroup(
@@ -142,28 +152,32 @@ public class AdsEditWindow extends AnunciusJFrame {
         			.addContainerGap()
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblAdvertisementId)
-        				.addComponent(textFieldAdsID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblTitle)
-        				.addComponent(textFieldAdsTitle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtTitle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblDescription)
-        				.addComponent(textFieldAdsDescription, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtDescription, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblCreatedBy)
-        				.addComponent(textFieldAdsCreator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtCreator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.TRAILING)
         				.addComponent(lblPrice)
-        				.addComponent(textFieldAdsPrice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGap(18)
+        				.addComponent(txtPrice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(txtCategory, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(labelCategory))
+        			.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btnSaveChanges)
         				.addComponent(btnCancel))
-        			.addContainerGap(133, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         panelWindowContent.setLayout(gl_panelWindowContent);
         
@@ -191,11 +205,11 @@ public class AdsEditWindow extends AnunciusJFrame {
 				}
 		        try {
 					advertisement = controller.getAd(id);
-					textFieldAdsID.setText(String.valueOf(advertisement.getId()));
-					textFieldAdsTitle.setText(advertisement.getName());
-					textFieldAdsDescription.setText(advertisement.getDescription());
-					textFieldAdsCreator.setText(advertisement.getAuthor().getName());
-					textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));
+					txtId.setText(String.valueOf(advertisement.getId()));
+					txtTitle.setText(advertisement.getName());
+					txtDescription.setText(advertisement.getDescription());
+					txtCreator.setText(advertisement.getAuthor().getName());
+					txtPrice.setText(String.valueOf(advertisement.getPrice()));
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
@@ -226,9 +240,9 @@ public class AdsEditWindow extends AnunciusJFrame {
 	public void saveChangesButtonEvent() {
 		
 		try {
-			advertisement.setName(textFieldAdsTitle.getText());
-			advertisement.setDescription(textFieldAdsDescription.getText());
-			advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
+			advertisement.setName(txtTitle.getText());
+			advertisement.setDescription(txtDescription.getText());
+			advertisement.setPrice(Float.valueOf(txtPrice.getText()));
 			controller.updateAd(advertisement);
 			
 			adminWindow.updateTables();

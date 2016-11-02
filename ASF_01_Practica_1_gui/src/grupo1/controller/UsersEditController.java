@@ -15,7 +15,9 @@ import grupo1.dto.xsd.User;
 import grupo1.pojo.UserPOJO;
 
 public class UsersEditController {
+	
 	private AdvertisementEndpointStub stub;
+	
 	public UsersEditController() throws AxisFault {
 		stub = new AdvertisementEndpointStub();
 	}

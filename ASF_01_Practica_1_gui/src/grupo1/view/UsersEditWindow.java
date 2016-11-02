@@ -27,11 +27,11 @@ public class UsersEditWindow extends AnunciusJFrame {
 	
 	private JTextField textField;
 	private int id;
-	private JTextField textFieldAdsID;
-	private JTextField textFieldAdsTitle;
-	private JTextField textFieldAdsDescription;
-	private JTextField textFieldAdsCreator;
-	private JTextField textFieldAdsPrice;
+	private JTextField txtId;
+	private JTextField txtName;
+	private JTextField txtEmail;
+	private JTextField txtPassword;
+	private JTextField txtDate;
 	private AdminWindow adminWindow;
 	private UsersEditController controller;
 	private UserPOJO user;
@@ -62,11 +62,11 @@ public class UsersEditWindow extends AnunciusJFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        textFieldAdsID.setText(String.valueOf(user.getId()));
-		        textFieldAdsDescription.setText(user.getEmail());
-		        textFieldAdsTitle.setText(user.getName());
-		        textFieldAdsPrice.setText(user.getSignupDate().toString());
-		        textFieldAdsCreator.setText(user.getPassword());
+		        txtId.setText(String.valueOf(user.getId()));
+		        txtEmail.setText(user.getEmail());
+		        txtName.setText(user.getName());
+		        txtDate.setText(user.getSignupDate().toString());
+		        txtPassword.setText(user.getPassword());
 			}
 		}).start();
     }
@@ -116,22 +116,22 @@ public class UsersEditWindow extends AnunciusJFrame {
         
         JLabel lblPrice = new JLabel("Registration date");
         
-        textFieldAdsID = new JTextField();
-        textFieldAdsID.setEditable(false);
-        textFieldAdsID.setColumns(10);
+        txtId = new JTextField();
+        txtId.setEditable(false);
+        txtId.setColumns(10);
         
-        textFieldAdsTitle = new JTextField();
-        textFieldAdsTitle.setColumns(10);
+        txtName = new JTextField();
+        txtName.setColumns(10);
         
-        textFieldAdsDescription = new JTextField();
-        textFieldAdsDescription.setColumns(10);
+        txtEmail = new JTextField();
+        txtEmail.setColumns(10);
         
-        textFieldAdsCreator = new JTextField();
-        textFieldAdsCreator.setColumns(10);
+        txtPassword = new JTextField();
+        txtPassword.setColumns(10);
         
-        textFieldAdsPrice = new JTextField();
-        textFieldAdsPrice.setColumns(10);
-        textFieldAdsPrice.setEditable(false);
+        txtDate = new JTextField();
+        txtDate.setColumns(10);
+        txtDate.setEditable(false);
         
         JButton btnSaveChanges = new JButton("Save changes");
         btnSaveChanges.addActionListener(UserEditGUIEvents.BUTTON_SAVE_CHANGES.event(this));
@@ -170,11 +170,11 @@ public class UsersEditWindow extends AnunciusJFrame {
         						.addComponent(lblPrice))
         					.addGap(51)
         					.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.LEADING)
-        						.addComponent(textFieldAdsTitle, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsID, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsDescription, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsCreator, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-        						.addComponent(textFieldAdsPrice, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
+        						.addComponent(txtName, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+        						.addComponent(txtId, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+        						.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+        						.addComponent(txtPassword, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+        						.addComponent(txtDate, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
         				.addGroup(Alignment.TRAILING, gl_panelWindowContent.createSequentialGroup()
         					.addComponent(btnCancel)
         					.addPreferredGap(ComponentPlacement.RELATED)
@@ -187,23 +187,23 @@ public class UsersEditWindow extends AnunciusJFrame {
         			.addContainerGap()
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblAdvertisementId)
-        				.addComponent(textFieldAdsID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblTitle)
-        				.addComponent(textFieldAdsTitle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblDescription)
-        				.addComponent(textFieldAdsDescription, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblCreatedBy)
-        				.addComponent(textFieldAdsCreator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.TRAILING)
         				.addComponent(lblPrice)
-        				.addComponent(textFieldAdsPrice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addGap(18)
         			.addGroup(gl_panelWindowContent.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btnSaveChanges)
@@ -232,9 +232,9 @@ public class UsersEditWindow extends AnunciusJFrame {
 	}
 
 	public void saveChangesButtonEvent() {
-		user.setName(textFieldAdsTitle.getText());
-		user.setEmail(textFieldAdsDescription.getText());
-		user.setPassword(textFieldAdsCreator.getText());
+		user.setName(txtName.getText());
+		user.setEmail(txtEmail.getText());
+		user.setPassword(txtPassword.getText());
 		
 		try {
 			controller.updateUser(user);

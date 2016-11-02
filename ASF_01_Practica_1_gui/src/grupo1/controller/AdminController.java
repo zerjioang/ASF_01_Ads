@@ -305,4 +305,12 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
+
+	public void deleteUser(int id) {
+		
+	}
+
+	public void deleteCategory(int id) {
+		
+	}
 }
