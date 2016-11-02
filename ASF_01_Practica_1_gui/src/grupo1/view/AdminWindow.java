@@ -392,7 +392,7 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 
 	public void newCategory() {
-		CategoriesEditWindow editWindow = new CategoriesEditWindow();
+		CategoriesEditWindow editWindow = new CategoriesEditWindow(this);
 		editWindow.setVisible(true);
 	}
 

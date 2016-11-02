@@ -53,7 +53,12 @@ public class CategoriesEditWindow extends AnunciusJFrame {
     	init();
 	}
     
-    private void init(){
+    public CategoriesEditWindow(AdminWindow adminWindow) {
+		this.adminWindow = adminWindow;
+		init();
+	}
+
+	private void init(){
     	
     	setResizable(false);
     	setType(Type.POPUP);
@@ -165,7 +170,9 @@ public class CategoriesEditWindow extends AnunciusJFrame {
 					e.printStackTrace();
 				}
 		        try {
-					category = controller.getCategory(id);
+		        	if (id > 0){
+		        		category = controller.getCategory(id);
+		        	}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
