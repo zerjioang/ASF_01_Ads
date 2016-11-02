@@ -356,19 +356,17 @@ public class AdminWindow extends AnunciusJFrame {
 	}
 
 	public void newAdvertisement() {
-		AdsEditWindow editWindow = new AdsEditWindow();
+		AdsEditWindow editWindow = new AdsEditWindow(this);
 		editWindow.setVisible(true);
 	}
 
 	public void deleteAdvertisement() {
 		int id = getSelectedTableElementId(tableAdsList);
-		//TODO borrar el elemento del sistema
-		AdsEditController controller;
 		try {
-			controller = new AdsEditController();
-			controller.deleteAds(new AdvertisementPOJO());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			controller.deleteAd(id);
+			updateTables();
+		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
+				| AdvertisementEndpointSQLExceptionException e) {
 			e.printStackTrace();
 		}
 	}

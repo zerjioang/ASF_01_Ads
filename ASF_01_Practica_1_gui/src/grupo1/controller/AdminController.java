@@ -294,6 +294,17 @@ public class AdminController {
 		}
 	}
 	
+	public void deleteAd(int id) throws RemoteException, AdvertisementEndpointClassNotFoundExceptionException, AdvertisementEndpointSQLExceptionException {
+		GetAd adReq = new GetAd();
+		adReq.setId(id);
+		GetAdResponse adRes = stub.getAd(adReq);
+		Advertisement ad = (Advertisement)adRes.get_return();
+		
+		DeleteAd deleteReq = new DeleteAd();
+		deleteReq.setA(ad);
+		stub.deleteAd(deleteReq);
+	}
+	
 	public static void main(String[] args) {
 		AdminController controller;
 		try {

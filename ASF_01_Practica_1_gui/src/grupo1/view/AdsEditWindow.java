@@ -9,6 +9,9 @@ import org.apache.axis2.AxisFault;
 import grupo1.controller.AdsEditController;
 import grupo1.dao.AdvertisementEndpointClassNotFoundExceptionException;
 import grupo1.dao.AdvertisementEndpointSQLExceptionException;
+import grupo1.dao.GetUser;
+import grupo1.dao.GetUserResponse;
+import grupo1.dto.xsd.Advertisement;
 import grupo1.pojo.AdvertisementPOJO;
 import grupo1.view.base.AnunciusJFrame;
 import grupo1.view.events.AdminGUIEvents;
@@ -46,12 +49,17 @@ public class AdsEditWindow extends AnunciusJFrame {
         init();
     }
 
+    public AdsEditWindow() {
+    	init();
+	}
+    
     public AdsEditWindow(int id) {
     	this.id = id;
     	init();
 	}
     
-    public AdsEditWindow() {
+    public AdsEditWindow(AdminWindow adminWindow) {
+    	this.adminWindow = adminWindow;
     	init();
 	}
 
@@ -100,7 +108,6 @@ public class AdsEditWindow extends AnunciusJFrame {
         
         textFieldAdsCreator = new JTextField();
         textFieldAdsCreator.setColumns(10);
-        textFieldAdsCreator.setEditable(false);
         
         textFieldAdsPrice = new JTextField();
         textFieldAdsPrice.setColumns(10);
@@ -190,12 +197,14 @@ public class AdsEditWindow extends AnunciusJFrame {
 					e.printStackTrace();
 				}
 		        try {
-					advertisement = controller.getAd(id);
-					textFieldAdsID.setText(String.valueOf(advertisement.getId()));
-					textFieldAdsTitle.setText(advertisement.getName());
-					textFieldAdsDescription.setText(advertisement.getDescription());
-					textFieldAdsCreator.setText(advertisement.getAuthor().getName());
-					textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));
+		        	if (id > 0) {
+		        		advertisement = controller.getAd(id);
+		        		textFieldAdsID.setText(String.valueOf(advertisement.getId()));
+		        		textFieldAdsTitle.setText(advertisement.getName());
+		        		textFieldAdsDescription.setText(advertisement.getDescription());
+		        		textFieldAdsCreator.setText(advertisement.getAuthor().getName());
+		        		textFieldAdsPrice.setText(String.valueOf(advertisement.getPrice()));		        		
+		        	}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
@@ -226,10 +235,20 @@ public class AdsEditWindow extends AnunciusJFrame {
 	public void saveChangesButtonEvent() {
 		
 		try {
-			advertisement.setName(textFieldAdsTitle.getText());
-			advertisement.setDescription(textFieldAdsDescription.getText());
-			advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
-			controller.updateAd(advertisement);
+			if (id > 0) {
+				advertisement.setName(textFieldAdsTitle.getText());
+				advertisement.setDescription(textFieldAdsDescription.getText());
+				advertisement.setPrice(Float.valueOf(textFieldAdsPrice.getText()));
+				controller.updateAd(advertisement);				
+			} else {
+				Advertisement ad = new Advertisement();
+				ad.setName(textFieldAdsTitle.getText());
+				ad.setDescription(textFieldAdsDescription.getText());
+				ad.setPrice(Float.valueOf(textFieldAdsPrice.getText()));				
+				int creatorId = Integer.valueOf(textFieldAdsCreator.getText());
+				int categoryId = 31; // HARDCODED, me falta el textfield de donde sacarlo!!!!
+				controller.insertAd(ad, creatorId, categoryId);
+			}
 			
 			adminWindow.updateTables();
 			this.dispose();
