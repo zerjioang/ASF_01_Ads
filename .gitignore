@@ -1,2 +1,13 @@
-/ASF_01_Practica_1_dao/nbproject/private/
-/ASF_01_Practica_1_gui/nbproject/private/
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+#compiled files
+//bin//
+
+# Package Files #
+*.war
+*.ear
+
+hs_err_pid*
