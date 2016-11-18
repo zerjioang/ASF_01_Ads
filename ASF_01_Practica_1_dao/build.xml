@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="help" name="grupo1.dao">
-	
-	<property name="project.file" value="grupo1.dao"/>
-    <property name="src.dir" value="src"/>
-    <property name="build.dir" value="bin"/>
-    <property name="lib.dir" value="lib"/>
-    <property name="dist.dir" value="dist"/>
-    
-	<path id="classpath">
-        <pathelement path="${build.dir}"/>
+
+<project basedir="." name="ASF_01_Practica_1_dao" default="run">
+
+   	<property location="bin" name="bin.dir"/>
+   	<property location="src" name="src.dir"/>    
+   	<property location="lib" name="lib.dir"/>
+	<property location="conf" name="conf.dir"/>
+
+    <path id="classpath">
         <fileset dir="${lib.dir}">
             <include name="*.jar"/>
         </fileset>
+    	<pathelement location="${conf.dir}"/>
     </path>
-	
+
     <target name="clean">
-        <delete dir="${build.dir}"/>
-        <delete dir="${dist.dir}"/>
+        <delete dir="${bin.dir}"/>
     </target>
 	
     <target name="prepare">
-    	<mkdir dir="${build.dir}"/>
-    	<mkdir dir="${dist.dir}"/>
+    	<mkdir dir="${bin.dir}"/>
     </target>
 
     <target name="build" depends="prepare">
-        <javac debug="true" deprecation="true" classpathref="classpath" destdir="${build.dir}" srcdir="${src.dir}"/>        
+        <javac srcdir="${src.dir}" destdir="${bin.dir}" deprecation="true" fork="true">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+    	<copy todir="${bin.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.xml"/>
+            	<include name="**/*.properties"/>
+            </fileset>
+    	</copy>
     </target>
-	
-	<target name="jar" depends="build">
-		<jar destfile="${dist.dir}/${project.file}.jar">
-            <fileset dir="${build.dir}"/>
-            <manifest>
-                <attribute name="Built-By" value="University of Deusto"/>
-            </manifest>
-        </jar>
-		<copy todir="${dist.dir}">
-		    <fileset dir="${lib.dir}"/>
-		  </copy>
-	</target>
 
-    <target name="run" depends="build">                     
-        <java classname="grupo1.dao.test.Test" classpathref="classpath" fork="true"/>
-    </target>
-        
-    <target name="help">
+    <target name="run" depends="build">
+    	<java fork="true" classname="grupo1.dao.test.Test" classpathref="classpath">
+        	<classpath path="${bin.dir}"/>
+    	</java>
+	</target>
+	
+   <target name="help">
   	<echo>
   	Debes especificar la tarea a ejecutar: ant [tarea]
   	[tarea]:
-  		- clean
   		- prepare
   		- build
-  		- jar
-  		- run
+  		- run                
+  		- clean
   	</echo>
     </target>
 </project>

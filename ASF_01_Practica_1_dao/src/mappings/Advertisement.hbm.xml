@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="grupo1.dto">
+
+  <class name="Advertisement" table="Anuncio">
+			<id name="id" column="id">
+					<generator class="native"/>
+			</id>
+		<property name="name" column="name"/>
+		<property name="description" column="description"/>
+		<property name="price" column="price"/>
+		<many-to-one name="author" column="id" class="User" not-null="true" insert="false" update="false"/>
+		<many-to-one name="category" column="id" class="Category" not-null="true" insert="false" update="false"/>
+	</class>
+</hibernate-mapping>

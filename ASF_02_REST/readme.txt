@@ -1,4 +1,7 @@
-#Run configuration
+# Setup recommendation
+Highly recommended to run it with NetBeans IDE Java EE https://netbeans.org/downloads/
+
+# Run configuration
 
 Launching GlassFish on Felix platform
 

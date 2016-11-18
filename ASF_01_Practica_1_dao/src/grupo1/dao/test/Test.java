@@ -12,6 +12,11 @@ public class Test {
 		this.gbd = new GestorBD();
 	}
 	
+	private void testConnection() {
+		gbd.abrirSession();
+		gbd.cerrarSession();
+	}
+	
 	public void testUsers(){
         try {
 			User u = new User();
@@ -99,9 +104,10 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
         
-        test.testUsers();
-        test.testCategories();
-        test.testAdvertisements();
+        test.testConnection();
+        //test.testUsers();
+        //test.testCategories();
+        //test.testAdvertisements();
         
         System.out.println("Done!");
     }

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 import javax.jws.WebService;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import grupo1.dto.*;
 
 @WebService
@@ -17,16 +22,32 @@ public class GestorBD {
     private String password = "gestor2016";
     
     private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String PROTOCOL = "jdbc:mysql";    
+    private final String PROTOCOL = "jdbc:mysql";
+    
+    // Hibernate
+    private SessionFactory factory;
+	private Transaction tx;
+	private Session s;
     
     public GestorBD() {
+    	factory = new Configuration().configure().buildSessionFactory();
     }
     
     public GestorBD(String dataSource, String userName, String password){
     	this.dataSource = dataSource;
     	this.userName = userName;
     	this.password = password;
+    	
+    	factory = new Configuration().configure().buildSessionFactory();
     }
+    
+    public void abrirSession() {
+		s = factory.openSession();
+	}
+	
+	public void cerrarSession() {
+		s.close();
+	}
 
     // Connection management
     private void conectar() throws ClassNotFoundException, SQLException{
