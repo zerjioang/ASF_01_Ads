@@ -23,7 +23,7 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-     		<property name="hbm2ddl.auto">validate</property>
+     		<property name="hbm2ddl.auto">create</property>
 
         <mapping resource="mappings/Advertisement.hbm.xml"/>
         <mapping resource="mappings/Category.hbm.xml"/>

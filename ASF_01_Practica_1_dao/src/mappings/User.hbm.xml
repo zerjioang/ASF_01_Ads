@@ -12,6 +12,6 @@
 		<property name="name" column="name"/>
 		<property name="email" column="email"/>
 		<property name="password" column="password"/>
-		<property name="signupDate" column="signup_date"/>
+		<property name="signupDate" column="signup_date" insert="false" update="false"/>
 	</class>
 </hibernate-mapping>
