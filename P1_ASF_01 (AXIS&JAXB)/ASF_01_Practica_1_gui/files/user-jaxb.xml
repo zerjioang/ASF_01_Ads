@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Users>
+    <User>
+        <id>43</id>
+        <name>Aitor</name>
+        <email>aitor.brazaola@opendeusto.es</email>
+        <password>df75lss72</password>
+        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+    </User>
+    <User>
+        <id>45</id>
+        <name>Ibon</name>
+        <email>ibon.arretxe@gmail.com</email>
+        <password>fdfdsdf2</password>
+        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+    </User>
+    <User>
+        <id>47</id>
+        <name>Javi</name>
+        <email>javi.pelaez@outlook.com</email>
+        <password>654nvcuy2</password>
+        <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+    </User>
+    <User>
+        <id>48</id>
+        <name>Aitor</name>
+        <email>aitor.brazaola@opendeusto.es</email>
+        <password>123456</password>
+        <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+    </User>
+</Users>
