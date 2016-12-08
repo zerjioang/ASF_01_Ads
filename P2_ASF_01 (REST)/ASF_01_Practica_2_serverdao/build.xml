@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project basedir="." default="deploy" name="ASF_01_Practica_2_serverdao">
-	<property environment="env"/>
-	<property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
-	<property name="project.file" value="grupo1"/>
+<project basedir="." default="build" name="ASF_01_Practica_2_serverdao">
+	<property name="tomcat.home" value="/usr/local/Cellar/tomcat/8.5.5/libexec"/>
+	<property name="project.file" value="ASF_01_P2"/>
     <property name="source.dir" value="src"/>
     <property name="build.dir" value="bin"/>
 	<property name="conf.dir" value="conf"/>
@@ -34,6 +33,14 @@
                 <path refid="classpath"/>
             </classpath>
         </javac>
+    </target>
+	
+	<target name="TestDAO" depends="build">                     
+        <java classname="grupo1.dao.test.TestDao" classpathref="classpath" fork="true"/>
+    </target>
+	
+	<target name="TestREST" depends="build">                     
+        <java classname="grupo1.dao.test.TestRest" classpathref="classpath" fork="true"/>
     </target>
 	
     <target name="war">

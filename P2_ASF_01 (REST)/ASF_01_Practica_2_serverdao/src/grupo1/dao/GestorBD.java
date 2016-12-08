@@ -3,26 +3,35 @@ package grupo1.dao;
 import java.sql.*;
 import java.util.ArrayList;
 
-import grupo1.dto.*;
+import grupo1.model.*;
 
 public class GestorBD {
 	
+	private static GestorBD instance;
+	
 	private Connection con;
 	
-    private String dataSource = "//localhost/asf_anuncios_p2";
-    private String userName = "gestor_anuncios";
-    private String password = "gestor2016";
+    private final String DATA_SOURCE = "//localhost/asf_anuncios_p2";
+    private final String USER_NAME = "gestor_anuncios";
+    private final String PASSWORD = "gestor2016";
     
     private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String PROTOCOL = "jdbc:mysql";    
+    private final String PROTOCOL = "jdbc:mysql";
+
+	private String dataSource;
+	private String userName;
+	private String password;    
     
-    public GestorBD() {
+    private GestorBD() {
+    	this.dataSource = DATA_SOURCE;
+    	this.userName = USER_NAME;
+    	this.password = PASSWORD;
     }
     
-    public GestorBD(String dataSource, String userName, String password){
-    	this.dataSource = dataSource;
-    	this.userName = userName;
-    	this.password = password;
+    public static GestorBD getInstace() {
+    	if (instance == null) instance = new GestorBD();
+    	
+    	return instance;
     }
 
     // Connection management

@@ -1,5 +1,8 @@
-package grupo1.dto;
+package grupo1.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Advertisement {
 	private int id;
 	private String name;

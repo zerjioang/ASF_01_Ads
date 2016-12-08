@@ -4,12 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import grupo1.dao.GestorBD;
-import grupo1.dto.*;
+import grupo1.model.*;
 
-public class Test {
+public class TestDao {
 	private GestorBD gbd;
-	public Test() {
-		this.gbd = new GestorBD();
+	public TestDao() {
+		this.gbd = GestorBD.getInstace();
 	}
 	
 	public void testUsers(){
@@ -97,7 +97,7 @@ public class Test {
 	}
     
     public static void main(String[] args) {
-        Test test = new Test();
+        TestDao test = new TestDao();
         
         test.testUsers();
         test.testCategories();

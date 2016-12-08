@@ -1,7 +1,10 @@
-package grupo1.dto;
+package grupo1.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class User {
 	private int id;
 	private String name;
