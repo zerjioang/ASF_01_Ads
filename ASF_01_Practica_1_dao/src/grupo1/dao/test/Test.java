@@ -19,6 +19,7 @@ public class Test {
 	
 	public void testUsers(){
         try {
+        	gbd.abrirSession();
 			User u = new User();
 			u.setEmail("aitor.brazaola@opendeusto.es");
 			u.setName("Aitor");
@@ -36,6 +37,11 @@ public class Test {
 			u = gbd.getUser(userId);
 			System.out.println("User created:" + u.toString());
 			
+			System.out.println("Now let's change the user name by: UpdatedName");
+			u.setName("UpdatedName");
+			gbd.updateUser(u);
+			
+			gbd.cerrarSession();
         } catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -43,14 +49,13 @@ public class Test {
 	
 	public void testCategories(){
         try {
-			
+			gbd.abrirSession();
 			Category c = new Category();
 			c.setName("Technology");
 			c.setDescription("Electronic devices and gadgets");
 			int catId = gbd.insertCategory(c);
 			c = gbd.getCategory(catId);
 			System.out.println("Category created:" + c.toString());
-			
 			System.out.println("Let's delete recently added category");
 			gbd.deleteCategory(c);
 			System.out.println("Deleted successfully. Let's insert it again");
@@ -59,8 +64,13 @@ public class Test {
 			c = gbd.getCategory(catId);
 			System.out.println("Category created:" + c.toString());
 			
+			System.out.println("Now let's change the cat description by: new desc");
+			c.setDescription("new desc");
+			gbd.updateCategory(c);
+			
 			System.out.println("Now, give me a list of all categories created");
 			System.out.println(gbd.getCategories());
+			gbd.cerrarSession();
 			
         } catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -69,7 +79,9 @@ public class Test {
 	
 	public void testAdvertisements() {
 		try {
+			gbd.abrirSession();
 			ArrayList<Category> categories = gbd.getCategories();
+			System.out.println("Array categorias: "+categories.get(0).toString());
 			ArrayList<User> users = gbd.getUsers();
 			
 			Advertisement ad = new Advertisement();
@@ -91,11 +103,16 @@ public class Test {
 			System.out.println(gbd.getAds());
 			
 			System.out.println("Lets search Inca");
-			ArrayList<Advertisement> adsQueried = gbd.getAdsByQueryOnName("Inca");
+			ArrayList<Advertisement> adsQueried = gbd.getAdsByQueryOnName("Alhambra");
 			for (Advertisement advertisement : adsQueried) {
 				System.out.println(advertisement.toString());
 			}
+			
+			//gbd.deleteUser(users.get(0));
+			//gbd.deleteCategory(categories.get(0));
+			
 			System.out.println("End");
+			gbd.cerrarSession();
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -105,9 +122,9 @@ public class Test {
         Test test = new Test();
         
         test.testConnection();
-        //test.testUsers();
-        //test.testCategories();
-        //test.testAdvertisements();
+        test.testUsers();
+        test.testCategories();
+        test.testAdvertisements();
         
         System.out.println("Done!");
     }

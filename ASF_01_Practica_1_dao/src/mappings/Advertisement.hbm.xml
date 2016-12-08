@@ -12,7 +12,7 @@
 		<property name="name" column="name"/>
 		<property name="description" column="description"/>
 		<property name="price" column="price"/>
-		<many-to-one name="author" column="id" class="User" not-null="true" insert="false" update="false"/>
-		<many-to-one name="category" column="id" class="Category" not-null="true" insert="false" update="false"/>
+		<many-to-one name="author" column="creator_id" class="User" not-null="true"/>
+		<many-to-one name="category" column="category_id" class="Category" not-null="true"/>
 	</class>
 </hibernate-mapping>
