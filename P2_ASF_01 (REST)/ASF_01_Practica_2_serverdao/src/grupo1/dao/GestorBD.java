@@ -3,11 +3,8 @@ package grupo1.dao;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.jws.WebService;
-
 import grupo1.dto.*;
 
-@WebService
 public class GestorBD {
 	
 	private Connection con;

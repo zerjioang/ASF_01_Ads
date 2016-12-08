@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project basedir="." name="ASF_01_Practica_1_dao" default="run">
+<project basedir="." name="ASF_01_Practica_3_hibernate" default="run">
 
    	<property location="bin" name="bin.dir"/>
    	<property location="src" name="src.dir"/>    

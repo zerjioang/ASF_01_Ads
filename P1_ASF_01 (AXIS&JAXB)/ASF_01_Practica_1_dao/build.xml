@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="help" name="grupo1.dao">
+<project basedir="." default="help" name="ASF_01_Practica_1_dao">
 	
 	<property name="project.file" value="grupo1.dao"/>
     <property name="src.dir" value="src"/>
