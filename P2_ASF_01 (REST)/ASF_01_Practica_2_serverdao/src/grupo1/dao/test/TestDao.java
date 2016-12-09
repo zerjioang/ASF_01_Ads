@@ -9,7 +9,7 @@ import grupo1.model.*;
 public class TestDao {
 	private GestorBD gbd;
 	public TestDao() {
-		this.gbd = GestorBD.getInstace();
+		this.gbd = GestorBD.getInstance();
 	}
 	
 	public void testUsers(){

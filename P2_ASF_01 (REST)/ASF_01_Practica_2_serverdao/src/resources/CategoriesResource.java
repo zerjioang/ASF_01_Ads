@@ -1,30 +1,75 @@
 package resources;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import grupo1.model.*;
+import grupo1.dao.GestorBD;
 
 @Path("/categories")
 public class CategoriesResource {
-	@Context
-	UriInfo uriInfo;
-	@Context
-	Request request;
-	
-	@Path("{categoryId}")
-	public CategoryResource getCategory(@PathParam("categoryId") int id) {
-		CategoryResource cR = null;
+	@GET
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public List<Category> getCategories() {
+		ArrayList<Category> categories = null;
 		try {
-			cR = new CategoryResource(id);
+			categories = GestorBD.getInstance().getCategories();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return cR;
+		return categories;
+	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Category getCategory(@PathParam("id") int id) {
+		try {
+			return GestorBD.getInstance().getCategory(id);
+		} catch (ClassNotFoundException | SQLException e) {
+			return null;
+		}
+	}
+	
+	@POST
+    @Path("/create")
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Response addCategory(Category c) {
+		try {
+			GestorBD.getInstance().insertCategory(c);
+			return Response.ok().build();
+		} catch (ClassNotFoundException | SQLException e) {
+			return Response.serverError().build();
+		}
+	}
+	
+	@PUT
+    @Path("/update/{id}")
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Response updateCategory(@PathParam("id") int id, Category c) {
+		try {
+			GestorBD.getInstance().updateCategory(c);
+			return Response.ok().build();
+		} catch (ClassNotFoundException | SQLException e) {
+			return Response.serverError().build();
+		}
+	}
+	
+	@DELETE
+    @Path("/delete/{id}")
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Response deleteCategory(@PathParam("id") int id) {
+		Category catToRemove;
+		try {
+			catToRemove = GestorBD.getInstance().getCategory(id);
+			GestorBD.getInstance().deleteCategory(catToRemove);
+			return Response.ok().build();
+		} catch (ClassNotFoundException | SQLException e) {
+			return Response.serverError().build();
+		}
 	}
 }

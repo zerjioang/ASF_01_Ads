@@ -28,7 +28,7 @@ public class GestorBD {
     	this.password = PASSWORD;
     }
     
-    public static GestorBD getInstace() {
+    public static GestorBD getInstance() {
     	if (instance == null) instance = new GestorBD();
     	
     	return instance;
