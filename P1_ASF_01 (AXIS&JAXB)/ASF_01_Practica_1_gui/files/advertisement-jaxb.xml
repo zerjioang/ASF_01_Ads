@@ -2,7 +2,7 @@
 <Advertisements>
     <Advertisement>
         <id>1</id>
-        <name>SEAT Ibiza SC</name>
+        <name>SEAT Ibiza SC2</name>
         <description>Con todos los filtros recién cambiados y distribución recién hecha.</description>
         <price>6900.0</price>
         <category>
@@ -15,7 +15,7 @@
             <name>Aitor</name>
             <email>aitor.brazaola@opendeusto.es</email>
             <password>df75lss72</password>
-            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
@@ -33,7 +33,7 @@
             <name>Ibon</name>
             <email>ibon.arretxe@gmail.com</email>
             <password>fdfdsdf2</password>
-            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
@@ -51,7 +51,7 @@
             <name>Javi</name>
             <email>javi.pelaez@outlook.com</email>
             <password>654nvcuy2</password>
-            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
@@ -69,7 +69,7 @@
             <name>Javi</name>
             <email>javi.pelaez@outlook.com</email>
             <password>654nvcuy2</password>
-            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
@@ -87,7 +87,61 @@
             <name>Aitor</name>
             <email>aitor.brazaola@opendeusto.es</email>
             <password>df75lss72</password>
-            <signupDate>2016-10-30T01:00:00+02:00</signupDate>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>35</id>
+        <name>SEAT Alhambra</name>
+        <description>Coche familiar</description>
+        <price>6900.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Dispositivos electrónicos y gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>df75lss72</password>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>36</id>
+        <name>SEAT Alhambra</name>
+        <description>Coche familiar</description>
+        <price>6900.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Dispositivos electrónicos y gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>df75lss72</password>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+        </author>
+    </Advertisement>
+    <Advertisement>
+        <id>38</id>
+        <name>Benito</name>
+        <description>Camelass</description>
+        <price>34555.0</price>
+        <category>
+            <id>31</id>
+            <name>Technology</name>
+            <description>Dispositivos electrónicos y gadgets</description>
+        </category>
+        <author>
+            <id>43</id>
+            <name>Aitor</name>
+            <email>aitor.brazaola@opendeusto.es</email>
+            <password>df75lss72</password>
+            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
 </Advertisements>

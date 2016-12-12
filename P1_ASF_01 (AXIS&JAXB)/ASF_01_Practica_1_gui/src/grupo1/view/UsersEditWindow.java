@@ -100,15 +100,6 @@ public class UsersEditWindow extends AnunciusJFrame {
         setBounds(100, 100, 450, 280);
         setMinimumSize(new Dimension(450, 280));
         
-        JPanel panelBannerWarning = new JPanel();
-        panelBannerWarning.setBackground(Color.RED);
-        getContentPane().add(panelBannerWarning, BorderLayout.NORTH);
-        
-        JLabel lblWarningYouAre = new JLabel("Warning: you are editing a User profile");
-        lblWarningYouAre.setBackground(Color.RED);
-        lblWarningYouAre.setForeground(Color.WHITE);
-        panelBannerWarning.add(lblWarningYouAre);
-        
         JPanel panelWindowContent = new JPanel();
         getContentPane().add(panelWindowContent, BorderLayout.CENTER);
         

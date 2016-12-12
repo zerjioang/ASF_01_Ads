@@ -1,7 +1,6 @@
 package grupo1.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.rmi.RemoteException;
@@ -78,15 +77,6 @@ public class AdsEditWindow extends AnunciusJFrame {
         setBounds(100, 100, 450, 312);
         setMinimumSize(new Dimension(450, 280));
         
-        JPanel panelBannerWarning = new JPanel();
-        panelBannerWarning.setBackground(Color.RED);
-        getContentPane().add(panelBannerWarning, BorderLayout.NORTH);
-        
-        JLabel lblWarningYouAre = new JLabel("Warning: you are editing a user message");
-        lblWarningYouAre.setBackground(Color.RED);
-        lblWarningYouAre.setForeground(Color.WHITE);
-        panelBannerWarning.add(lblWarningYouAre);
-        
         JPanel panelWindowContent = new JPanel();
         getContentPane().add(panelWindowContent, BorderLayout.CENTER);
         
@@ -112,7 +102,6 @@ public class AdsEditWindow extends AnunciusJFrame {
         
         txtCreator = new JTextField();
         txtCreator.setColumns(10);
-        txtCreator.setEditable(false);
         
         txtPrice = new JTextField();
         txtPrice.setColumns(10);
@@ -221,6 +210,9 @@ public class AdsEditWindow extends AnunciusJFrame {
 						txtTitle.setText(advertisement.getName());
 						txtDescription.setText(advertisement.getDescription());
 						txtCreator.setText(advertisement.getAuthor().getName());
+						txtCreator.setEditable(false);
+						txtCategory.setText(advertisement.getCategory().getName());
+						txtCategory.setEditable(false);
 						txtPrice.setText(String.valueOf(advertisement.getPrice()));		        		
 		        	}
 				} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
@@ -252,6 +244,7 @@ public class AdsEditWindow extends AnunciusJFrame {
 
 	public void saveChangesButtonEvent() {
 		try {
+			boolean error = false;
 			if (id > 0) {
 				advertisement.setName(txtTitle.getText());
 				advertisement.setDescription(txtDescription.getText());
@@ -259,6 +252,7 @@ public class AdsEditWindow extends AnunciusJFrame {
 					advertisement.setPrice(Float.valueOf(txtPrice.getText()));
 					controller.updateAd(advertisement);		
 				} catch (NumberFormatException e) {
+					error = true;
 					JOptionPane.showMessageDialog(this, "Please enter a valid price value", "Invalid value", JOptionPane.ERROR_MESSAGE);
 				}
 			} else {
@@ -268,6 +262,7 @@ public class AdsEditWindow extends AnunciusJFrame {
 				try {
 					ad.setPrice(Float.valueOf(txtPrice.getText()));
 				} catch (NumberFormatException e2) {
+					error = true;
 					JOptionPane.showMessageDialog(this, "Please enter a valid price value", "Invalid value", JOptionPane.ERROR_MESSAGE);
 				}			
 				
@@ -277,14 +272,18 @@ public class AdsEditWindow extends AnunciusJFrame {
 					try {
 						int categoryId = Integer.valueOf(txtCategory.getText());
 						controller.insertAd(ad, creatorId, categoryId);
-						adminWindow.updateTables();
-						this.dispose();
-					} catch (NumberFormatException e) {
+					} catch (NumberFormatException | AxisFault e) {
+						error = true;
 						JOptionPane.showMessageDialog(this, "Please enter a valid category ID", "Invalid value", JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
+					error = true;
 					JOptionPane.showMessageDialog(this, "Please enter a valid creator ID", "Invalid value", JOptionPane.ERROR_MESSAGE);
 				}
+			}
+			if (!error) {
+				adminWindow.updateTables();
+				this.dispose();				
 			}
 		} catch (RemoteException | AdvertisementEndpointClassNotFoundExceptionException
 				| AdvertisementEndpointSQLExceptionException e) {

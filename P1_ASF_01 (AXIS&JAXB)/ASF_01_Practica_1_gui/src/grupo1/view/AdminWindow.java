@@ -416,6 +416,7 @@ public class AdminWindow extends AnunciusJFrame {
 			public void run() {
 				try {
 					controller.restoreData();
+					updateTables();
 				} catch (JAXBException | IOException | AdvertisementEndpointClassNotFoundExceptionException
 						| AdvertisementEndpointSQLExceptionException e) {
 					// TODO Auto-generated catch block
