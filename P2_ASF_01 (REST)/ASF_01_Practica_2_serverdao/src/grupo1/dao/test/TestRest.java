@@ -34,14 +34,14 @@ public class TestRest {
 			listCategories(service);
 			
 			// Delete category
-			//service.path("rest").path("categories").path("delete").path("74").accept(MediaType.APPLICATION_XML).delete();
+			//service.path("rest").path("categories").path("delete").path("94").accept(MediaType.APPLICATION_XML).delete();
 			
 			listCategories(service);
 			
-			Category c = service.path("rest").path("categories").path("31").get(Category.class);
+			Category c = service.path("rest").path("categories").path("92").get(Category.class);
 			System.out.println("Category recovered: " + c.toString());
 			
-			c.setDescription("New description via REST");
+			c.setDescription("New dezczxxcxzczscription via REST");
 			
 			service.path("rest").path("categories").path("update").path(String.valueOf(c.getId())).put(c);
 			

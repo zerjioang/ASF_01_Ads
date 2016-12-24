@@ -38,7 +38,7 @@ public class Test {
 			System.out.println("User created:" + u.toString());
 			
 			System.out.println("Now let's change the user name by: UpdatedName");
-			u.setName("UpdatedName");
+			u.setName("UpdathjhjhjhjedName");
 			gbd.updateUser(u);
 			
 			gbd.cerrarSession();

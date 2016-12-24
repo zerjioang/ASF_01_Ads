@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+    <package name="default" extends="struts-default">
+        <action name="ListAds" class="grupo1.ListAds">
+            <result>/jsp/listAds.jsp</result>
+        </action>
+        <action name="ListUsers" class="grupo1.ListUsers">
+            <result>/jsp/listUsers.jsp</result>
+        </action>
+        <action name="ListCategories" class="grupo1.ListCategories">
+            <result>/jsp/listCategories.jsp</result>
+        </action>
+         <!-- Add actions here -->
+    </package>
+    <!-- Add packages here -->
+</struts>

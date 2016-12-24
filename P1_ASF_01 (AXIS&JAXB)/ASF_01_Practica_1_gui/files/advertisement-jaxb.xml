@@ -15,12 +15,12 @@
             <name>Aitor</name>
             <email>aitor.brazaola@opendeusto.es</email>
             <password>df75lss72</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+            <signupDate>2016-12-12T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
     <Advertisement>
         <id>29</id>
-        <name>VW Passat</name>
+        <name>VW Passatttt</name>
         <description>Coche familiar con muchas comodidades, recién pintado.</description>
         <price>10000.0</price>
         <category>
@@ -33,115 +33,7 @@
             <name>Ibon</name>
             <email>ibon.arretxe@gmail.com</email>
             <password>fdfdsdf2</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>31</id>
-        <name>AMD Radeon R9 390</name>
-        <description>Poco uso, la vendo por que cambio a una más potente.</description>
-        <price>125.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>47</id>
-            <name>Javi</name>
-            <email>javi.pelaez@outlook.com</email>
-            <password>654nvcuy2</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>33</id>
-        <name>TV Samsung 4K</name>
-        <description>50" muy bien cuidada</description>
-        <price>200.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>47</id>
-            <name>Javi</name>
-            <email>javi.pelaez@outlook.com</email>
-            <password>654nvcuy2</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>34</id>
-        <name>SEAT Alhambra</name>
-        <description>Coche familiar</description>
-        <price>6900.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>df75lss72</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>35</id>
-        <name>SEAT Alhambra</name>
-        <description>Coche familiar</description>
-        <price>6900.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>df75lss72</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>36</id>
-        <name>SEAT Alhambra</name>
-        <description>Coche familiar</description>
-        <price>6900.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>df75lss72</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
-        </author>
-    </Advertisement>
-    <Advertisement>
-        <id>38</id>
-        <name>Benito</name>
-        <description>Camelass</description>
-        <price>34555.0</price>
-        <category>
-            <id>31</id>
-            <name>Technology</name>
-            <description>Dispositivos electrónicos y gadgets</description>
-        </category>
-        <author>
-            <id>43</id>
-            <name>Aitor</name>
-            <email>aitor.brazaola@opendeusto.es</email>
-            <password>df75lss72</password>
-            <signupDate>2016-12-08T00:00:00+01:00</signupDate>
+            <signupDate>2016-12-12T00:00:00+01:00</signupDate>
         </author>
     </Advertisement>
 </Advertisements>
