@@ -8,8 +8,8 @@ public class Advertisement {
 	private String name;
 	private String description;
 	private Float price;
-	private Category category;
-	private User author;
+	private int categoryId;
+	private int authorId;
 	
 	public Advertisement() {}
 	public Advertisement(int id, String name, String description, Float price) {
@@ -43,22 +43,22 @@ public class Advertisement {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public Category getCategory() {
-		return category;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
-	public User getAuthor() {
-		return author;
+	public int getAuthorId() {
+		return authorId;
 	}
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
 	}
 	@Override
 	public String toString() {
 		return "Advertisement [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", category=" + category + ", author=" + author + "]";
+				+ ", category=" + categoryId + ", author=" + authorId + "]";
 	}
 	
 }

@@ -70,8 +70,8 @@ public class TestDao {
 			Advertisement ad = new Advertisement();
 			ad.setName("SEAT Ibiza SC");
 			ad.setDescription("Muy bienc uidado, edicion 25 aniversario, llantas de 17 pulgadas");
-			ad.setCategory(categories.get(0));
-			ad.setAuthor(users.get(0));
+			ad.setCategoryId(categories.get(0).getId());
+			ad.setAuthorId(users.get(0).getId());
 			ad.setPrice((float) 6900);
 			
 			int adId = gbd.insertAd(ad);

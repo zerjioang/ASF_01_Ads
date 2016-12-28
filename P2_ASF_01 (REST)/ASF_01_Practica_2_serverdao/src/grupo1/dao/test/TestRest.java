@@ -38,7 +38,7 @@ public class TestRest {
 			
 			listCategories(service);
 			
-			Category c = service.path("rest").path("categories").path("92").get(Category.class);
+			Category c = service.path("rest").path("categories").path("31").get(Category.class);
 			System.out.println("Category recovered: " + c.toString());
 			
 			c.setDescription("New dezczxxcxzczscription via REST");
@@ -78,10 +78,10 @@ public class TestRest {
 			System.out.println("=== ADS ===");
 			listAds(service);
 			
-			// Insert new user
+			// Insert new ad
 			Advertisement newAd = new Advertisement();
-			newAd.setAuthor(u);
-			newAd.setCategory(c);
+			newAd.setAuthorId(u.getId());
+			newAd.setCategoryId(c.getId());
 			newAd.setDescription("Ad created via rest");
 			newAd.setName("Rest advertisement");
 			service.path("rest").path("advertisements").path("create").accept(MediaType.APPLICATION_XML).post(newAd);
@@ -93,7 +93,7 @@ public class TestRest {
 			
 			listAds(service);
 			
-			Advertisement a = service.path("rest").path("advertisements").path("35").get(Advertisement.class);
+			Advertisement a = service.path("rest").path("advertisements").path("63").get(Advertisement.class);
 			System.out.println("Ad recovered: " + a.toString());
 			
 			a.setName("New name via REST");

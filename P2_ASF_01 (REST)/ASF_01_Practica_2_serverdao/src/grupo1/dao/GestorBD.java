@@ -148,16 +148,16 @@ public class GestorBD {
 		            "(id, name, description, creator_id, category_id, price) " +
 		            "VALUES ("+ a.getId() + ",'" + a.getName() +
 		            "','"  + a.getDescription() +
-		            "',"  + a.getAuthor().getId() +
-		            ","  + a.getCategory().getId() +
+		            "',"  + a.getAuthorId() +
+		            ","  + a.getCategoryId() +
 		            ","  + a.getPrice() + ")";      
 		} else {
 			insert = "insert into ANUNCIO " +
 		            "(name, description, creator_id, category_id, price) " +
 		            "VALUES ('" + a.getName() +
 		            "','"  + a.getDescription() +
-		            "',"  + a.getAuthor().getId() +
-		            ","  + a.getCategory().getId() +
+		            "',"  + a.getAuthorId() +
+		            ","  + a.getCategoryId() +
 		            ","  + a.getPrice() + ")";      
 		}
 
@@ -193,8 +193,8 @@ public class GestorBD {
         	a.setName(rs.getString("name"));
         	a.setDescription(rs.getString("description"));
         	a.setPrice(rs.getFloat("price"));
-        	a.setAuthor(this.getUser(rs.getInt("creator_id")));
-        	a.setCategory(this.getCategory(rs.getInt("category_id")));
+        	a.setAuthorId(rs.getInt("creator_id"));
+        	a.setCategoryId(rs.getInt("category_id"));
         }
         
         rs.close();
@@ -208,8 +208,8 @@ public class GestorBD {
     	String update = "update ANUNCIO set name='" + a.getName() + 
 				"', description='" + a.getDescription() +
 				"', price=" + a.getPrice() +
-				", category_id=" + a.getCategory().getId() +
-				", creator_id=" + a.getAuthor().getId() +
+				", category_id=" + a.getCategoryId() +
+				", creator_id=" + a.getAuthorId() +
 				" where id=" + a.getId();
 		Statement stmt = con.createStatement();
 		stmt.executeUpdate(update);
@@ -240,8 +240,8 @@ public class GestorBD {
 	    			rs.getString("description"),
 	    			rs.getFloat("price")
 	    			);
-	    	a.setAuthor(getUser(rs.getInt("creator_id")));
-	    	a.setCategory(getCategory(rs.getInt("category_id")));
+	    	a.setAuthorId(rs.getInt("creator_id"));
+	    	a.setCategoryId(rs.getInt("category_id"));
 	    	ads.add(a);
 	    }
 	    rs.close();
@@ -399,8 +399,8 @@ public class GestorBD {
         			rs.getString("description"), 
         			rs.getFloat("price")
         			);
-        	ad.setAuthor(this.getUser(rs.getInt("creator_id")));
-        	ad.setCategory(this.getCategory(rs.getInt("category_id")));
+        	ad.setAuthorId(rs.getInt("creator_id"));
+        	ad.setCategoryId(rs.getInt("category_id"));
         	ads.add(ad);
         }
         rs.close();
@@ -423,8 +423,8 @@ public class GestorBD {
         			rs.getString("description"), 
         			rs.getFloat("price")
         			);
-        	ad.setAuthor(this.getUser(rs.getInt("creator_id")));
-        	ad.setCategory(this.getCategory(rs.getInt("category_id")));
+        	ad.setAuthorId(rs.getInt("creator_id"));
+        	ad.setCategoryId(rs.getInt("category_id"));
         	ads.add(ad);
         }
         rs.close();

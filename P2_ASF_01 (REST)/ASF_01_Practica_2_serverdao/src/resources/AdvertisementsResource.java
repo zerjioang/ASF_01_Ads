@@ -38,6 +38,7 @@ public class AdvertisementsResource {
 	@POST
     @Path("/create")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response addAdvertisement(Advertisement a) {
 		try {
 			GestorBD.getInstance().insertAd(a);
@@ -50,6 +51,7 @@ public class AdvertisementsResource {
 	@PUT
     @Path("/update/{id}")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response updateAdvertisement(@PathParam("id") int id, Advertisement a) {
 		try {
 			GestorBD.getInstance().updateAdvertisement(a);
