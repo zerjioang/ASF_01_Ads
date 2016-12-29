@@ -7,6 +7,14 @@
 
     <constant name="struts.devMode" value="true" />
     <package name="default" extends="struts-default">
+    	<action name="showLogin">
+			<result>/jsp/login.jsp</result>
+        </action>
+        <action name="doLogin" class="grupo1.Login">
+            <result  name="input">/jsp/login.jsp</result>
+			<result  name="error">/jsp/login.jsp</result>
+			<result>/jsp/listAds.jsp</result>
+        </action>
         <action name="ListAds" class="grupo1.ListAds">
             <result>/jsp/listAds.jsp</result>
         </action>

@@ -30,7 +30,6 @@ $(document).ready(function(){
 	
 	function updateAds() {
 		if ($(".adsTbody").length){
-			console.log('Updating ads...');
 			$.get( "http://localhost:8080/ASF_01_P2/rest/advertisements", function( data ) {
 				$(".adsTbody").empty();
 	    		data.advertisement.forEach(function(item){
@@ -42,11 +41,10 @@ $(document).ready(function(){
 	
 	function updateCats() {
 		if($(".catsTbody").length) {
-			console.log('Updating cats...');
 			$.get( 'http://localhost:8080/ASF_01_P2/rest/categories', function( data ) {
 				$(".catsTbody").empty();
 				data.category.forEach(function(item){
-					$(".catsTbody").append('<tr><td>'+item.id+'</td><td>'+item.name+'</td><td>'+item.description+'</td><td><button class="btn btn-warning btn-updatecat" data-toggle="modal" data-target="#createCatModal" data-adid='+item.id+'>Update</button> <button class="btn btn-danger btn-deletecat" data-catid='+item.id+'>Delete</button></td></tr>');
+					$(".catsTbody").append('<tr><td>'+item.id+'</td><td>'+item.name+'</td><td>'+item.description+'</td><td><button class="btn btn-warning btn-updatecat" data-toggle="modal" data-target="#createCatModal" data-catid='+item.id+'>Update</button> <button class="btn btn-danger btn-deletecat" data-catid='+item.id+'>Delete</button></td></tr>');
 				});
 			}, "json" );
 		}
@@ -54,11 +52,10 @@ $(document).ready(function(){
 	
 	function updateUsers() {
 		if($(".usersTbody").length) {
-			console.log('Updating users...');
 			$.get( 'http://localhost:8080/ASF_01_P2/rest/users', function( data ) {
 				$(".usersTbody").empty();
 				data.user.forEach(function(item){
-					$(".usersTbody").append('<tr><td>'+item.id+'</td><td>'+item.name+'</td><td>'+item.email+'</td><td>'+item.password+'</td><td>'+item.signupDate+'</td><td><button class="btn btn-warning btn-updateuser" data-toggle="modal" data-target="#createUserModal" data-adid='+item.id+'>Update</button> <button class="btn btn-danger btn-deleteuser" data-userid='+item.id+'>Delete</button></td></tr>');
+					$(".usersTbody").append('<tr><td>'+item.id+'</td><td>'+item.name+'</td><td>'+item.email+'</td><td>'+item.password+'</td><td>'+item.signupDate+'</td><td><button class="btn btn-warning btn-updateuser" data-toggle="modal" data-target="#createUserModal" data-userid='+item.id+'>Update</button> <button class="btn btn-danger btn-deleteuser" data-userid='+item.id+'>Delete</button></td></tr>');
 				});
 			}, "json" );			
 		}
@@ -69,7 +66,6 @@ $(document).ready(function(){
 	
 	// ---------- DELETE -------------------
 	$(document).on('click','.btn-deletead', function(event){
-		console.log($(this).data('adid'));
 		var request = HOST_PREFIX+ADS+'/delete/'+$(this).data('adid');
 		$.ajax({
 		    url: request,
@@ -80,7 +76,6 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click','.btn-deletecat', function(event){
-		console.log($(this).data('catid'));
 		var request = HOST_PREFIX+CATEGORIES+'/delete/'+$(this).data('catid');
 		$.ajax({
 		    url: request,
@@ -91,7 +86,6 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click','.btn-deleteuser', function(event){
-		console.log($(this).data('userid'));
 		var request = HOST_PREFIX+USERS+'/delete/'+$(this).data('userid');
 		$.ajax({
 		    url: request,
@@ -101,15 +95,19 @@ $(document).ready(function(){
 		  });
 	});
 	
-	// ---------- CREATE -------------------
+	// ---------- CREATE/UPDATE -------------------
 	$( ".ads-form" ).on( "submit", function( event ) {
 	  event.preventDefault();
 	  formDataJson = $(this).serializeFormJSON();
-	  console.log( 'Object sent: ' + formDataJson );
-	  
-	  var request = HOST_PREFIX+ADS+'/create';
+	  if (formDataJson.id === '') {
+		  var request = HOST_PREFIX+ADS+'/create';
+		  var requestType = 'POST';
+	  } else {
+		  var request = HOST_PREFIX+ADS+'/update/'+formDataJson.id;
+		  var requestType = 'PUT';
+	  }
 	  $.ajax({
-		  type: "POST",
+		  type: requestType,
 		  url: request,
 		  data: JSON.stringify(formDataJson),
 		  success: function(){
@@ -126,7 +124,6 @@ $(document).ready(function(){
 				  $('.alert-danger').remove();
 			  }
 			  $( '.modal-body' ).append( '<div class="alert alert-danger"><strong>Error</strong> Something went wrong :-/</div>' );
-			  console.log('Error: '+JSON.stringify(data))
 		  },
 		  contentType: 'application/json'
 		});
@@ -135,15 +132,19 @@ $(document).ready(function(){
 	$( ".cats-form" ).on( "submit", function( event ) {
 		  event.preventDefault();
 		  formDataJson = $(this).serializeFormJSON();
-		  console.log( 'Object sent: ' + formDataJson );
 		  
-		  var request = HOST_PREFIX+CATEGORIES+'/create';
+		  if (formDataJson.id === '') {
+			  var request = HOST_PREFIX+CATEGORIES+'/create';
+			  var requestType = 'POST';
+		  } else {
+			  var request = HOST_PREFIX+CATEGORIES+'/update/'+formDataJson.id;
+			  var requestType = 'PUT';
+		  }
 		  $.ajax({
-			  type: "POST",
+			  type: requestType,
 			  url: request,
 			  data: JSON.stringify(formDataJson),
 			  success: function(){
-				  console.log('Created successfully.');
 				  if ($('.alert-danger').length) {
 					  $('.alert-danger').remove();
 				  }
@@ -156,7 +157,6 @@ $(document).ready(function(){
 					  $('.alert-danger').remove();
 				  }
 				  $( '.modal-body' ).append( '<div class="alert alert-danger"><strong>Error</strong> Something went wrong :-/</div>' );
-				  console.log('Error: '+JSON.stringify(data))
 			  },
 			  contentType: 'application/json'
 			});
@@ -165,15 +165,19 @@ $(document).ready(function(){
 	$( ".users-form" ).on( "submit", function( event ) {
 		  event.preventDefault();
 		  formDataJson = $(this).serializeFormJSON();
-		  console.log( 'Object sent: ' + formDataJson );
 		  
-		  var request = HOST_PREFIX+USERS+'/create';
+		  if (formDataJson.id === '') {
+			  var request = HOST_PREFIX+USERS+'/create';
+			  var requestType = 'POST';
+		  } else {
+			  var request = HOST_PREFIX+USERS+'/update/'+formDataJson.id;
+			  var requestType = 'PUT';
+		  }
 		  $.ajax({
-			  type: "POST",
+			  type: requestType,
 			  url: request,
 			  data: JSON.stringify(formDataJson),
 			  success: function(){
-				  console.log('Created successfully.');
 				  if ($('.alert-danger').length) {
 					  $('.alert-danger').remove();
 				  }
@@ -186,7 +190,6 @@ $(document).ready(function(){
 					  $('.alert-danger').remove();
 				  }
 				  $( '.modal-body' ).append( '<div class="alert alert-danger"><strong>Error</strong> Something went wrong :-/</div>' );
-				  console.log('Error: '+JSON.stringify(data))
 			  },
 			  contentType: 'application/json'
 			});
@@ -194,47 +197,42 @@ $(document).ready(function(){
 	
 	// ---------- UPDATE -------------------
 	$(document).on('click','.btn-updatead', function(event){
-		console.log($(this).data('adid'));
 		var request = HOST_PREFIX+ADS+'/'+$(this).data('adid');
 		$.ajax({
 		    url: request,
 		    type: 'GET',
 		    dataType: 'json',
 		    success: function(data){
-		    	console.log(JSON.stringify(data));
 		    	populate('.ads-form', data);
 		    },
 		    error: function(data){console.log('error: '+JSON.stringify(data))}
 		  });
 	});
-	/*
-	$( ".ads-form" ).on( "submit", function( event ) {
-		  event.preventDefault();
-		  formDataJson = $(this).serializeFormJSON();
-		  console.log( 'Object sent: ' + formDataJson );
-		  
-		  var request = HOST_PREFIX+ADS+'/create';
-		  $.ajax({
-			  type: "POST",
-			  url: request,
-			  data: JSON.stringify(formDataJson),
-			  success: function(){
-				  console.log('Created successfully.');
-				  if ($('.alert-danger').length) {
-					  $('.alert-danger').remove();
-				  }
-				  updateAds();
-				  document.getElementsByClassName('ads-form')[0].reset();
-				  $('#createAdModal').modal('hide');
-			  },
-			  error: function(data){
-				  if ($('.alert-danger').length) {
-					  $('.alert-danger').remove();
-				  }
-				  $( '.modal-body' ).append( '<div class="alert alert-danger"><strong>Error</strong> Something went wrong :-/</div>' );
-				  console.log('Error: '+JSON.stringify(data))
-			  },
-			  contentType: 'application/json'
-			});
-		});*/
+	
+	$(document).on('click','.btn-updatecat', function(event){
+		var request = HOST_PREFIX+CATEGORIES+'/'+$(this).data('catid');
+		$.ajax({
+		    url: request,
+		    type: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+		    	populate('.cats-form', data);
+		    },
+		    error: function(data){console.log('error: '+JSON.stringify(data))}
+		  });
+	});
+	
+	$(document).on('click','.btn-updateuser', function(event){
+		var request = HOST_PREFIX+USERS+'/'+$(this).data('userid');
+		$.ajax({
+		    url: request,
+		    type: 'GET',
+		    dataType: 'json',
+		    success: function(data){
+		    	console.log(JSON.stringify(data));
+		    	populate('.users-form', data);
+		    },
+		    error: function(data){console.log('error: '+JSON.stringify(data))}
+		  });
+	});
 });

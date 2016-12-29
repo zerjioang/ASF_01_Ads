@@ -51,6 +51,7 @@
 					  <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
 					</div>
 		      </div>
+		      <input type="hidden" name="id" value=""/>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        <button type="submit" class="btn btn-primary">Save</button>
